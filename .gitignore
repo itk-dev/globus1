@@ -1,0 +1,36 @@
+# Assorted IDE & editor files
+# --------------------------------
+*.esproj
+*.kpf
+*.tmproj
+.cache
+.project
+.settings
+*/_notes
+nbproject
+.DS_Store
+._*
+
+# Unused version control info,
+# Patches, crud
+# -------------------------------
+CVS
+*.patch
+*~
+
+# Settings, files
+# ------------------------------
+/sites/default/settings.php
+/sites/default/files
+/files
+
+# Drush backups, SQL dumps
+# -------------------------------
+/backup
+/backups
+
+# Modules + themes only used locally
+# -------------------------------------
+/sites/all/modules/contrib/devel_themer
+/sites/all/modules/contrib/devel
+/sites/all/modules/contrib/coder
