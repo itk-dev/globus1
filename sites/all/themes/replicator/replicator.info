@@ -1,0 +1,35 @@
+name = Replicator
+description = A standard theme created by the peeps at ITK. Twitter: @woeldiche, @magnifydk and @cableman0408
+screenshot = screenshot.png
+core = 6.x
+
+engine = phptemplate
+
+;Regions
+regions[aaktopbar] = AAK topbar
+regions[header] = Header
+regions[sidebar_first] = Sidebar First
+regions[sidebar_second] = Sidebar Second
+regions[content] = Content
+regions[footer] = Footer
+
+;Features
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = search
+features[] = favicon
+
+;Stylesheets
+stylesheets[all][] = styles/rep-reset-min.css
+stylesheets[all][] = styles/rep-grid.css
+stylesheets[all][] = styles/rep-styles.css
+stylesheets[print][] = styles/print.css
+
+;IE specific stylesheets
+ie stylesheets[if IE 7][all][] = styles/rep-ie7.css
+
+;Scripts
+scripts[] = scripts/rep-common.js
