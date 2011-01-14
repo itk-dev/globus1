@@ -30,29 +30,34 @@
     </div>
   </div>
 
+  <div id="breadcrumb" class="container-12">
+    <?php print $breadcrumb; ?>
+  </div>
+
   <div id="page" class="container-12">
-    <div id="left">
-      <?php print $left ?>
-    </div>
-
-    <div id="main">
-
-      <div id="breadcrumb">
-        <?php print $breadcrumb; ?>
-      </div>
-
+    <div class="page-inner">
+      
       <?php if ($tabs): ?>
-        <div class="tabs"><?php print $tabs; ?></div>
+        <div class="tabs">
+          <?php print $tabs; ?>
+        </div>
       <?php endif; ?>
 
-      <?php print $messages; ?>
-      <?php print $help; ?>
+      <div id="left">
+        <?php print $left ?>
+      </div>
 
-      <div id="content"><?php print $content ?></div>
-    </div>
+      <div id="main">
 
-    <div id="right">
-      <?php print $right ?>
+        <?php print $messages; ?>
+        <?php print $help; ?>
+
+        <div id="content"><?php print $content ?></div>
+      </div>
+
+      <div id="right">
+        <?php print $right ?>
+      </div>
     </div>
   </div>
 

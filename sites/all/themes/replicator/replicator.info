@@ -25,6 +25,7 @@ features[] = favicon
 ;Stylesheets
 stylesheets[all][] = styles/rep-reset-min.css
 stylesheets[all][] = styles/rep-grid.css
+stylesheets[all][] = styles/rep-tabs.css
 stylesheets[all][] = styles/rep-styles.css
 stylesheets[print][] = styles/print.css
 
