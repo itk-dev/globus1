@@ -8,10 +8,8 @@
   </head>
   <body <?php print drupal_attributes($attr) ?>>
 
-  <?php if ($aaktopbar): ?>
-    <div id="aaktopbar">
-      <?php print $aaktopbar; ?>
-    </div>
+  <?php if ($site_aak_topbar): ?>
+    <?php print $site_aak_topbar ?>
   <?php endif; ?>
 
   <div class="header">
@@ -38,6 +36,10 @@
     </div>
 
     <div id="main">
+
+      <div id="breadcrumb">
+        <?php print $breadcrumb; ?>
+      </div>
 
       <?php if ($tabs): ?>
         <div class="tabs"><?php print $tabs; ?></div>

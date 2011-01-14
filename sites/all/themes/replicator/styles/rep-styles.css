@@ -33,6 +33,39 @@ a:active {
   color: #47a9ac;
 }
 
+/*
+  AAK topbar
+*/
+
+.aak-topbar {
+  background: url(../images/aak-topbar/aak-topbar-bg.png) repeat-x;
+  font-size: 75%;
+  height: 75px;
+}
+
+.aak-topbar .aak-topbar-inner {
+  position: relative;
+}
+
+.aak-topbar a.aak-logo {
+  display: block;
+  float: left;
+  margin: 11px 0 0 12px;
+  width: 101px;
+}
+
+.aak-topbar a.aak-link {
+  color: #333;
+  float: right;
+  margin: 32px 12px 0 0;
+  position: relative;
+  text-decoration: none;
+}
+
+.aak-topbar a.aak-link:hover {
+  text-decoration: underline;
+}
+
 .header {
   background-color: #f5f5f5;
 }
@@ -46,6 +79,14 @@ a:active {
   left: 35px;
   position: absolute;
   top: 35px;
+}
+
+/*
+  Breadcrumb
+*/
+
+.breadcrumb .breadcrumb-sep {
+  margin: 0 5px;
 }
 
 /*
@@ -76,13 +117,13 @@ a:active {
 
 .menu-block ul li a:hover,
 .menu-block ul li a:focus {
-  background-color: #767676;
-  color: #fff;
+  background-color: #cbcbcb;
+  color: #333;
 }
 
 .menu-block ul li a:active {
-  background-color: #cbcbcb;
-  color: #333;
+  background-color: #767676;
+  color: #fff;
 }
 
 #main-menu {

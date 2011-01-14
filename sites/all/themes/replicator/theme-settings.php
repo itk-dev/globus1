@@ -57,22 +57,67 @@ function replicator_settings($saved_settings, $subtheme_defaults = array()) {
 
   // Merge the saved variables and their default values.
   $settings = array_merge($defaults, $saved_settings);
-  GLOBAL $vars;
-  
+  global $vars;
+
+  $form['navigation'] = array(
+    '#type'         => 'fieldset',
+    '#title'        => t('Navigation'),
+    '#collapsible'  => TRUE,
+    '#collapsed'    => FALSE,
+  );
+
+  // Breadcrumb
+  $form['navigation']['replicator_breadcrumb_separator'] = array(
+    '#type'          => 'textfield',
+    '#size'          => 3,
+    '#title'         => t('Breadcrumb separator'),
+    '#default_value' => $settings['replicator_breadcrumb_separator'],
+    '#description'   => t('This is the symbol used for separating items in the breadcrumb. Leave blank if you don\'t want a separator.'),
+  );
+
   // Stylesheets
-  $form['stylesheets']['replicator_stylesheet_conditional'] = array(
+  $form['stylesheets'] = array(
+    '#type'         => 'fieldset',
+    '#title'        => t('Styles'),
+    '#collapsible'  => TRUE,
+    '#collapsed'    => FALSE,
+  );
+
+  $form['stylesheets']['replicator_stylesheets_conditional'] = array(
     '#type'          => 'checkbox',
-    '#title'         => t('ie specific stylesheet conditions in the .info file'),
-    '#default_value' => $settings['replicator_stylesheet_conditional'],
-    '#description'   => t('.info file: <strong>ie stylesheets[ condition ][all][] = ie.css</strong> condition exampels [if lt IE 7] , [if IE 7] , [if IE 6]'),
+    '#title'         => t('Use IE specific stylesheet conditions in the .info file'),
+    '#default_value' => $settings['replicator_stylesheets_conditional'],
+    '#description'   => t('Use IE specific stylesheets in the .info file: <strong>IE stylesheets[ condition ][all][] = ie.css</strong> condition exampels [if lt IE 7] , [if IE 7] , [if IE 6]'),
   );
 
   // Theme development
+  $form['development'] = array(
+    '#type'         => 'fieldset',
+    '#title'        => t('Development'),
+    '#collapsible'  => TRUE,
+    '#collapsed'    => FALSE,
+  );
+
   $form['development']['replicator_rebuild_registry'] = array(
     '#type'          => 'checkbox',
     '#title'         => t('Rebuild theme registry on every page.'),
     '#default_value' => $settings['replicator_rebuild_registry'],
     '#description'   => t('During theme development, it can be very useful to continuously <a href="!link">rebuild the theme registry</a>. WARNING: this is a huge performance penalty and must be turned off on production websites.', array('!link' => 'http://drupal.org/node/173880#theme-registry')),
+  );
+
+  // Misc
+  $form['misc'] = array(
+    '#type'         => 'fieldset',
+    '#title'        => t('Misc'),
+    '#collapsible'  => TRUE,
+    '#collapsed'    => FALSE,
+  );
+
+  $form['misc']['replicator_aakb_topbar'] = array(
+    '#type'          => 'checkbox',
+    '#title'         => t('Display Aarhus Kommune topbar'),
+    '#default_value' => $settings['aakb_topbar'],
+    '#description'   => t('Display Aarhus Kommunes topbar.'),
   );
 
   // Return form

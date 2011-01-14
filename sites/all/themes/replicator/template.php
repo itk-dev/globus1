@@ -10,6 +10,29 @@ if (theme_get_setting('replicator_rebuild_registry')) {
 function replicator_preprocess(&$vars, $hook) {
 
   if ($hook == "page") {
+
+    global $theme_info;
+    // Get the path to the theme to make the code more efficient and simple.
+    $path = drupal_get_path('theme', $theme_info->name);
+    
+    // Set variables for the logo and site_name.
+    if (!empty($vars['logo'])) {
+      // Return the site_name even when site_name is disabled in theme settings.
+      $vars['logo_alt_text'] = (empty($vars['logo_alt_text']) ? variable_get('site_name', '') : $vars['logo_alt_text']);
+      $vars['site_logo'] = '<a id="site-logo" href="'. $vars['front_page'] .'" title="'. $vars['logo_alt_text'] .'" rel="home"><img src="'. $vars['logo'] .'" alt="'. $vars['logo_alt_text'] .'" /></a>';
+    }
+
+    if (theme_get_setting('replicator_aakb_topbar')) {
+
+      $aak_topbar = array();
+
+      $aak_topbar['url']        = 'http://www.aarhus.dk';
+      $aak_topbar['title']      = 'Aarhus Kommune';
+      $aak_topbar['link_name']  = 'G&aring; til Aarhus.dk';
+
+      $vars['site_aak_topbar'] = '<div class="aak-topbar"><div class="aak-topbar-inner container-12"><a href="'. $aak_topbar['url'] .'" title="'. $aak_topbar['title'] .'" class="aak-logo"><img src="/sites/all/themes/replicator/images/aak-topbar/aak-logo.png" alt="'. $aak_topbar['title'] .'"></a><a href="'. $aak_topbar['url'] .'" title="'. $aak_topbar['title'] .'" class="aak-link">'. $aak_topbar['link_name'] .'</a></div></div>';
+    }
+
     // conditional styles
     // xpressions documentation  -> http://msdn.microsoft.com/en-us/library/ms537512.aspx
 
@@ -19,17 +42,10 @@ function replicator_preprocess(&$vars, $hook) {
     // ------------------------------------------------------------------------
 
     // Check for IE conditional stylesheets.
-
-    if (theme_get_setting('replicator_stylesheet_conditional')) {
-      GLOBAL $theme_info;
-      // Get the path to the theme to make the code more efficient and simple.
-      $path = drupal_get_path('theme', $theme_info->name);
-    }
-
     if (isset($theme_info->info['ie stylesheets']) AND theme_get_setting('replicator_stylesheet_conditional')) {
-
+      
       $ie_css = array();
-
+      
       // Format the array to be compatible with drupal_get_css().
       foreach ($theme_info->info['ie stylesheets'] as $condition => $media) {
         foreach ($media as $type => $styles) {
@@ -49,12 +65,21 @@ function replicator_preprocess(&$vars, $hook) {
 
 }
 
-function replicator_preprocess_page(&$vars, $hook) {
-  // Set variables for the logo and site_name.
-  if (!empty($vars['logo'])) {
-    // Return the site_name even when site_name is disabled in theme settings.
-    $vars['logo_alt_text'] = (empty($vars['logo_alt_text']) ? variable_get('site_name', '') : $vars['logo_alt_text']);
-    $vars['site_logo'] = '<a id="site-logo" href="'. $vars['front_page'] .'" title="'. $vars['logo_alt_text'] .'" rel="home"><img src="'. $vars['logo'] .'" alt="'. $vars['logo_alt_text'] .'" /></a>';
+/**
+ * Add current page to breadcrumb
+ */
+function replicator_breadcrumb($breadcrumb) {
+  if (!empty($breadcrumb)) {
+    $title = drupal_get_title();
+    if (!empty($title)) {
+      // Get separator
+      global $theme_info;
+      if (theme_get_setting('replicator_breadcrumb_separator')) {
+        $sep = '<span class="breadcrumb-sep">'. theme_get_setting('replicator_breadcrumb_separator').'</span>';
+      }
+      $breadcrumb[]='<span class="breadcrumb-current">'. $title .'</span>';
+    }
+    return '<div class="breadcrumb">'. implode($sep, $breadcrumb) .'</div>';
   }
 }
 
