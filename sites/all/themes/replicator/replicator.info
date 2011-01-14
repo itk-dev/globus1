@@ -36,3 +36,4 @@ scripts[] = scripts/rep-common.js
 
 ;Settings
 settings[replicator_breadcrumb_separator] = 0
+settings[replicator_rebuild_registry]     = 0

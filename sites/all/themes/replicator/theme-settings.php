@@ -90,6 +90,21 @@ function replicator_settings($saved_settings, $subtheme_defaults = array()) {
     '#description'   => t('Use IE specific stylesheets in the .info file: <strong>IE stylesheets[ condition ][all][] = ie.css</strong> condition exampels [if lt IE 7] , [if IE 7] , [if IE 6]'),
   );
 
+  // Misc
+  $form['misc'] = array(
+    '#type'         => 'fieldset',
+    '#title'        => t('Misc'),
+    '#collapsible'  => TRUE,
+    '#collapsed'    => FALSE,
+  );
+
+  $form['misc']['replicator_aakb_topbar'] = array(
+    '#type'          => 'checkbox',
+    '#title'         => t('Display Aarhus Kommune topbar'),
+    '#default_value' => $settings['replicator_aakb_topbar'],
+    '#description'   => t('Display Aarhus Kommunes topbar.'),
+  );
+
   // Theme development
   $form['development'] = array(
     '#type'         => 'fieldset',
@@ -103,21 +118,6 @@ function replicator_settings($saved_settings, $subtheme_defaults = array()) {
     '#title'         => t('Rebuild theme registry on every page.'),
     '#default_value' => $settings['replicator_rebuild_registry'],
     '#description'   => t('During theme development, it can be very useful to continuously <a href="!link">rebuild the theme registry</a>. WARNING: this is a huge performance penalty and must be turned off on production websites.', array('!link' => 'http://drupal.org/node/173880#theme-registry')),
-  );
-
-  // Misc
-  $form['misc'] = array(
-    '#type'         => 'fieldset',
-    '#title'        => t('Misc'),
-    '#collapsible'  => TRUE,
-    '#collapsed'    => FALSE,
-  );
-
-  $form['misc']['replicator_aakb_topbar'] = array(
-    '#type'          => 'checkbox',
-    '#title'         => t('Display Aarhus Kommune topbar'),
-    '#default_value' => $settings['aakb_topbar'],
-    '#description'   => t('Display Aarhus Kommunes topbar.'),
   );
 
   // Return form
