@@ -43,11 +43,13 @@
         </div>
       <?php endif; ?>
 
-      <div id="left">
-        <?php print $left ?>
-      </div>
+      <?php if ($sidebar_first): ?>
+        <div id="left" class="grid-3">
+          <?php print $sidebar_first ?>
+        </div>
+      <?php endif ?>
 
-      <div id="main">
+      <div id="main" class="<?php print ns('grid-12', $sidebar_first, 3, $sidebar_second, 3); ?>">
 
         <?php print $messages; ?>
         <?php print $help; ?>
@@ -55,9 +57,11 @@
         <div id="content"><?php print $content ?></div>
       </div>
 
-      <div id="right">
-        <?php print $right ?>
-      </div>
+      <?php if ($sidebar_second): ?>
+        <div id="right" class="grid-3">
+          <?php print $sidebar_second ?>
+        </div>
+      <?php endif ?>
     </div>
   </div>
 
