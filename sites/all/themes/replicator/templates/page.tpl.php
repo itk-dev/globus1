@@ -30,9 +30,11 @@
     </div>
   </div>
 
-  <div id="breadcrumb" class="container-12">
-    <?php print $breadcrumb; ?>
-  </div>
+  <?php if ($breadcrumb): ?>
+    <div id="breadcrumb" class="container-12">
+      <?php print $breadcrumb; ?>
+    </div>
+   <?php endif; ?>
 
   <div id="page" class="container-12">
     <div class="page-inner">
