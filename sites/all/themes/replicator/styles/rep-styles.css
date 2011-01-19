@@ -11,6 +11,14 @@ body {
   line-height: 1.125em;
 }
 
+h2 {
+  font-size: 175%;
+}
+
+h3 {
+  font-size: 150%;
+}
+
 /*
   Links
 */
@@ -178,4 +186,23 @@ a:active {
   background-color: #fff;
   overflow: hidden;
   padding: 10px 0;
+}
+
+/*
+  Spotboxes
+*/
+
+.nodespotbox h3 {
+  background-color: #d2d2d2;
+  line-height: 200%;
+  padding: 0 0 0 20px;
+}
+
+.nodespotbox h3 a,
+.nodespotbox h3 a:link,
+.nodespotbox h3 a:visited,
+.nodespotbox h3 a:hover,
+.nodespotbox h3 a:active {
+  color: #000;
+  text-decoration: none;
 }
