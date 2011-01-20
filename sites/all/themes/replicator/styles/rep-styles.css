@@ -283,3 +283,15 @@ a:active {
   text-decoration: none;
 }
 
+/*
+  Footer menus
+*/
+
+#footer{
+  background: #999999;
+  display: block;
+}
+
+#footer .block-menu{
+  background: #999999;
+}

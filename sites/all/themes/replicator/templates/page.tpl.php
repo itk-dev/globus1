@@ -67,7 +67,7 @@
     </div>
   </div>
 
-  <div id="footer"><div class="container-12 clear">
+  <div id="footer"><div class="container-12 clear-block">
     <?php print $footer ?>
     <?php print $footer_message ?>
   </div></div>
