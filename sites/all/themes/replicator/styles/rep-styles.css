@@ -209,6 +209,12 @@ a:active {
 
 }
 
+#left .menu li{
+  list-style-image: none;
+  list-style-type: none;
+}
+
+
 #left .menu li.active-trail{
   font-weight: bold;
 }
@@ -227,6 +233,8 @@ a:active {
 #left .menu a{
   text-decoration: none;
   color: #666;
+  background: url("../images/generel-sprite-replicator.png") -6px -21px no-repeat;
+  padding: 0 16px 2px;
 }
 
 #left .menu a.active{
