@@ -171,6 +171,74 @@ a:active {
 }
 
 /*
+  Secondary menu
+*/
+
+#block-menu-secondary-links{
+  top: 35px;
+  right: 10px;
+  position: absolute;
+
+}
+
+#block-menu-secondary-links ul li{
+  list-style: none;
+  float:left;
+}
+
+#block-menu-secondary-links ul li a {
+  color: #999;
+  display: block;
+  font-size: 55%;
+  text-decoration: none;
+}
+
+/*
+  Sub menu
+*/
+
+#left .menu{
+
+}
+
+#left .menu li.active-trail{
+  font-weight: bold;
+}
+
+#left .menu a:hover,
+#left .menu a:focus{
+  color: #47a9ac;
+}
+
+#left .menu .first{
+}
+
+#left .menu .last{
+}
+
+#left .menu a{
+  text-decoration: none;
+  color: #666;
+}
+
+#left .menu a.active{
+  color: #47a9ac;
+}
+
+#left .menu ul{
+}
+
+#left .menu li{
+  font-weight: normal;
+}
+
+#left .menu li ul{
+}
+
+#left .menu li li{
+}
+
+/*
   Page
 */
 
@@ -179,3 +247,4 @@ a:active {
   overflow: hidden;
   padding: 10px 0;
 }
+
