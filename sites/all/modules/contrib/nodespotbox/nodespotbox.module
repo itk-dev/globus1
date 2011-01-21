@@ -127,6 +127,7 @@ function nodespotbox_form_alter(&$form, $form_state, $form_id) {
           '#options' => array(0 => t('Disabled'), 1 => t('Enabled')),
           '#description' => t('Should this node be made available as a spotbox?'),
         );
+      }
 
         if (nodespotbox_used_supplied_view($node->type)) {
           $view_name = variable_get('nodespotbox_view_name_'. $node->type, FALSE);
@@ -139,7 +140,6 @@ function nodespotbox_form_alter(&$form, $form_state, $form_id) {
               '#default_value' => isset($node->nodespotbox_display) ? $node->nodespotbox_display : 'none',
             );
           }
-        }
       }
 
       // Add translation fallback field for nodespotbox and translation enabled source nodes only
