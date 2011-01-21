@@ -290,8 +290,20 @@ a:active {
 #footer{
   background: #999999;
   display: block;
+  font-size: 75%;
 }
 
 #footer .block-menu{
   background: #999999;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#footer .block-menu h2{
+  padding: 5px;
+}
+
+#footer .block-menu li{
+  list-style-image: none;
+  list-style-type: none;
 }
