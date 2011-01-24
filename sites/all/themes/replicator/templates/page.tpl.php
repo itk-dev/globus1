@@ -45,7 +45,7 @@
         </div>
       <?php endif; ?>
 
-      <?php if ($sidebar_first): ?>
+      <?php if ($sidebar_first ): ?>
         <div id="left" class="grid-3">
           <?php print $sidebar_first ?> 
         </div>
