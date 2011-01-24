@@ -20,6 +20,15 @@ h3 {
 }
 
 /*
+  Drupal Messages
+*/
+.messages{
+  background: none repeat scroll 0 0 #E9E9E9;
+  border: 1px solid #666666;
+  padding: 10px;
+}
+
+/*
   Links
 */
 
