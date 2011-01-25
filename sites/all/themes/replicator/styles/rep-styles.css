@@ -26,6 +26,7 @@ h3 {
   background: none repeat scroll 0 0 #E9E9E9;
   border: 1px solid #666666;
   padding: 10px;
+  margin: 10px;
 }
 
 /*
@@ -315,4 +316,19 @@ a:active {
 #footer .block-menu li{
   list-style-image: none;
   list-style-type: none;
+}
+
+/*
+  Comments
+*/
+.comment{
+  padding: 15px;
+}
+
+.submitted{
+  font-size: 75%;
+}
+
+.comment_add{
+  float:right;
 }
