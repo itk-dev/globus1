@@ -23,7 +23,7 @@ h3 {
   Drupal Messages
 */
 .messages{
-  background: none repeat scroll 0 0 #E9E9E9;
+  background: none repeat scroll 0 0 #e9e9e9;
   border: 1px solid #666666;
   padding: 10px;
   margin: 10px;
@@ -164,15 +164,15 @@ a:active {
   text-decoration: none;
 }
 
-.menu-block ul li a:visited {
-  background-color: #666;
-  color: #fff;
+.menu-block ul li a.active {
+  background-color: #cbcbcb;
+  color: #333;
 }
 
 .menu-block ul li a:hover,
 .menu-block ul li a:focus {
-  background-color: #cbcbcb;
-  color: #333;
+  background-color: #767676;
+  color: #fff;
 }
 
 .menu-block ul li a:active {
@@ -192,76 +192,85 @@ a:active {
   Secondary menu
 */
 
-#block-menu-secondary-links{
-  top: 35px;
+#block-menu-secondary-links {
+  top: 15px;
   right: 10px;
   position: absolute;
 
 }
 
-#block-menu-secondary-links ul li{
+#block-menu-secondary-links ul li {
+  background: url('../images/rep-sprites.png') right -237px no-repeat;
   list-style: none;
-  float:left;
+  float: left;
+}
+
+#block-menu-secondary-links ul li.last {
+  background: none;
 }
 
 #block-menu-secondary-links ul li a {
   color: #999;
   display: block;
-  font-size: 55%;
+  font-size: 70%;
   text-decoration: none;
 }
 
+#block-menu-secondary-links ul li a:hover {
+  color: #666;
+}
+
 /*
-  Sub menu
+  Submenu
 */
 
-#left .menu{
+#left .menu {
 
 }
 
-#left .menu li{
+#left .menu li {
   list-style-image: none;
   list-style-type: none;
 }
 
 
-#left .menu li.active-trail{
+#left .menu li.active-trail {
   font-weight: bold;
 }
 
 #left .menu a:hover,
-#left .menu a:focus{
+#left .menu a:focus {
   color: #47a9ac;
 }
 
-#left .menu .first{
+#left .menu .first {
 }
 
-#left .menu .last{
+#left .menu .last {
 }
 
-#left .menu a{
+#left .menu a {
   text-decoration: none;
   color: #666;
   background: url('../images/rep-sprites.png') -6px -21px no-repeat;
   padding: 0 16px 2px;
 }
 
-#left .menu a.active{
+#left .menu a.active {
   color: #47a9ac;
 }
 
-#left .menu ul{
+#left .menu ul {
 }
 
-#left .menu li{
+#left .menu li {
   font-weight: normal;
 }
 
-#left .menu li ul{
+#left .menu li ul {
 }
 
-#left .menu li li{
+#left .menu li li {
 }
 
 /*
@@ -325,10 +334,30 @@ a:active {
   text-align: right;
 }
 
-.nodespotbox .content-wrapper .link a {
-  background: url('../images/rep-sprites.png') 0 -69px no-repeat;
+.nodespotbox .content-wrapper .link a,
+.nodespotbox .content-wrapper .link a:link {
+  background: url('../images/rep-sprites.png') 0 -175px no-repeat;
+  color: #00959a;
+  font-weight: bold;
   padding: 3px 0 3px 27px;
   text-align: right;
+  text-decoration: none;
+}
+
+.nodespotbox .content-wrapper .link a:visited {
+  background-position: 0 -98px;
+  color: #8931bb;
+}
+
+.nodespotbox .content-wrapper .link a:hover {
+  background-position: 0 -175px;
+  color: #006467;
+  text-decoration: underline;
+}
+
+.nodespotbox .content-wrapper .link a:active {
+  background-position: 0 -175px;
+  color: #47a9ac;
 }
 
 /*
