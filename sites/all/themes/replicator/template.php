@@ -60,7 +60,6 @@ function replicator_preprocess(&$vars, $hook) {
         $vars['styles'] .= '<!--[' . $condition . ']>' . "\n" . drupal_get_css($styles) . '<![endif]-->' . "\n";
       }
     }
-
   }
 
 }
