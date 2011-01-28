@@ -319,6 +319,7 @@ a:active {
 /*
   If it is a small spotbox center the image
 */
+
 .nodespotbox .image a img {
   display: block;
   margin: 0 0 0 -40px;
@@ -399,3 +400,15 @@ a:active {
 .comment_add{
   float:right;
 }
+
+/*
+  Carousel
+*/
+
+.carousel{
+  background: #d8d8d8;
+  max-height: 250px;
+  overflow: hidden;
+  padding: 8px;
+}
+
