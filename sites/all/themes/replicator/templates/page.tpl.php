@@ -6,7 +6,7 @@
     <?php print $styles; ?>
     <?php print $scripts; ?>
   </head>
-  <body <?php print drupal_attributes($attr) ?>>
+  <body class="<?php print $body_classes; ?>"<?php print drupal_attributes($attr)?>>
 
   <?php if ($site_aak_topbar): ?>
     <?php print $site_aak_topbar ?>
@@ -26,7 +26,6 @@
       <?php if ($header): ?>
         <?php print $header; ?>
       <?php endif; ?>
-        
     </div>
   </div>
 
@@ -38,30 +37,29 @@
 
   <div id="page" class="container-12">
     <div class="page-inner">
-      
       <?php if ($tabs): ?>
         <div class="tabs">
           <?php print $tabs; ?>
         </div>
       <?php endif; ?>
 
-      <?php if ($sidebar_first ): ?>
+      <?php if ($left ): ?>
         <div id="left" class="grid-3">
-          <?php print $sidebar_first ?> 
+          <?php print $left; ?>
         </div>
       <?php endif ?>
 
-      <div id="main" class="<?php print ns('grid-12', $sidebar_first, 3, $sidebar_second, 3); ?>">
-
+      <div id="main" class="<?php print ns('grid-12', $left, 3, $right, 3); ?>">
+        
         <?php print $messages; ?>
         <?php print $help; ?>
 
         <div id="content"><?php print $content ?></div>
       </div>
 
-      <?php if ($sidebar_second): ?>
+      <?php if ($right): ?>
         <div id="right" class="grid-3">
-          <?php print $sidebar_second ?>
+          <?php print $right; ?>
         </div>
       <?php endif ?>
     </div>
