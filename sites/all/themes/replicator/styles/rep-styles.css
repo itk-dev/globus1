@@ -320,6 +320,7 @@ a:active {
   If it is a small spotbox center the image
 */
 
+.nodespotbox .image img,
 .nodespotbox .image a img {
   display: block;
   margin: 0 0 0 -40px;
