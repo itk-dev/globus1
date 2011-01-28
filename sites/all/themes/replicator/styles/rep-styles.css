@@ -298,6 +298,7 @@ a:active {
   padding: 0;
 }
 
+.nodespotbox h3.nolink,
 .nodespotbox h3 a {
   display: block;
   padding: 0 0 0 20px;
