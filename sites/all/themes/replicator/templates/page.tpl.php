@@ -54,7 +54,9 @@
         <?php print $messages; ?>
         <?php print $help; ?>
 
+        <div id="content-top"><?php print $content_top ?></div>
         <div id="content"><?php print $content ?></div>
+        <div id="content-bottom"><?php print $content_bottom ?></div>
       </div>
 
       <?php if ($right): ?>

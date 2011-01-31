@@ -9,7 +9,9 @@ engine = phptemplate
 regions[aaktopbar] = AAK topbar
 regions[header] = Header
 regions[left] = Left
+regions[content_top] = Content top
 regions[content] = Content
+regions[content_bottom] = Content bottom
 regions[right] = Right
 regions[footer] = Footer
 
