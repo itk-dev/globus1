@@ -11,6 +11,12 @@ body {
   line-height: 1.125em;
 }
 
+h1 {
+  font-size: 200%;
+  line-height: 150%;
+  margin: 0 0 15px;
+}
+
 h2 {
   font-size: 175%;
 }
