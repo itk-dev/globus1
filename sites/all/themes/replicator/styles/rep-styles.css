@@ -284,12 +284,26 @@ a:active {
 }
 
 /*
+  Content
+*/
+
+#content-top,
+#content-bottom {
+  overflow: auto;
+}
+
+/*
   Spotboxes
 */
 
 .nodespotbox {
   margin: 0 0 20px;
   overflow: hidden;
+}
+
+#content-top .nodespotbox,
+#content-bottom .nodespotbox {
+  margin: 0 10px 20px 0;
 }
 
 .nodespotbox h3 {
