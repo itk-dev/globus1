@@ -450,12 +450,38 @@ a:active {
 */
 
 .carousel{
-  background: #d8d8d8;
+  background: #d2d2d2;
   max-height: 250px;
   overflow: hidden;
-  padding: 8px;
 }
 
+.carousel .view-content .content{
+  margin-top: -240px;
+  padding: 8px;
+  width: 270px;
+  position: relative;
+  z-index: 1;
+  background: #d2d2d2;
+  max-height: 125px;
+  overflow: hidden;
+  display: block;
+}
+
+.carousel .view-content .content a{
+  color: #333;
+  outline: none;
+}
+
+
+.carousel .views_slideshow_singleframe_teaser_section{
+  height: 250px;
+}
+
+.views_slideshow_slide{
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+}
 /*
   Messages
 */
