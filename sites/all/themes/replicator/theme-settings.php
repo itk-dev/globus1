@@ -83,10 +83,10 @@ function replicator_settings($saved_settings, $subtheme_defaults = array()) {
     '#collapsed'    => FALSE,
   );
 
-  $form['stylesheets']['replicator_stylesheets_conditional'] = array(
+  $form['stylesheets']['replicator_stylesheet_conditional'] = array(
     '#type'          => 'checkbox',
     '#title'         => t('Use IE specific stylesheet conditions in the .info file'),
-    '#default_value' => $settings['replicator_stylesheets_conditional'],
+    '#default_value' => $settings['replicator_stylesheet_conditional'],
     '#description'   => t('Use IE specific stylesheets in the .info file: <strong>IE stylesheets[ condition ][all][] = ie.css</strong> condition exampels [if lt IE 7] , [if IE 7] , [if IE 6]'),
   );
 

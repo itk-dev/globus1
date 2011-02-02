@@ -312,6 +312,11 @@ a:active {
   margin: 0 0 10px;
 }
 
+.block-mailchimp .content .form-item .form-checkbox {
+  float: left;
+  margin: 3px 5px 0;
+}
+
 .block-mailchimp .content .form-item .form-text {
   width: 98%;
 }
