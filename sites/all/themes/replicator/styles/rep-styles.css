@@ -488,6 +488,36 @@ a:active {
    margin-right: auto;
    display: block;
 }
+
+
+.carousel .views_slideshow_controls .views_slideshow_previous {
+    background: url("/sites/all/themes/replicator/images/carousel-sprites.png") no-repeat scroll -28px -89px transparent;
+    display: block;
+    height: 36px;
+    left: 15px;
+    outline: 0 none;
+    text-indent: -9999px;
+    width: 35px;
+    z-index: 5;
+}
+
+.carousel .views_slideshow_controls .views_slideshow_next {
+    background: url("/sites/all/themes/replicator/images/carousel-sprites.png") no-repeat scroll -28px -16px transparent;
+    display: block;
+    height: 36px;
+    left: 15px;
+    outline: 0 none;
+    text-indent: -9999px;
+    width: 35px;
+    z-index: 5;
+}
+
+.carousel .views_slideshow_controls .views_slideshow_pause {
+    text-indent: -9999px;
+    display: none;
+  }
+
+
 /*
   Messages
 */
@@ -530,29 +560,32 @@ div.status {
   border-color: #d8e4e0;
 }
 
-.carousel .views_slideshow_controls .views_slideshow_previous {
-    background: url("/sites/all/themes/replicator/images/carousel-sprites.png") no-repeat scroll -28px -89px transparent;
-    display: block;
-    height: 36px;
-    left: 15px;
-    outline: 0 none;
-    text-indent: -9999px;
-    width: 35px;
-    z-index: 5;
+  /*
+    Site map
+  */
+
+#site-map .site-map-box{
+  margin-bottom: 50px;
+  padding: 8px;
 }
 
-.carousel .views_slideshow_controls .views_slideshow_next {
-    background: url("/sites/all/themes/replicator/images/carousel-sprites.png") no-repeat scroll -28px -16px transparent;
-    display: block;
-    height: 36px;
-    left: 15px;
-    outline: 0 none;
-    text-indent: -9999px;
-    width: 35px;
-    z-index: 5;
+#site-map .site-map-box .title{
+  display: none;
 }
 
-.carousel .views_slideshow_controls .views_slideshow_pause {
-    text-indent: -9999px;
-    display: none;
-  }
+#site-map .site-map-menu li {
+  list-style-image: none;
+  list-style-type: none;
+}
+
+#site-map .site-map-menu a:hover,
+#site-map .site-map-menu a:focus {
+  color: #47a9ac;
+}
+
+#site-map .site-map-menu a {
+  text-decoration: none;
+  color: #666;
+  background: url('../images/rep-sprites.png') -6px -21px no-repeat;
+  padding: 0 16px 2px;
+}
