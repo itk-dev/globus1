@@ -1,3 +1,8 @@
-body {
-  background: red;
+/*
+  MailChimp
+*/
+
+.block-mailchimp .content .form-item .form-checkbox {
+  float: none;
+  margin: 0;
 }

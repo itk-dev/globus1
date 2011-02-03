@@ -289,6 +289,43 @@ a:active {
 }
 
 /*
+  MailChimp
+*/
+
+.block-mailchimp {
+  margin: 0 0 20px;
+}
+
+.block-mailchimp h2 {
+  background-color: #d2d2d2;
+  line-height: 200%;
+  padding: 0 0 0 10px;
+}
+
+.block-mailchimp .content {
+  background-color: #d2d2d2;
+  overflow: hidden;
+  padding: 0 10px 20px;
+}
+
+.block-mailchimp .content .form-item {
+  margin: 0 0 10px;
+}
+
+.block-mailchimp .content .form-item .form-checkbox {
+  float: left;
+  margin: 3px 5px 0;
+}
+
+.block-mailchimp .content .form-item .form-text {
+  width: 98%;
+}
+
+.block-mailchimp .content .form-submit {
+  float: right;
+}
+
+/*
   Spotboxes
 */
 
@@ -311,7 +348,7 @@ a:active {
 .nodespotbox h3.nolink,
 .nodespotbox h3 a {
   display: block;
-  padding: 0 0 0 20px;
+  padding: 0 0 0 10px;
 }
 
 .nodespotbox h3 a,
