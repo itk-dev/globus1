@@ -494,28 +494,39 @@ a:active {
     background: url("/sites/all/themes/replicator/images/carousel-sprites.png") no-repeat scroll -28px -89px transparent;
     display: block;
     height: 36px;
-    left: 15px;
     outline: 0 none;
     text-indent: -9999px;
     width: 35px;
     z-index: 5;
+    float: left;
+    position: relative;
+    margin: 8px;
+    margin-top: 180px;
 }
 
 .carousel .views_slideshow_controls .views_slideshow_next {
-    background: url("/sites/all/themes/replicator/images/carousel-sprites.png") no-repeat scroll -28px -16px transparent;
+    background: url("/sites/all/themes/replicator/images/carousel-sprites.png") no-repeat scroll -28px -18px transparent;
     display: block;
     height: 36px;
-    left: 15px;
     outline: 0 none;
     text-indent: -9999px;
     width: 35px;
     z-index: 5;
+    float: right;
+    position: relative;
+    margin: 8px;
+    margin-top: 180px;
 }
 
 .carousel .views_slideshow_controls .views_slideshow_pause {
     text-indent: -9999px;
     display: none;
   }
+
+.carousel .views_slideshow_main{
+  margin-top: -224px;
+}
+
 
 
 /*
@@ -559,10 +570,9 @@ div.status {
   background: #ecf8f4;
   border-color: #d8e4e0;
 }
-
-  /*
-    Site map
-  */
+/*
+  Site map
+*/
 
 #site-map .site-map-box{
   margin-bottom: 50px;
@@ -589,3 +599,4 @@ div.status {
   background: url('../images/rep-sprites.png') -6px -21px no-repeat;
   padding: 0 16px 2px;
 }
+
