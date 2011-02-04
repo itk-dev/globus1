@@ -480,7 +480,7 @@ a:active {
 
 
 .carousel .views_slideshow_singleframe_teaser_section{
-  height: 250px;
+  height: 218px;
 }
 
 .views_slideshow_slide{
@@ -527,7 +527,40 @@ a:active {
   margin-top: -224px;
 }
 
+.carousel .views_slideshow_singleframe_pager .pager-item a {
+    -moz-border-radius: 10px 10px 10px 10px;
+    background-color: #1c1c1c;
+    display: block;
+    float: left;
+    height: 12px;
+    margin: 10px 10px 10px 0;
+    text-indent: -9999px;
+    width: 12px;
+    outline: 0 none;
+}
 
+.carousel .views_slideshow_singleframe_pager .pager-item.activeSlide a{
+  -moz-border-radius: 10px 10px 10px 10px;
+  background-color: #9e9e9e;
+  display: block;
+  float: left;
+  height: 12px;
+  margin: 10px 10px 10px 0;
+  text-indent: -9999px;
+  width: 12px;
+  }
+
+.carousel .views-slideshow-controls-bottom{
+  display: block;
+  text-align: center;
+}
+
+.carousel .views_slideshow_pagerNumbered{
+  display: inline-block;
+  margin: -18px auto 0;
+  z-index: 50;
+  position: relative;
+}
 
 /*
   Messages
@@ -570,6 +603,7 @@ div.status {
   background: #ecf8f4;
   border-color: #d8e4e0;
 }
+
 /*
   Site map
 */
@@ -599,4 +633,3 @@ div.status {
   background: url('../images/rep-sprites.png') -6px -21px no-repeat;
   padding: 0 16px 2px;
 }
-
