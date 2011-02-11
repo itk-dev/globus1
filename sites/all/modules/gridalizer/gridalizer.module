@@ -1,0 +1,179 @@
+<?php
+
+/**
+ * Implements hook_perm().
+ */
+function gridalizer_filter_perm() {
+  $perm['administer gridalizer'] = array(
+    'title' => t('Administer gridalizer.'),
+  );
+  return array_keys($perm);
+}
+
+function gridalizer_menu() {
+  $items = array();
+
+  $items['admin/build/context/gridalizer'] = array(
+    'title' => 'Gridalizer',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('gridalizer_admin_form'),
+    'description' => 'Gridalizer configuration to handle grid360 classes.',
+    'access arguments' => array('administer gridalizer'),
+    'file' => 'gridalizer.admin.inc',
+    'file path' => drupal_get_path('module', 'gridalizer') . '/includes',
+  );
+  
+  return $items;
+}
+
+function gridalizer_preprocess(&$vars, $hook) {
+  if ($hook == 'block') {
+    // Load regions selected, only blocks in these sould be modifyed
+    $selected_regions = variable_get('gridalizer_regions', NULL);
+    if (!isset($selected_regions)) {
+      drupal_set_message(t('You have not yet configured "Gridalizer" regions. Click <a href="@link">here</a> to configure it.',
+            array('@link' => url('admin/build/context/gridalizer'))));
+      return;
+    }
+
+    // Get current theme regions
+    global $theme_key;
+    if (!isset($selected_regions[$theme_key]['enabled_regions'])) {
+      // In a theme thats not active (e.g administration theme) there may be
+      // a better way to do this.
+      return;
+    }
+    $selected_regions = array_filter($selected_regions[$theme_key]['enabled_regions']);
+
+    // Get current block
+    $current_block = $vars['block'];
+
+    // Verify that block is in a selected region
+    if (!in_array($current_block->region, $selected_regions)) {
+      // Not in one off the selected regions
+      return;
+    }
+
+    // Load selected block types
+    $selected_types = variable_get('gridalizer', NULL);
+    $selected_types = array_filter($selected_types['modules']);
+    if (!isset($selected_types)) {
+      drupal_set_message(t('You have not yet configured "Gridalizer" block types. Click <a href="@link">here</a> to configure it.',
+            array('@link' => url('admin/build/context/gridalizer'))));
+      return;
+    }
+
+    // Verify that the block type is one off the selected types
+    if (!in_array($current_block->module, $selected_types)) {
+      // Not a selected block type
+      return;
+    }
+
+    // Load blocks bid and (move this to helper function)
+    $blocks = _gridalizer_region_blocks();
+    $list = _gridalizer_context_region_blocks();
+    
+    foreach ($list as $key => $value) {
+      if (empty($blocks[$key])) {
+        $blocks[$key] = $value;
+      }
+      else {
+        $blocks[$key] = array_merge($blocks[$key], $value);
+      }
+    }
+    
+    // Find the block that needs to have the grid added.
+    $grid = NULL;
+    $count = count($blocks[$current_block->region]);
+    if ((!empty($blocks['left']) && empty($blocks['right'])) || (empty($blocks['left']) && !empty($blocks['right'])))  {
+      switch ($count) {
+        case 1:
+          $grid = 9;
+        case 2:
+          $grid = 4;
+          break;
+        default:
+          $grid = 3;
+          break;
+      }
+    }
+    
+    if (empty($blocks['left']) && empty($blocks['right']))  {
+      switch ($count) {
+        case 1:
+          $grid = 12;
+        case 2:
+          $grid = 6;
+          break;
+        case 3:
+          $grid = 4;
+          break;
+        default:
+          $grid = 3;
+          break;
+      }
+    }
+    $vars['block']->grid = 'grid-'.$grid;
+  }
+}
+
+
+/**
+ * Helper function that creates an array of blocks for each region in the
+ * current theme.
+ *
+ * @global object $theme_info
+ * @staticvar array $block_list
+ * @return array $block_list
+ */
+function _gridalizer_region_blocks() {
+  global $theme_info;
+  static $block_list;
+
+  if (!isset($block_list)) {
+    $block_list = array();
+    foreach ($theme_info->info['regions'] as $region => $value) {
+      // Create empty array foreach region.
+      if (!isset($block_list[$region])) {
+        $block_list[$region] = array();
+      }
+
+      // Get blocks for current region.
+      $blocks = block_list($region);
+      foreach ($blocks as $block) {
+        $block_list[$region][] = array('module' => $block->module, 'bid' => $block->bid);
+      }
+    }
+  }
+
+  return $block_list;
+}
+
+/**
+ * Helper function that findes all blocks inserted by the context module into
+ * a given region from the current theme.
+ *
+ * @staticvar array $region_blocks
+ * @return array $region_blocks
+ */
+function _gridalizer_context_region_blocks() {
+  static $region_blocks;
+
+  if (!isset($region_blocks)) {
+    $region_blocks = array();
+
+    // Get all active contexts.
+    $contexts = context_active_contexts();
+    foreach ($contexts as $context) {
+      // Get all blocks in this context.
+      foreach ($context->reactions['block']['blocks'] as $block) {
+        if (!isset($region_blocks[$block['region']])) {
+          $region_blocks[$block['region']] = array();
+        }
+        $region_blocks[$block['region']][] = array('module' => $block['module'], 'bid' => $block['delta']);
+      }
+    }
+  }
+
+  return $region_blocks;
+}

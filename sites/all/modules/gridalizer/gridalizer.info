@@ -1,0 +1,7 @@
+; $Id$
+name = Gridalizer
+description = Sets the right Grid360 class on blocks in relation to context.
+core = 6.x
+package = "Context"
+dependencies[] = context
+dependencies[] = context_filter
