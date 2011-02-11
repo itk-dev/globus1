@@ -85,10 +85,13 @@ function gridalizer_preprocess(&$vars, $hook) {
     // Find the block that needs to have the grid added.
     $grid = NULL;
     $count = count($blocks[$current_block->region]);
+
+    // Case where one of the side regions are empty and only one side is empty
     if ((!empty($blocks['left']) && empty($blocks['right'])) || (empty($blocks['left']) && !empty($blocks['right'])))  {
       switch ($count) {
         case 1:
           $grid = 9;
+          break;
         case 2:
           $grid = 4;
           break;
@@ -97,11 +100,13 @@ function gridalizer_preprocess(&$vars, $hook) {
           break;
       }
     }
-    
+
+    // Case where both sides are empty
     if (empty($blocks['left']) && empty($blocks['right']))  {
       switch ($count) {
         case 1:
           $grid = 12;
+          break;
         case 2:
           $grid = 6;
           break;
@@ -114,7 +119,8 @@ function gridalizer_preprocess(&$vars, $hook) {
       }
     }
 
-    if (!empty($blocks['left']) && !empty($blocks['right']))  {
+    // Case whre there are content in both sides
+    if (!$blocks['left'] && !$blocks['right'])  {
       switch ($count) {
         case 1:
           $grid = 6;
@@ -125,10 +131,12 @@ function gridalizer_preprocess(&$vars, $hook) {
       }
     }
 
-    $vars['block']->grid = 'grid-'.$grid;
+    // Add grid to the block
+    if ($grid) {
+      $vars['block']->grid = 'grid-'.$grid;
+    }
   }
 }
-
 
 /**
  * Helper function that creates an array of blocks for each region in the
