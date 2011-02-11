@@ -16,13 +16,33 @@ function gridalizer_menu() {
   $items['admin/build/context/gridalizer'] = array(
     'title' => 'Gridalizer',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('gridalizer_admin_form'),
+    'page arguments' => array('gridalizer_types_admin_form'),
     'description' => 'Gridalizer configuration to handle grid360 classes.',
     'access arguments' => array('administer gridalizer'),
     'file' => 'gridalizer.admin.inc',
     'file path' => drupal_get_path('module', 'gridalizer') . '/includes',
   );
-  
+
+  // Basic settings menu callback
+  $items['admin/build/context/gridalizer/types'] = array(
+    'title' => 'Block types',
+    'description' => t('Select block types.'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 1,
+  );
+
+  $items['admin/build/context/gridalizer/regions'] = array(
+    'title' => 'Regions',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('gridalizer_regions_admin_form'),
+    'description' => 'Select regions.',
+    'access arguments' => array('administer gridalizer'),
+    'file' => 'gridalizer.admin.inc',
+    'file path' => drupal_get_path('module', 'gridalizer') . '/includes',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2,
+  );
+
   return $items;
 }
 

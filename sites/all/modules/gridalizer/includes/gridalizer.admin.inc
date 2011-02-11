@@ -4,7 +4,7 @@
  * Implementation of the gridalizer configuration form.
  *
  */
-function gridalizer_admin_form(&$form_state) {
+function gridalizer_types_admin_form(&$form_state) {
   $form = array();
 
   // Find all modules that implements hook_block and is allowed to user with
@@ -40,6 +40,12 @@ function gridalizer_admin_form(&$form_state) {
     '#default_value' => $default['modules'],
   );
 
+  return system_settings_form($form);
+}
+
+function gridalizer_regions_admin_form(&$form_state) {
+  $form = array();
+
   // Regions selection.
   $form['gridalizer_regions'] = array(
     '#type' => 'fieldset',
@@ -52,7 +58,7 @@ function gridalizer_admin_form(&$form_state) {
 
   // Load default region values
   $default_regions = variable_get('gridalizer_regions', array());
-  
+
   // Get list of themes
   $themes = list_themes();
   foreach ($themes as $key => $theme) {
