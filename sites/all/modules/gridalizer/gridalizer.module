@@ -115,9 +115,11 @@ function gridalizer_preprocess(&$vars, $hook) {
     }
 
     if (!empty($blocks['left']) && !empty($blocks['right']))  {
+      print_r($count);
       switch ($count) {
         case 1:
           $grid = 6;
+          break;
         default:
           $grid = 3;
           break;
