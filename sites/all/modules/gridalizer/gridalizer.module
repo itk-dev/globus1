@@ -113,6 +113,17 @@ function gridalizer_preprocess(&$vars, $hook) {
           break;
       }
     }
+
+    if (!empty($blocks['left']) && !empty($blocks['right']))  {
+      switch ($count) {
+        case 1:
+          $grid = 6;
+        default:
+          $grid = 3;
+          break;
+      }
+    }
+
     $vars['block']->grid = 'grid-'.$grid;
   }
 }
