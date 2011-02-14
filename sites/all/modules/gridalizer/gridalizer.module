@@ -63,6 +63,12 @@ function gridalizer_menu() {
 
 function gridalizer_preprocess(&$vars, $hook) {
   if ($hook == 'block') {
+    // Check that the theme is the selected on
+    global $theme_key;
+    if ($theme_key != variable_get('gridalizer_theme', '')) {
+      return;
+    }
+    
     // Load regions selected, only blocks in these sould be modifyed
     $regions = variable_get('gridalizer_regions', array());
     if (!isset($regions)) {
