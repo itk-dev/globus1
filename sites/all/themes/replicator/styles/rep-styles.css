@@ -285,7 +285,6 @@ a:active {
 
 #content-top,
 #content-bottom {
-  overflow: auto;
 }
 
 /*
@@ -331,6 +330,9 @@ a:active {
 
 .nodespotbox {
   margin: 0 0 20px;
+}
+
+.nodespotbox .view-spotboxes {
   overflow: hidden;
 }
 
