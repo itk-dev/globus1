@@ -9,60 +9,62 @@ if (theme_get_setting('replicator_rebuild_registry')) {
 
 function replicator_preprocess(&$vars, $hook) {
 
-  if ($hook == "page") {
+  switch ($hook) {
+    case 'page':
 
-    global $theme_info;
-    // Get the path to the theme to make the code more efficient and simple.
-    $path = drupal_get_path('theme', $theme_info->name);
-    
-    // Set variables for the logo and site_name.
-    if (!empty($vars['logo'])) {
-      // Return the site_name even when site_name is disabled in theme settings.
-      $vars['logo_alt_text'] = (empty($vars['logo_alt_text']) ? variable_get('site_name', '') : $vars['logo_alt_text']);
-      $vars['site_logo'] = '<a id="site-logo" href="'. $vars['front_page'] .'" title="'. $vars['logo_alt_text'] .'" rel="home"><img src="'. $vars['logo'] .'" alt="'. $vars['logo_alt_text'] .'" /></a>';
-    }
+      global $theme_info;
+      // Get the path to the theme to make the code more efficient and simple.
+      $path = drupal_get_path('theme', $theme_info->name);
 
-    if (theme_get_setting('replicator_aakb_topbar')) {
+      // Set variables for the logo and site_name.
+      if (!empty($vars['logo'])) {
+        // Return the site_name even when site_name is disabled in theme settings.
+        $vars['logo_alt_text'] = (empty($vars['logo_alt_text']) ? variable_get('site_name', '') : $vars['logo_alt_text']);
+        $vars['site_logo'] = '<a id="site-logo" href="'. $vars['front_page'] .'" title="'. $vars['logo_alt_text'] .'" rel="home"><img src="'. $vars['logo'] .'" alt="'. $vars['logo_alt_text'] .'" /></a>';
+      }
 
-      $aak_topbar = array();
+      if (theme_get_setting('replicator_aakb_topbar')) {
 
-      $aak_topbar['url']        = 'http://www.aarhus.dk';
-      $aak_topbar['title']      = 'Aarhus Kommune';
-      $aak_topbar['link_name']  = 'G&aring; til Aarhus.dk';
+        $aak_topbar = array();
 
-      $vars['site_aak_topbar'] = '<div class="aak-topbar"><div class="aak-topbar-inner container-12"><a href="'. $aak_topbar['url'] .'" title="'. $aak_topbar['title'] .'" class="aak-logo"><img src="/sites/all/themes/replicator/images/aak-topbar/aak-logo.png" alt="'. $aak_topbar['title'] .'"></a><a href="'. $aak_topbar['url'] .'" title="'. $aak_topbar['title'] .'" class="aak-link">'. $aak_topbar['link_name'] .'</a></div></div>';
-    }
+        $aak_topbar['url']        = 'http://www.aarhus.dk';
+        $aak_topbar['title']      = 'Aarhus Kommune';
+        $aak_topbar['link_name']  = 'G&aring; til Aarhus.dk';
 
-    // conditional styles
-    // xpressions documentation  -> http://msdn.microsoft.com/en-us/library/ms537512.aspx
+        $vars['site_aak_topbar'] = '<div class="aak-topbar"><div class="aak-topbar-inner container-12"><a href="'. $aak_topbar['url'] .'" title="'. $aak_topbar['title'] .'" class="aak-logo"><img src="/sites/all/themes/replicator/images/aak-topbar/aak-logo.png" alt="'. $aak_topbar['title'] .'"></a><a href="'. $aak_topbar['url'] .'" title="'. $aak_topbar['title'] .'" class="aak-link">'. $aak_topbar['link_name'] .'</a></div></div>';
+      }
 
-    // syntax for .info
-    // top stylesheets[all][] = style/reset.css
-    // ie stylesheets[ condition ][all][] = ie6.css
-    // ------------------------------------------------------------------------
+      // conditional styles
+      // xpressions documentation  -> http://msdn.microsoft.com/en-us/library/ms537512.aspx
 
-    // Check for IE conditional stylesheets.
-    if (isset($theme_info->info['ie stylesheets']) AND theme_get_setting('replicator_stylesheet_conditional')) {
-      
-      $ie_css = array();
-      
-      // Format the array to be compatible with drupal_get_css().
-      foreach ($theme_info->info['ie stylesheets'] as $condition => $media) {
-        foreach ($media as $type => $styles) {
-          foreach ($styles as $style) {
-            $ie_css[$condition][$type]['theme'][$path . '/' . $style] = TRUE;
+      // syntax for .info
+      // top stylesheets[all][] = style/reset.css
+      // ie stylesheets[ condition ][all][] = ie6.css
+      // ------------------------------------------------------------------------
+
+      // Check for IE conditional stylesheets.
+      if (isset($theme_info->info['ie stylesheets']) AND theme_get_setting('replicator_stylesheet_conditional')) {
+
+        $ie_css = array();
+
+        // Format the array to be compatible with drupal_get_css().
+        foreach ($theme_info->info['ie stylesheets'] as $condition => $media) {
+          foreach ($media as $type => $styles) {
+            foreach ($styles as $style) {
+              $ie_css[$condition][$type]['theme'][$path . '/' . $style] = TRUE;
+            }
           }
         }
+        // Append the stylesheets to $styles, grouping by IE version and applying
+        // the proper wrapper.
+        foreach ($ie_css as $condition => $styles) {
+          $vars['styles'] .= '<!--[' . $condition . ']>' . "\n" . drupal_get_css($styles) . '<![endif]-->' . "\n";
+        }
       }
-      // Append the stylesheets to $styles, grouping by IE version and applying
-      // the proper wrapper.
-      foreach ($ie_css as $condition => $styles) {
-        $vars['styles'] .= '<!--[' . $condition . ']>' . "\n" . drupal_get_css($styles) . '<![endif]-->' . "\n";
-      }
-    }
+      break;
   }
-
 }
+
 
 /**
  * Add current page to breadcrumb
