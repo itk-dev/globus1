@@ -8,7 +8,7 @@ function spotboxes_views_default_views() {
 
   // Exported view: Spotboxes
   $view = new view;
-  $view->name = 'Spotboxes';
+  $view->name = 'spotboxes';
   $view->description = 'This is the view for spotboxes';
   $view->tag = 'spotboxes';
   $view->view_php = '';
