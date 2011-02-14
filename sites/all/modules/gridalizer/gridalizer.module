@@ -16,16 +16,15 @@ function gridalizer_menu() {
   $items['admin/build/context/gridalizer'] = array(
     'title' => 'Gridalizer',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('gridalizer_types_admin_form'),
+    'page arguments' => array('gridalizer_settings_admin_form'),
     'description' => 'Gridalizer configuration to handle grid360 classes.',
     'access arguments' => array('administer gridalizer'),
     'file' => 'gridalizer.admin.inc',
     'file path' => drupal_get_path('module', 'gridalizer') . '/includes',
   );
-
-  // Basic settings menu callback
-  $items['admin/build/context/gridalizer/types'] = array(
-    'title' => 'Block types',
+  
+  $items['admin/build/context/gridalizer/settings'] = array(
+    'title' => 'General settings',
     'description' => t('Select block types.'),
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => 1,
@@ -41,6 +40,18 @@ function gridalizer_menu() {
     'file path' => drupal_get_path('module', 'gridalizer') . '/includes',
     'type' => MENU_LOCAL_TASK,
     'weight' => 2,
+  );
+
+  $items['admin/build/context/gridalizer/classes'] = array(
+    'title' => 'Grid classes',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('gridalizer_classes_admin_form'),
+    'description' => 'Select block types.',
+    'access arguments' => array('administer gridalizer'),
+    'file' => 'gridalizer.admin.inc',
+    'file path' => drupal_get_path('module', 'gridalizer') . '/includes',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 3,
   );
 
   return $items;
