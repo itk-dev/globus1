@@ -480,7 +480,11 @@ a:active {
   Carousel
 */
 
-.carousel {
+#block-views-Carousel-block_3{
+  clear: both;
+}
+
+.carousel{
   background: #d2d2d2;
   /*max-height: 250px;*/
   overflow: hidden;
@@ -579,6 +583,7 @@ a:active {
 .carousel .views-slideshow-controls-bottom{
   display: block;
   text-align: center;
+  position: relative;
 }
 
 .carousel .views_slideshow_pagerNumbered{
