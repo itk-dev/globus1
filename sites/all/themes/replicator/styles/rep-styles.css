@@ -135,6 +135,9 @@ a:active {
 }
 
 #left,
+#content-top,
+#content,
+#content-bottom,
 #right {
   font-size: 0.75em;
 }
@@ -283,8 +286,18 @@ a:active {
   Content
 */
 
-#content-top,
-#content-bottom {
+#content {
+  clear: both;
+}
+
+/*
+  Blocks
+*/
+
+#content-top .block,
+#content .block,
+#content-bottom .block {
+  margin: 0 20px 20px 0;
 }
 
 /*
@@ -332,19 +345,8 @@ a:active {
   margin: 0 0 20px;
 }
 
-.content-top .nodespotbox,
-.content .nodespotbox,
-.content-bottom .nodespotbox {
-  margin: 0 20px 20px 0;
-}
-
 .nodespotbox .view-spotboxes {
   overflow: hidden;
-}
-
-#content-top .nodespotbox,
-#content-bottom .nodespotbox {
-  margin: 0 10px 20px 0;
 }
 
 .nodespotbox h3 {
@@ -466,14 +468,14 @@ a:active {
   Carousel
 */
 
-.carousel{
+.carousel {
   background: #d2d2d2;
   /*max-height: 250px;*/
   overflow: hidden;
   max-width: 620px;
 }
 
-.carousel .view-content .content{
+.carousel .view-content .content {
   margin-top: -240px;
   padding: 8px;
   width: 270px;
@@ -485,17 +487,17 @@ a:active {
   display: block;
 }
 
-.carousel .view-content .content a{
+.carousel .view-content .content a {
   color: #333;
   outline: none;
 }
 
 
-.carousel .views_slideshow_singleframe_teaser_section{
+.carousel .views_slideshow_singleframe_teaser_section {
   height: 218px;
 }
 
-.views_slideshow_slide{
+.views_slideshow_slide {
    margin-left: auto;
    margin-right: auto;
    display: block;
