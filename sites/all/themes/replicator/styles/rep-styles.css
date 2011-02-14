@@ -283,11 +283,23 @@ a:active {
 }
 
 /*
+  Main
   Content
+  Left
+  Right
 */
+
+#main.grid-8 {
+  margin-right: 0;
+  width: 640px;
+}
 
 #content {
   clear: both;
+}
+
+#right.grid-4 {
+  margin-left: 0;
 }
 
 /*
