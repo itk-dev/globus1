@@ -10,6 +10,10 @@ function gridalizer_filter_perm() {
   return array_keys($perm);
 }
 
+/**
+ * Implementation hook_menu().
+ *
+ */
 function gridalizer_menu() {
   $items = array();
 
@@ -60,42 +64,35 @@ function gridalizer_menu() {
 function gridalizer_preprocess(&$vars, $hook) {
   if ($hook == 'block') {
     // Load regions selected, only blocks in these sould be modifyed
-    $selected_regions = variable_get('gridalizer_regions', NULL);
-    if (!isset($selected_regions)) {
+    $regions = variable_get('gridalizer_regions', array());
+    if (!isset($regions)) {
       drupal_set_message(t('You have not yet configured "Gridalizer" regions. Click <a href="@link">here</a> to configure it.',
-            array('@link' => url('admin/build/context/gridalizer'))));
+            array('@link' => url('admin/build/context/gridalizer/regions'))));
       return;
     }
-
-    // Get current theme regions
-    global $theme_key;
-    if (!isset($selected_regions[$theme_key]['enabled_regions'])) {
-      // In a theme thats not active (e.g administration theme) there may be
-      // a better way to do this.
-      return;
-    }
-    $selected_regions = array_filter($selected_regions[$theme_key]['enabled_regions']);
+    $active_regions = array_filter($regions['active']);
+    $side_regions = array_filter($regions['side']);
 
     // Get current block
     $current_block = $vars['block'];
-
+    
     // Verify that block is in a selected region
-    if (!in_array($current_block->region, $selected_regions)) {
+    if (!in_array($current_block->region, $active_regions)) {
       // Not in one off the selected regions
       return;
     }
 
     // Load selected block types
-    $selected_types = variable_get('gridalizer', NULL);
-    $selected_types = array_filter($selected_types['modules']);
-    if (!isset($selected_types)) {
+    $providers = variable_get('gridalizer_blocks', NULL);
+    if (!isset($providers)) {
       drupal_set_message(t('You have not yet configured "Gridalizer" block types. Click <a href="@link">here</a> to configure it.',
             array('@link' => url('admin/build/context/gridalizer'))));
       return;
     }
+    $providers = array_filter($providers);
 
     // Verify that the block type is one off the selected types
-    if (!in_array($current_block->module, $selected_types)) {
+    if (!in_array($current_block->module, $providers)) {
       // Not a selected block type
       return;
     }
@@ -104,6 +101,7 @@ function gridalizer_preprocess(&$vars, $hook) {
     $blocks = _gridalizer_region_blocks();
     $list = _gridalizer_context_region_blocks();
     
+
     foreach ($list as $key => $value) {
       if (empty($blocks[$key])) {
         $blocks[$key] = $value;
@@ -112,61 +110,52 @@ function gridalizer_preprocess(&$vars, $hook) {
         $blocks[$key] = array_merge($blocks[$key], $value);
       }
     }
+
+    // Get number of blocks in region (only count theme that should be modified).
+    $count = gridalizer_count_blocks($blocks[$current_block->region], $providers);
+
+    // Create index key based in side regions content
+    $sides = array_values(array_filter($regions['side']));
+    $key = '';
+    foreach ($side_regions as $side) {
+      if ($blocks[$side]) {
+        $key .= $side.'_';
+      }
+    }
+    $key = substr($key, 0, -1);
+
+    // Find the admin supplyed configuration
+    $combinations = variable_get('gridalizer_combinations', NULL);
+    if (empty($combinations[$key][$count]) || $count > variable_get('gridalizer_max_blocks', 4)) {
+      $class = $combinations[$key][0];
+    }
+    else {
+      $class = $combinations[$key][$count];
+    }
     
-    // Find the block that needs to have the grid added.
-    $grid = NULL;
-    $count = count($blocks[$current_block->region]);
-
-    // Case where one of the side regions are empty and only one side is empty
-    if ((!empty($blocks['left']) && empty($blocks['right'])) || (empty($blocks['left']) && !empty($blocks['right'])))  {
-      switch ($count) {
-        case 1:
-          $grid = 9;
-          break;
-        case 2:
-          $grid = 4;
-          break;
-        default:
-          $grid = 3;
-          break;
-      }
-    }
-
-    // Case where both sides are empty
-    if (empty($blocks['left']) && empty($blocks['right']))  {
-      switch ($count) {
-        case 1:
-          $grid = 12;
-          break;
-        case 2:
-          $grid = 6;
-          break;
-        case 3:
-          $grid = 4;
-          break;
-        default:
-          $grid = 3;
-          break;
-      }
-    }
-
-    // Case whre there are content in both sides
-    if (!$blocks['left'] && !$blocks['right'])  {
-      switch ($count) {
-        case 1:
-          $grid = 6;
-          break;
-        default:
-          $grid = 3;
-          break;
-      }
-    }
-
     // Add grid to the block
-    if ($grid) {
-      $vars['block']->grid = 'grid-'.$grid;
+    if ($class[$count]) {
+      $vars['block']->grid = $class;
     }
   }
+}
+
+/**
+ * Helper function that count the number of blocks in a region, but only the
+ * blocks that should be modified.
+ *
+ * @param <type> $region_blocks
+ * @param <type> $providers
+ * @return int
+ */
+function gridalizer_count_blocks($region_blocks, $providers) {
+  $count = 0;
+  foreach ($region_blocks as $block) {
+    if (in_array($block['module'], $providers)) {
+      $count++;
+    }
+  }
+  return $count;
 }
 
 /**

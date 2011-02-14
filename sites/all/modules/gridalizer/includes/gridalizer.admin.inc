@@ -50,13 +50,13 @@ function gridalizer_settings_admin_form(&$form_state) {
     '#default_value' => variable_get('gridalizer_max_blocks', '4'),
   );
 
-  $form['gridalizer_on_block'] = array(
-    '#type' => 'checkboxes',
-    '#title' => t('Set classes on block'),
-    '#options' => array('yes' => t('Yes')),
-    '#description' => t('Enables the setting of grid classes on edit block pages'),
-    '#default_value' => variable_get('gridalizer_on_block', array()),
-  );
+//  $form['gridalizer_on_block'] = array(
+//    '#type' => 'checkboxes',
+//    '#title' => t('Set classes on block'),
+//    '#options' => array('yes' => t('Yes')),
+//    '#description' => t('Enables the setting of grid classes on edit block pages'),
+//    '#default_value' => variable_get('gridalizer_on_block', array()),
+//  );
 
   // return
   return system_settings_form($form);
@@ -139,7 +139,14 @@ function gridalizer_classes_admin_form(&$form_state) {
   $providers = array_filter(variable_get('gridalizer_blocks', array()));
 
   foreach ($combinations as $combination) {
+
+    // Create database key
+    if (count($combination) > 1) {
+      sort($combination);
+    }
     $key = empty($combination) ? t('Empty sides') : implode('_', $combination);
+
+    // Create form elements
     $title = empty($combination) ? t('non of the regions') : implode(' + ', $combination);
     $form['gridalizer_combinations'][$key] = array(
       '#type' => 'fieldset',
