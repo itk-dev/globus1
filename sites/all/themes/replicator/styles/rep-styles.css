@@ -332,6 +332,12 @@ a:active {
   margin: 0 0 20px;
 }
 
+.content-top .nodespotbox,
+.content .nodespotbox,
+.content-bottom .nodespotbox {
+  margin: 0 20px 20px 0;
+}
+
 .nodespotbox .view-spotboxes {
   overflow: hidden;
 }
@@ -373,6 +379,10 @@ a:active {
 .nodespotbox .image img,
 .nodespotbox .image a img {
   display: block;
+}
+
+.nodespotbox.grid-3 .image img,
+.nodespotbox.grid-3 .image a img {
   margin: 0 0 0 -40px;
 }
 
