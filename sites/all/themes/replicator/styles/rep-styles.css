@@ -283,24 +283,37 @@ a:active {
 }
 
 /*
-  Main
-  Content
-  Left
-  Right
+  Grid changes because of margin-right on spotboxes
 */
+
+#main.grid-6 {
+  margin-right: 0;
+  width: 480px;
+}
 
 #main.grid-8 {
   margin-right: 0;
   width: 640px;
 }
 
+#main.grid-12 {
+  width: 960px;
+}
+
+#right.grid-3,
+#right.grid-4 {
+  margin-left: 0;
+}
+
+/*
+  Content
+*/
+
 #content {
   clear: both;
 }
 
-#right.grid-4 {
-  margin-left: 0;
-}
+
 
 /*
   Blocks
