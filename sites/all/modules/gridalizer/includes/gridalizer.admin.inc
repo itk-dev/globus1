@@ -43,6 +43,21 @@ function gridalizer_settings_admin_form(&$form_state) {
     '#default_value' => variable_get('gridalizer_blocks', array()),
   );
 
+  $form['gridalizer_max_blocks'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Max. blocks in row'),
+    '#description' => t('The maximum number of blocks in a single row.'),
+    '#default_value' => variable_get('gridalizer_max_blocks', '4'),
+  );
+
+  $form['gridalizer_on_block'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Set classes on block'),
+    '#options' => array('yes' => t('Yes')),
+    '#description' => t('Enables the setting of grid classes on edit block pages'),
+    '#default_value' => variable_get('gridalizer_on_block', array()),
+  );
+
   // return
   return system_settings_form($form);
 }
@@ -111,21 +126,45 @@ function gridalizer_classes_admin_form(&$form_state) {
   // Out form field set
   $form['gridalizer_combinations'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Field combinations'),
+    '#title' => t('Default grid classes'),
+    '#description' => t('Add default grid classes to blocks in different situations.'),
     '#collapsible' => FALSE,
     '#collapsed' => FALSE,
+    '#tree' => TRUE,
   );
 
+  // Load configuration
+  $max_blocks = variable_get('gridalizer_max_blocks', '4');
+  $defaults = variable_get('gridalizer_combinations', array());
+  $providers = array_filter(variable_get('gridalizer_blocks', array()));
+
   foreach ($combinations as $combination) {
-    $key = implode('_', $combination);
+    $key = empty($combination) ? t('Empty sides') : implode('_', $combination);
+    $title = empty($combination) ? t('non of the regions') : implode(' + ', $combination);
     $form['gridalizer_combinations'][$key] = array(
       '#type' => 'fieldset',
-      '#title' => t(implode(' + ', $combination)),
-      '#collapsible' => FALSE,
-      '#collapsed' => FALSE,
+      '#title' => t('Content in %comb', array('%comb' => $title)),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
     );
-  }
 
+    $form['gridalizer_combinations'][$key][0] = array(
+      '#type' => 'textfield',
+      '#title' => t('Default classe'),
+      '#description' => t('The maximum number of blocks in a single row.'),
+      '#default_value' => isset($defaults[$key]) ? $defaults[$key][0] : '',
+    );
+
+    for ($i = 1; $i <= (int)$max_blocks; $i++) {
+      $form['gridalizer_combinations'][$key][$i] = array(
+        '#type' => 'textfield',
+        '#title' => t('%number blocks', array('%number' => $i)),
+        '#description' => t('The maximum number of blocks in a single row.'),
+        '#default_value' => isset($defaults[$key]) ? $defaults[$key][$i] : '',
+      );
+    }
+  }
+  
   return system_settings_form($form);
 }
 
