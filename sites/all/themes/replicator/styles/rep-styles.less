@@ -51,9 +51,26 @@ a:active {
   Form objects
 */
 
+label {
+  padding: 2px 0;
+}
+
 textarea,
-input {
-  padding: 2px;
+input[type=text],
+input[type=password] {
+  border: 1px solid #999;
+  color: #999;
+  padding: 3px;
+}
+
+input[type=text] {
+  font-size: 150%;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  float: left;
+  margin: 2px 3px 0 0;
 }
 
 /*
@@ -771,20 +788,11 @@ div.status {
   width: 50%;
 }
 
-#user-login label {
-  padding: 2px 0;
-}
-
 #user-login input.form-text {
   border: 1px solid #999;
   color: #999;
   font-size: 200%;
   width: 98%;
-}
-
-#user-login input.form-checkbox {
-  float: left;
-  margin: 2px 3px 0 0;
 }
 
 #user-login .item-list,
