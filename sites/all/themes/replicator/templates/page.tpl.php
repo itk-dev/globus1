@@ -44,12 +44,12 @@
       <?php endif; ?>
 
       <?php if ($left ): ?>
-        <div id="left" class="grid-3">
+        <div id="left" class="<?php print ns('grid-4', $right, 1); ?>">
           <?php print $left; ?>
         </div>
       <?php endif ?>
 
-      <div id="main" class="<?php print ns('grid-12', $left, 3, $right, 3); ?>">
+      <div id="main" class="<?php print ns('grid-12', $left && !$right, 4, $left && $right, 3, $right && !$left, 4, $right && $left, 3); ?>">
         
         <?php print $messages; ?>
         <?php print $help; ?>
@@ -60,7 +60,7 @@
       </div>
 
       <?php if ($right): ?>
-        <div id="right" class="grid-3">
+        <div id="right" class="<?php print ns('grid-4', $left, 1); ?>">
           <?php print $right; ?>
         </div>
       <?php endif ?>

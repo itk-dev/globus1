@@ -287,6 +287,10 @@ a:active {
   width: 480px;
 }
 
+.sidebar-left #main.grid-8 {
+  margin-left: 0;
+}
+
 #main.grid-8 {
   margin-right: 0;
   width: 640px;
@@ -309,7 +313,9 @@ a:active {
   clear: both;
 }
 
-
+#content .content {
+  padding: 0 20px 0 0;
+}
 
 /*
   Blocks

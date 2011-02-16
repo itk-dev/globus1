@@ -144,7 +144,7 @@ function gridalizer_classes_admin_form(&$form_state) {
     if (count($combination) > 1) {
       sort($combination);
     }
-    $key = empty($combination) ? t('Empty sides') : implode('_', $combination);
+    $key = empty($combination) ? 'empty' : implode('_', $combination);
 
     // Create form elements
     $title = empty($combination) ? t('non of the regions') : implode(' + ', $combination);

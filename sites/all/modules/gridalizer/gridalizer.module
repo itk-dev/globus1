@@ -130,6 +130,11 @@ function gridalizer_preprocess(&$vars, $hook) {
     }
     $key = substr($key, 0, -1);
 
+    // All side regions are empty
+    if (!$key) {
+      $key = 'empty';
+    }
+    
     // Find the admin supplyed configuration
     $combinations = variable_get('gridalizer_combinations', NULL);
     if (empty($combinations[$key][$count]) || $count > variable_get('gridalizer_max_blocks', 4)) {
