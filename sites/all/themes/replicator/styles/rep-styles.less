@@ -48,6 +48,15 @@ a:active {
 }
 
 /*
+  Form objects
+*/
+
+textarea,
+input {
+  padding: 2px;
+}
+
+/*
   AAK topbar
 */
 
@@ -752,4 +761,56 @@ div.status {
   float: right;
   font-size: 110%;
   margin: 10px 0 0;
+}
+
+/*
+  User login
+*/
+
+#user-login {
+  width: 50%;
+}
+
+#user-login label {
+  padding: 2px 0;
+}
+
+#user-login input.form-text {
+  border: 1px solid #999;
+  color: #999;
+  font-size: 200%;
+  width: 98%;
+}
+
+#user-login input.form-checkbox {
+  float: left;
+  margin: 2px 3px 0 0;
+}
+
+#user-login .item-list,
+#user-login .item-list ul {
+  float: left;
+  margin: 2px 0 0;
+}
+
+#user-login input.form-submit {
+  float: right;
+}
+
+/*
+  OpenID
+*/
+
+html.js #user-login li.openid-link {
+  display: inline-block;
+}
+
+#user-login li.openid-link a {
+  background-position: 0 0;
+}
+
+#edit-openid-identifier {
+  background-position: 5px 6px;
+  border: 1px solid #999;
+  padding-left: 25px;
 }

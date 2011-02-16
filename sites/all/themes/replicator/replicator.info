@@ -36,6 +36,7 @@ stylesheets[print][]  = styles/print.less
 ;IE specific stylesheets
 ie stylesheets[if IE 6][all][] = styles/rep-ie6.less
 ie stylesheets[if IE 7][all][] = styles/rep-ie7.less
+ie stylesheets[if IE 8][all][] = styles/rep-ie8.less
 
 ;Scripts
 scripts[] = scripts/rep-common.js
