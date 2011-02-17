@@ -11,6 +11,10 @@ body {
   line-height: 1.125em;
 }
 
+h1, h2, h3, h4, h5 {
+  margin: 0 0 10px;
+}
+
 h1 {
   font-size: 200%;
   line-height: 150%;
@@ -45,6 +49,36 @@ a:focus {
 
 a:active {
   color: #47a9ac;
+}
+
+/*
+  Fieldsets
+*/
+
+@fieldset-border-color: #e7e7e7;
+@fieldset-shadow-color: #f1f1f1;
+
+.fieldset-bg-color(@color: #f6f6f6) {
+  background-color: @color;
+}
+
+fieldset,
+html.js fieldset.collapsed {
+  .fieldset-bg-color;
+  border: 1px solid @fieldset-border-color;
+  -moz-box-shadow: 2px 2px @fieldset-shadow-color;
+  -webkit-box-shadow: 2px 2px @fieldset-shadow-color;
+  box-shadow: 2px 2px @fieldset-shadow-color;
+  margin: 0 0 20px;
+  padding: 10px;
+
+  legend {
+    .fieldset-bg-color;
+    border-top: 1px solid @fieldset-border-color;
+    border-right: 1px solid @fieldset-border-color;
+    border-left: 1px solid @fieldset-border-color;
+    padding: 3px 15px 3px 10px;
+  }
 }
 
 /*
