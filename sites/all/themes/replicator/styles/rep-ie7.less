@@ -11,7 +11,7 @@
   Carousel
 */
 
-.carousel .views-slideshow-controls-bottom{
+.carousel .views-slideshow-controls-bottom {
   float: left;
 }
 
@@ -20,7 +20,8 @@ input.form-radio {
   margin: -1px 3px 0 0;
 }
 
-fieldset {
+fieldset,
+html.js fieldset.collapsed {
   height: auto;
 }
 
@@ -46,4 +47,12 @@ html.js fieldset.collapsed {
   background-position: 4px -300px;
   height: 26px;
   margin: 1px 0 0;
+}
+
+/*
+  Make sure footer blocks behave correctly when
+  there is a collapsible fieldset or similiar above
+*/
+#footer .block {
+  position: static;
 }
