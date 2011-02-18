@@ -26,10 +26,10 @@
  * @see template_preprocess_block()
  */
 ?>
-<div id="block-<?php print $block->module .'-'. $block->delta; ?>" class="block <?php print $block->module ?> <?php print $block->grid ?>">
+<div id="block-<?php print $block->module .'-'. $block->delta; ?>" class="block <?php print $block->module; ?> <?php print $block->grid; ?>">
   <?php if ($block->subject): ?>
-    <h2><?php print $block->subject ?></h2>
+    <h2><?php print $block->subject; ?></h2>
   <?php endif;?>
 
-  <?php print $block->content ?>
+  <?php print $block->content; ?>
 </div>

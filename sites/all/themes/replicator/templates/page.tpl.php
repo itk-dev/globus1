@@ -49,7 +49,7 @@
         </div>
       <?php endif ?>
 
-      <div id="main" class="<?php print ns('grid-12', $left && !$right, 4, $left && $right, 3, $right && !$left, 4, $right && $left, 3); ?>">
+      <div id="main" class="alpha omega <?php print ns('grid-12', $left && !$right, 4, $left && $right, 3, $right && !$left, 4, $right && $left, 3); ?>">
         
         <?php print $messages; ?>
         <?php print $help; ?>
@@ -63,33 +63,34 @@
         <?php if ($content_top): ?>
           <div id="content-top" class="region"><?php print $content_top ?></div>
         <?php endif; ?>
-        <div id="content"><?php print $content ?></div>
+        <div id="content" class=""><?php print $content ?></div>
         <?php if ($content_bottom): ?>
           <div id="content-bottom" class="region"><?php print $content_bottom ?></div>
         <?php endif; ?>
       </div>
-
+ 
       <?php if ($right): ?>
         <div id="right" class="<?php print ns('grid-4', $left, 1); ?> region">
           <?php print $right; ?>
         </div>
       <?php endif ?>
-      
-      <?php if ($bottom_region): ?>
-        <div id="bottom-region" class="region">
-          <?php print $bottom_region; ?>
-        </div>
-      <?php endif ?>      
-      
     </div>
   </div>
 
-  <div id="footer"><div class="container-12 clear-block">
-    <?php print $footer ?>
-    <?php print $footer_message ?>
-  </div></div>
+  <div class="secondary-content container-12">
+    <?php if ($bottom_region): ?>
+      <div id="bottom-region" class="region">
+        <?php print $bottom_region; ?>
+      </div>
+    <?php endif ?>  
+  </div>
 
+  <div id="footer">
+    <div class="container-12 clear-block">
+      <?php print $footer ?>
+    </div>
+    <p class="footer-message"><?php print $footer_message ?></p>
+  </div>
   <?php print $closure ?>
-
   </body>
 </html>
