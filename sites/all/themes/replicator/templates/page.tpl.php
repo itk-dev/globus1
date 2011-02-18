@@ -37,14 +37,14 @@
 
   <div id="page" class="container-12">
     <div class="page-inner">
-      <?php if ($tabs): ?>
-        <div class="tabs">
-          <?php print $tabs; ?>
+      <?php if ($top_region): ?>
+        <div id="top-region" class="region">
+          <?php print $top_region; ?>
         </div>
-      <?php endif; ?>
+      <?php endif ?>
 
       <?php if ($left ): ?>
-        <div id="left" class="<?php print ns('grid-4', $right, 1); ?>">
+        <div id="left" class="<?php print ns('grid-4', $right, 1); ?> region">
           <?php print $left; ?>
         </div>
       <?php endif ?>
@@ -54,16 +54,33 @@
         <?php print $messages; ?>
         <?php print $help; ?>
 
-        <div id="content-top"><?php print $content_top ?></div>
+        <?php if ($tabs): ?>
+          <div class="tabs">
+            <?php print $tabs; ?>
+          </div>
+        <?php endif; ?>
+
+        <?php if ($content_top): ?>
+          <div id="content-top" class="region"><?php print $content_top ?></div>
+        <?php endif; ?>
         <div id="content"><?php print $content ?></div>
-        <div id="content-bottom"><?php print $content_bottom ?></div>
+        <?php if ($content_bottom): ?>
+          <div id="content-bottom" class="region"><?php print $content_bottom ?></div>
+        <?php endif; ?>
       </div>
 
       <?php if ($right): ?>
-        <div id="right" class="<?php print ns('grid-4', $left, 1); ?>">
+        <div id="right" class="<?php print ns('grid-4', $left, 1); ?> region">
           <?php print $right; ?>
         </div>
       <?php endif ?>
+      
+      <?php if ($bottom_region): ?>
+        <div id="bottom-region" class="region">
+          <?php print $bottom_region; ?>
+        </div>
+      <?php endif ?>      
+      
     </div>
   </div>
 
