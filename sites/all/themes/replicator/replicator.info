@@ -8,11 +8,13 @@ engine = phptemplate
 ;Regions
 regions[aaktopbar] = AAK topbar
 regions[header] = Header
+regions[top_region] = Top
+regions[content_top] = Content, Above
+regions[content] = Content, Main
+regions[content_bottom] = Content, Below
 regions[left] = Left
-regions[content_top] = Content top
-regions[content] = Content
-regions[content_bottom] = Content bottom
 regions[right] = Right
+regions[bottom_region] = Bottom
 regions[footer] = Footer
 
 

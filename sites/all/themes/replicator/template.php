@@ -31,7 +31,7 @@ function replicator_preprocess(&$vars, $hook) {
         $aak_topbar['title']      = 'Aarhus Kommune';
         $aak_topbar['link_name']  = 'G&aring; til Aarhus.dk';
 
-        $vars['site_aak_topbar'] = '<div class="aak-topbar"><div class="aak-topbar-inner container-12"><a href="'. $aak_topbar['url'] .'" title="'. $aak_topbar['title'] .'" class="aak-logo"><img src="/sites/all/themes/replicator/images/aak-topbar/aak-logo.png" alt="'. $aak_topbar['title'] .'"></a><a href="'. $aak_topbar['url'] .'" title="'. $aak_topbar['title'] .'" class="aak-link">'. $aak_topbar['link_name'] .'</a></div></div>';
+        $vars['site_aak_topbar'] = '<div class="aak-topbar"><div class="aak-topbar-inner container-12"><a href="'. $aak_topbar['url'] .'" title="'. $aak_topbar['title'] .'" class="aak-logo"><img src="/sites/all/themes/replicator/images/aak-topbar/aak-logo.png" alt="'. $aak_topbar['title'] .'" /></a><a href="'. $aak_topbar['url'] .'" title="'. $aak_topbar['title'] .'" class="aak-link">'. $aak_topbar['link_name'] .'</a></div></div>';
       }
 
       // conditional styles
