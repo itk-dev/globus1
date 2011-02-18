@@ -61,8 +61,11 @@ h1, h2, h3, h4, h5 {
   background-color: @color;
 }
 
-fieldset,
-html.js fieldset.collapsed {
+fieldset {
+  position: fixed;
+}
+
+fieldset {
   .fieldset-bg-color;
   border: 1px solid @fieldset-border-color;
   margin: 0 0 20px;
@@ -74,6 +77,16 @@ html.js fieldset.collapsed {
     border-right: 1px solid @fieldset-border-color;
     border-left: 1px solid @fieldset-border-color;
     padding: 3px 15px 3px 10px;
+  }
+}
+
+html.js fieldset.collapsed {
+  background: transparent;
+  border: 0;
+  padding: 0;
+
+  legend {
+    border-bottom: 1px solid @fieldset-border-color;
   }
 }
 
@@ -167,6 +180,11 @@ input[type=radio] {
   margin: 0;
 }
 
+#search-form .container-inline div.form-item {
+  float: left;
+  margin: 0;
+}
+
 .header .block-search label {
   display: none;
 }
@@ -183,21 +201,33 @@ input[type=radio] {
   width: 150px;
 }
 
-.header .block-search input[type=submit] {
+.header .block-search input[type=submit],
+#search-form input[type=submit] {
   background: #333 url('../images/rep-sprites.png') 5px -301px no-repeat;
   border-top: 1px solid #333;
   border-right: 1px solid #333;
   border-bottom: 1px solid #333;
   border-left: 1px solid #333;
   cursor: pointer;
-  float: right;
-  height: 21px;
-  width: 24px;
-  overflow: hidden;
-  text-indent: -10000px;
 }
 
-.header .block-search input[type=submit]:hover {
+.header .block-search input[type=submit] {
+  float: right;
+  height: 21px;
+  overflow: hidden;
+  text-indent: -10000px;
+  width: 24px;
+}
+
+#search-form input[type=submit] {
+  background-position: 5px -298px;
+  color: #fff;
+  height: 27px;
+  padding: 0 10px 2px 20px;
+}
+
+.header .block-search input[type=submit]:hover,
+#search-form input[type=submit]:hover {
   background-color: #232323;
 }
 
@@ -513,7 +543,6 @@ input[type=radio] {
 }
 
 #footer .block-menu {
-  background: #999999;
   margin-top: 15px;
   margin-bottom: 15px;
 }
