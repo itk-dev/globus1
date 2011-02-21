@@ -1,40 +1,89 @@
+@linkcolor: #00959a;
+@linkcolor-visited: #8931bb;
+@linkcolor-hover: #006467;
+@linkcolor-active: #47a9ac;
+
 /*
-  Font size
+  Basic typography
 */
 
 body {
-  font-family: arial, verdana, sans-serif;
-  font-size: 100%;
-  min-height: 100%;
-  line-height: 1.125em;
+  font: 13px/18px "Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #333;
+}
+
+p {
+  margin-bottom: 0.6em;
+}
+
+.node ul, 
+.node ol {
+  margin-bottom: 0.5em;
+  margin-left: 20px;
+}
+
+.node ul>li,
+.node ol>li {
+  margin-bottom: 0.2em;
+}
+
+em {
+  font-style: italic;
+}
+
+
+quote {
+  font-style: italic;
+}
+
+strong, bold {
+  font-weight: bold;
+}
+
+
+
+/* ----- / Headings ----- */
+h1, h2, h3, h4, h5 {
+  margin: 0 0 10px;
 }
 
 h1 {
-  font-size: 200%;
-  line-height: 150%;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 30px;
   margin: 0 0 15px;
+  color: #222;
 }
 
 h2 {
-  font-size: 175%;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 1.5em 0 0.2em;
+  font-weight: bold;
+  color: #222;
 }
 
 h3 {
-  font-size: 150%;
+  font-size: 14px;
+  margin: 1em 0 0.2em;
+  font-weight: bold;
+  color: #222;
+}
+
+li>h2:first-child {
+  margin-top: 0;
+}
+
+#footer-regions h3,
+#footer-regions h2 {
+  font-size: 14px;
+  margin-bottom: 1em;
 }
 
 
-#main {
-  font-size: 0.875em;
-}
 
-#left,
-#content-top,
-#content,
-#content-bottom,
-#right {
-  font-size: 0.75em;
-}
+
 
 /*
   Links
@@ -42,18 +91,133 @@ h3 {
 
 a,
 a:link {
-  color: #00959a;
+  color: @linkcolor;
 }
 
 a:visited {
-  color: #8931bb;
+  color: @linkcolor-visited;
 }
 
 a:hover,
-a:focus {
-  color: #006467;
-}
+a:focus &
 
 a:active {
-  color: #47a9ac;
+  color: @linkcolor-active;
+}
+
+.node .content a {
+  border-bottom: 1px dotted @linkcolor;
+  margin-bottom: -1px;
+  text-decoration: none;
+  
+  &:link {
+    border-bottom: 1px dotted @linkcolor;
+  }
+
+  &:visited {
+    border-bottom: 1px dotted @linkcolor-visited;
+  }
+
+  &:hover,
+  &:active {
+    border: none;
+    margin-bottom: 0;  
+  }
+  
+  /*
+  &[href$='.pdf'],
+  &[href$='.doc'],
+  &[href$='.docx'],
+  &[href$='.tif'],
+  &[href$='.tiff'],
+  &[href$='.png'],
+  &[href$='.jpg'],
+  &[href$='.jpeg'],
+  &[href$='.zip'],
+  &[href$='.ppt'],
+  &[href$='.pptx'],
+  &[href$='.rtf'],
+  &[href$='.txt'] {
+    padding-left: 17px;
+    background: transparent url(../images/document-icons.png) 0% 50% no-repeat;
+  }
+  */
+
+}
+
+/* ----- / Table styles ----- */
+table {
+  width: 100%;
+
+  td {
+    vertical-align: top;
+    background: transparent url(../images/back-groove-content.png) left bottom repeat-x;
+    padding: 2px 4px 4px;
+  }
+  
+  .zebra {
+    background-color: #d8dfe6;
+  }
+  
+  
+  &.blue-header {
+    width: 442px;
+    background: transparent url(XXXXXXXXX) left top no-repeat;
+    
+    td {
+      border: 1px solid #bbb;
+      border-collapse: collapse;
+    }
+    
+    tbody td {
+      background: #fff;
+    }
+    
+    thead td,
+    thead th {
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      line-height: 18px;
+      height: 18x;
+    }
+  }
+  
+  &.layout-table,
+  &.layout-table td,
+  &.layout-table tr,
+  &.layout-table th {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  
+  &.layout-table tr:first-child td,
+  &.layout-table th {
+    font-weight: normal;
+  }
+}
+
+.node .content table img {
+  border: none;
+  margin: 0;
+}
+
+
+
+/* ----- / Menus ----- */
+#main-menu a {
+  line-height: 30px;
+}
+
+#block-menu-secondary-links a {
+ font-size: 12px;
+}
+
+/* ----- / AAK Topbar ----- */
+.aak-topbar {
+  background: url('../images/aak-topbar/aak-topbar-bg.png') repeat-x;
+  font-size: 75%;
+  height: 75px;
 }
