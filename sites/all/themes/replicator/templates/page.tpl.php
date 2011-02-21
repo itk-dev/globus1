@@ -77,13 +77,17 @@
     </div>
   </div>
 
-  <div class="secondary-content container-12">
-    <?php if ($bottom_region): ?>
-      <div id="bottom-region" class="region">
-        <?php print $bottom_region; ?>
-      </div>
-    <?php endif ?>  
+  <?php if ($bottom_region): ?>
+  <div class="secondary-content">
+    <div class="container-12">
+      <?php if ($bottom_region): ?>
+        <div id="bottom-region" class="region">
+          <?php print $bottom_region; ?>
+        </div>
+      <?php endif ?> 
+    </div> 
   </div>
+  <?php endif ?>
 
   <div id="footer">
     <div class="container-12 clear-block">

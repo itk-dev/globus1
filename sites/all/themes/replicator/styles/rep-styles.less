@@ -3,6 +3,12 @@
 @fieldset-border-color: #e7e7e7;
 @fieldset-shadow-color: #f1f1f1;
 
+// Colored block headings like nodespotbox, mailchimp etc.
+.block-heading(@param) {
+  background-color: #d2d2d2;
+  padding: 10px 8px;
+  margin-bottom: 0;
+}
 
 
 
@@ -18,7 +24,6 @@ body {
 
 /* ----- / Basic page layout ----- */
 
-/* ----- / Content ----- */
 #main {
   padding: 0 10px;
 }
@@ -27,9 +32,12 @@ body {
   float: right;
 }
 
-#content-top,
+#content-top {
+  margin: 0 -10px 10px;
+}
+
 #content-bottom {
-  margin: 0 -10px;
+  margin: 10px -10px;
 }
 
 
@@ -41,12 +49,18 @@ body {
   padding: 0 8px 20px;
 }
 
+.secondary-content {
+  clear: both;
+  background: #f5f5f5;
+  overflow: hidden;
+  padding: 0 0 20px;
+}
 
+#bottom-region {
+  padding: 0 0 20px;
+}
 
-
-/*
-  Fieldsets
-*/
+/* ----- / Fieldsets ----- */
 .fieldset-bg-color(@color: #f6f6f6) {
   background-color: @color;
 }
@@ -237,22 +251,6 @@ input[type=radio] {
   text-decoration: none;
 }
 
-.menu-block ul li a.active {
-  background-color: #cbcbcb;
-  color: #333;
-}
-
-.menu-block ul li a:hover,
-.menu-block ul li a:focus {
-  background-color: #767676;
-  color: #fff;
-}
-
-.menu-block ul li a:active {
-  background-color: #767676;
-  color: #fff;
-}
-
 #main-menu {
   background-color: #666;
   bottom: 0;
@@ -360,14 +358,13 @@ input[type=radio] {
 }
 
 .block-mailchimp h2 {
-  background-color: #d2d2d2;
-  padding: 0 0 0 10px;
+  .block-heading;
 }
 
 .block-mailchimp .content {
   background-color: #d2d2d2;
   overflow: hidden;
-  padding: 0 10px 20px;
+  padding: 0 8px 20px;
 }
 
 .block-mailchimp .content .form-item {
@@ -387,37 +384,17 @@ input[type=radio] {
   float: right;
 }
 
-/*
-  Spotboxes
-*/
-
-/* .nodespotbox {
-  margin: 0 0 20px;
-}
-*/
-
+/* ---- / Spotboxes ----- */
 .nodespotbox .view-spotboxes {
   overflow: hidden;
 }
 
 .nodespotbox h3 {
-  background-color: #d2d2d2;
-  padding: 0;
+  .block-heading;
 }
 
-.nodespotbox h3.nolink,
 .nodespotbox h3 a {
   display: block;
-  padding: 0 0 0 10px;
-}
-
-.nodespotbox h3 a,
-.nodespotbox h3 a:link,
-.nodespotbox h3 a:visited,
-.nodespotbox h3 a:hover,
-.nodespotbox h3 a:active {
-  color: #000;
-  text-decoration: none;
 }
 
 .nodespotbox .image a {
@@ -481,6 +458,7 @@ input[type=radio] {
 #footer {
   background: #999999;
   display: block;
+  clear: both;
 }
 
 #footer .menu {
