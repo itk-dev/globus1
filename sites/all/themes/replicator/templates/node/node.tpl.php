@@ -57,7 +57,6 @@
 <?php endif; ?>
 
   <div class="content">
-    <h1 class="page-title"><?php print $title ?></h1>
     <?php print $content ?>
   </div>
 
