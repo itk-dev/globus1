@@ -90,6 +90,22 @@ function replicator_settings($saved_settings, $subtheme_defaults = array()) {
     '#description'   => t('Use IE specific stylesheets in the .info file: <strong>IE stylesheets[ condition ][all][] = ie.css</strong> condition exampels [if lt IE 7] , [if IE 7] , [if IE 6]'),
   );
 
+  // Typography
+  $form['typography'] = array(
+    '#type'         => 'fieldset',
+    '#title'        => t('Typography'),
+    '#collapsible'  => TRUE,
+    '#collapsed'    => FALSE,
+  );
+
+  $form['typography']['replicator_typography_links_icons'] = array(
+    '#type'          => 'radios',
+    '#options'       => array('no' => t('Don\'t show document icons'),'single' => t('Show general file icon'), 'separate' => t('Show specific file icons')),
+    '#title'         => t('Show icons on links to downloadable files'),
+    '#default_value' => isset($settings['replicator_typography_links_icons']) ? $settings['replicator_typography_links_icons'] : 'no',
+    '#description'   => t('Show icons on links to downloadable files like .pdfs or word-documents. Options are either to treat such links like any other link, show a general document icon or different icons for different file types'),
+  );
+  
   // Misc
   $form['misc'] = array(
     '#type'         => 'fieldset',

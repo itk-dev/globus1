@@ -32,7 +32,7 @@ stylesheets[all][]    = styles/rep-reset-min.less
 stylesheets[screen][] = styles/rep-grid.less
 stylesheets[all][]    = styles/rep-typography.less
 stylesheets[screen][] = styles/rep-tabs.less
-stylesheets[screen][]   = styles/rep-styles.less
+stylesheets[screen][] = styles/rep-styles.less
 stylesheets[print][]  = styles/print.less
 
 ;IE specific stylesheets
