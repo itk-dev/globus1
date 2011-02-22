@@ -1,0 +1,13 @@
+; $Id: panels_regions.info,v 1.1 2010/12/09 20:11:59 devkinetic Exp $
+name = "Panels Regions"
+description = "Add ability to disable individual regions per panel."
+core = 6.x
+package = Panels
+dependencies[] = panels
+
+; Information added by drupal.org packaging script on 2010-12-09
+version = "6.x-1.0"
+core = "6.x"
+project = "panels_regions"
+datestamp = "1291926708"
+

@@ -10,7 +10,6 @@ regions[aaktopbar] = AAK topbar
 regions[header] = Header
 regions[top_region] = Top
 regions[content_top] = Content, Above
-regions[content] = Content, Main
 regions[content_bottom] = Content, Below
 regions[left] = Left
 regions[right] = Right
@@ -34,6 +33,7 @@ stylesheets[screen][] = styles/rep-grid.less
 stylesheets[all][]    = styles/rep-typography.less
 stylesheets[screen][] = styles/rep-tabs.less
 stylesheets[screen][] = styles/rep-styles.less
+stylesheets[screen][] = styles/rep-blocks.less
 stylesheets[print][]  = styles/print.less
 
 ;IE specific stylesheets
@@ -43,6 +43,9 @@ ie stylesheets[if IE 8][all][] = styles/rep-ie8.less
 
 ;Scripts
 scripts[] = scripts/rep-common.js
+
+;Panels layouts 
+plugins[panels][layouts] = templates/layouts
 
 ;Settings
 settings[replicator_breadcrumb_separator] = 0
