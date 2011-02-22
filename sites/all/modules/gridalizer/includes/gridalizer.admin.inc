@@ -100,6 +100,15 @@ function gridalizer_regions_admin_form(&$form_state) {
     '#default_value' => isset($defaults['active']) ? $defaults['active'] : array(),
   );
 
+  // Regions without sides
+  // Select active regions
+  $form['gridalizer_regions']['nosides'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Regions without sides'),
+    '#options' => $regions,
+    '#description' => t('Select the regions that should be gridalizes that have no sides. Classes from empty side regions will be used.'),
+    '#default_value' => isset($defaults['nosides']) ? $defaults['nosides'] : array(),
+  );
 
   return system_settings_form($form);
 }
