@@ -78,15 +78,7 @@ function gridalizer_preprocess(&$vars, $hook) {
     }
     $active_regions = array_filter($regions['active']);
     $side_regions = array_filter($regions['side']);
-
-    // Get current block
-    $current_block = $vars['block'];
-    
-    // Verify that block is in a selected region
-    if (!in_array($current_block->region, $active_regions)) {
-      // Not in one off the selected regions
-      return;
-    }
+    $no_side_regions = array_filter($regions['nosides']);
 
     // Load selected block types
     $providers = variable_get('gridalizer_blocks', NULL);
@@ -97,59 +89,100 @@ function gridalizer_preprocess(&$vars, $hook) {
     }
     $providers = array_filter($providers);
 
+    // Get current block
+    $current_block = $vars['block'];
+
     // Verify that the block type is one off the selected types
     if (!in_array($current_block->module, $providers)) {
       // Not a selected block type
       return;
     }
-
-    // Load blocks bid and (move this to helper function)
-    $blocks = _gridalizer_region_blocks();
-    $list = _gridalizer_context_region_blocks();
     
+    // Init class var
+    $class = NULL;
 
-    foreach ($list as $key => $value) {
-      if (empty($blocks[$key])) {
-        $blocks[$key] = $value;
+    // Check if block is in no-side regions.
+    if (in_array($current_block->region, $no_side_regions)) {
+      // Get blocks.
+      $blocks = gridalizer_merge_region_blocks();
+
+      // Get number of blocks in region.
+      $num_of_blocks = gridalizer_count_blocks($blocks[$current_block->region], $providers);
+
+      // Find the right class
+      $class = gridalizer_get_classes($num_of_blocks, 'empty');
+    }
+
+    // Verify that block is in a selected region.
+    if (in_array($current_block->region, $active_regions)) {
+      // Get blocks
+      $blocks = gridalizer_merge_region_blocks();
+
+      // Get number of blocks in region.
+      $num_of_blocks = gridalizer_count_blocks($blocks[$current_block->region], $providers);
+
+      // Create index key based in side regions content
+      $key = '';
+      foreach ($side_regions as $side) {
+        if ($blocks[$side]) {
+          $key .= $side.'_';
+        }
       }
-      else {
-        $blocks[$key] = array_merge($blocks[$key], $value);
+      $key = substr($key, 0, -1);
+
+      // All side regions are empty
+      if (!$key) {
+        $key = 'empty';
       }
-    }
 
-    // Get number of blocks in region (only count theme that should be modified).
-    $count = gridalizer_count_blocks($blocks[$current_block->region], $providers);
-
-    // Create index key based in side regions content
-    $sides = array_values(array_filter($regions['side']));
-    $key = '';
-    foreach ($side_regions as $side) {
-      if ($blocks[$side]) {
-        $key .= $side.'_';
-      }
-    }
-    $key = substr($key, 0, -1);
-
-    // All side regions are empty
-    if (!$key) {
-      $key = 'empty';
-    }
-    
-    // Find the admin supplyed configuration
-    $combinations = variable_get('gridalizer_combinations', NULL);
-    if (empty($combinations[$key][$count]) || $count > variable_get('gridalizer_max_blocks', 4)) {
-      $class = $combinations[$key][0];
-    }
-    else {
-      $class = $combinations[$key][$count];
+      // Find the right class
+      $class = gridalizer_get_classes($num_of_blocks, $key);
     }
     
     // Add grid to the block
-    if ($class[$count]) {
+    if ($class) {
       $vars['block']->grid = $class;
     }
   }
 }
+
+function gridalizer_get_classes($num_of_blocks, $key) {
+  $combinations = variable_get('gridalizer_combinations', NULL);
+  if (empty($combinations[$key][$num_of_blocks]) || $num_of_blocks > variable_get('gridalizer_max_blocks', 4)) {
+    // Default value
+    $class = $combinations[$key][0];
+  }
+  else {
+    $class = $combinations[$key][$num_of_blocks];
+  }
+
+  return $class;
+}
+
+function gridalizer_merge_region_blocks($reset = FALSE) {
+  static $blocks;
+  if (!isset($blocks) || $reset) {
+    // Get all types of inserted blocks
+    $region_blocks = _gridalizer_region_blocks();
+    $context_blocks = _gridalizer_context_region_blocks();
+
+    // Merge the block lists
+    foreach ($context_blocks as $key => $value) {
+      if (empty($region_blocks[$key])) {
+        $region_blocks[$key] = $value;
+      }
+      else {
+        $region_blocks[$key] = array_merge($region_blocks[$key], $value);
+      }
+    }
+
+    // Save result to static variable
+    $blocks = $region_blocks;
+  }
+
+  return $blocks;
+}
+
 
 /**
  * Helper function that count the number of blocks in a region, but only the
@@ -177,11 +210,11 @@ function gridalizer_count_blocks($region_blocks, $providers) {
  * @staticvar array $block_list
  * @return array $block_list
  */
-function _gridalizer_region_blocks() {
+function _gridalizer_region_blocks($reset = FALSE) {
   global $theme_info;
   static $block_list;
 
-  if (!isset($block_list)) {
+  if (!isset($block_list) || $reset) {
     $block_list = array();
     foreach ($theme_info->info['regions'] as $region => $value) {
       // Create empty array foreach region.
@@ -207,21 +240,23 @@ function _gridalizer_region_blocks() {
  * @staticvar array $region_blocks
  * @return array $region_blocks
  */
-function _gridalizer_context_region_blocks() {
+function _gridalizer_context_region_blocks($reset = FALSE) {
   static $region_blocks;
 
-  if (!isset($region_blocks)) {
+  if (!isset($region_blocks) || $reset) {
     $region_blocks = array();
 
     // Get all active contexts.
     $contexts = context_active_contexts();
     foreach ($contexts as $context) {
       // Get all blocks in this context.
-      foreach ($context->reactions['block']['blocks'] as $block) {
-        if (!isset($region_blocks[$block['region']])) {
-          $region_blocks[$block['region']] = array();
+      if (isset($context->reactions['block']['blocks'])) {
+        foreach ($context->reactions['block']['blocks'] as $block) {
+          if (!isset($region_blocks[$block['region']])) {
+            $region_blocks[$block['region']] = array();
+          }
+          $region_blocks[$block['region']][] = array('module' => $block['module'], 'bid' => $block['delta']);
         }
-        $region_blocks[$block['region']][] = array('module' => $block['module'], 'bid' => $block['delta']);
       }
     }
   }
