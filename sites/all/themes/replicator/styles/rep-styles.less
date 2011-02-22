@@ -1,4 +1,4 @@
-/* ----- / Variables & mixins ----- */
+/* !----- / Variables & mixins ----- */
 @gutterwidth: 10px;
 @fieldset-border-color: #e7e7e7;
 @fieldset-shadow-color: #f1f1f1;
@@ -10,9 +10,20 @@
   margin-bottom: 0;
 }
 
+.drop-shadow(@param) {
+	-webkit-box-shadow: @param;
+	-moz-box-shadow: @param;
+	box-shadow: @param;
+}
+
+.rotation(@deg: 5deg) { 
+  -webkit-transform: rotate(@deg);
+  -moz-transform: rotate(@deg);
+  transform: rotate(@deg);
+}
 
 
-/* ----- / Basic Styling ----- */
+/* !----- / Basic Styling ----- */
 html {
   height: 100%; /* Important for 100% body height*/
 }
@@ -22,7 +33,7 @@ body {
 }
 
 
-/* ----- / Basic page layout ----- */
+/* !----- / Basic page layout ----- */
 
 #main {
   padding: 0 10px;
@@ -60,7 +71,7 @@ body {
   padding: 0 0 20px;
 }
 
-/* ----- / Fieldsets ----- */
+/* !----- / Fieldsets ----- */
 .fieldset-bg-color(@color: #f6f6f6) {
   background-color: @color;
 }
@@ -90,9 +101,7 @@ html.js fieldset.collapsed {
   }
 }
 
-/*
-  Form objects
-*/
+/* !----- / Form objects ----- */
 
 label {
   padding: 2px 0;
@@ -112,9 +121,7 @@ input[type=radio] {
   margin: 2px 3px 0 0;
 }
 
-/*
-  AAK topbar
-*/
+/* !------ / AAK topbar ----- */
 
 .aak-topbar {
   background: url('../images/aak-topbar/aak-topbar-bg.png') repeat-x;
@@ -159,9 +166,7 @@ input[type=radio] {
   top: 35px;
 }
 
-/*
-  Search
-*/
+/* !----- / Search ----- */
 
 .header .block-search {
   bottom: 6px;
@@ -229,7 +234,7 @@ input[type=radio] {
 }
 
 
-/* ----- / Menu styling ----- */
+/* !----- / Menu styling ----- */
 
 .menu-block ul li {
   float: left;
@@ -254,8 +259,7 @@ input[type=radio] {
   width: 100%;
 }
 
-/* ----- / Secondary menu
-*/
+/* !----- / Secondary menu ----- */
 
 #block-menu-secondary-links {
   top: 15px;
@@ -284,9 +288,7 @@ input[type=radio] {
   color: #666;
 }
 
-/*
-  Submenu
-*/
+/* !----- / Submenu ----- */
 
 #left .menu li {
   list-style-image: none;
@@ -333,20 +335,48 @@ input[type=radio] {
 #left .menu li li {
 }
 
-/*
-  Page
-*/
+/* !----- / Page ----- */
 
 .page-inner {
-  background-color: #fff;
+  background-color: #f7f7f7;
   overflow: hidden;
   padding: 10px 0;
 }
 
 
-/*
-  MailChimp
-*/
+/* !----- / Content ----- */
+.pane-field-news-titleimage {
+  background: #fff;
+  .drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+  .rotation(-0.7deg);
+  padding: 8px;
+}
+
+  .pane-field-news-titleimage img {
+    display: block;
+  }
+
+.pane-field-news-teaser {
+  padding: 8px;
+}
+
+.pane-node-created {
+  background: transparent url(../images/back-groove.png) left top repeat-x;
+  padding: 9px 8px 8px;
+  margin-top: 8px;
+}
+
+.pane-node-created + * {
+  background: transparent url(../images/back-groove.png) left top repeat-x;
+  padding-top: 17px;
+}
+
+.pane-field-maincontent {
+  padding: 0 8px;
+}
+
+
+/* !----- / MailChimp ----- */
 
 .block-mailchimp {
   margin: 0 0 20px;
@@ -379,7 +409,7 @@ input[type=radio] {
   float: right;
 }
 
-/* ---- / Spotboxes ----- */
+/* !----- / Spotboxes ----- */
 .nodespotbox .view-spotboxes {
   overflow: hidden;
 }
@@ -446,9 +476,7 @@ input[type=radio] {
   color: #47a9ac;
 }
 
-/*
-  Footer menus
-*/
+/* !----- / Footer menus ----- */
 
 #footer {
   background: #999999;
@@ -489,9 +517,7 @@ input[type=radio] {
   text-decoration: underline;
 }
 
-/*
-  Comments
-*/
+/* !----- / Comments ----- */
 .comment {
   padding: 15px;
 }
@@ -503,9 +529,7 @@ input[type=radio] {
   float:right;
 }
 
-/*
-  Carousel
-*/
+/* !----- / Carousel ----- */
 
 #block-views-Carousel-block_3 {
   clear: both;
@@ -629,9 +653,7 @@ input[type=radio] {
 }
 
 
-/*
-  Messages
-*/
+/* !----- / Messages ----- */
 
 .messages ul {
   list-style: none;
@@ -671,9 +693,7 @@ div.status {
   border-color: #d8e4e0;
 }
 
-/*
-  Site map
-*/
+/* !----- / Site map ----- */
 
 #site-map .site-map-box{
   margin-bottom: 50px;
@@ -701,9 +721,7 @@ div.status {
   padding: 0 16px 2px;
 }
 
-/*
-  Blocks page
-*/
+/* !----- / Blocks page ----- */
 
 #block-admin-display-form {
   width: 98%;
@@ -746,9 +764,7 @@ div.status {
   margin: 10px 0 0;
 }
 
-/*
-  User login
-*/
+/* !----- / User login ----- */
 
 #user-login {
   width: 50%;
@@ -770,9 +786,7 @@ div.status {
   float: right;
 }
 
-/*
-  OpenID
-*/
+/* !----- / OpenID ----- */
 
 html.js #user-login li.openid-link {
   display: inline-block;

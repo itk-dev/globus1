@@ -1,0 +1,3 @@
+<?php
+
+include_once('replicator_news_feature.features.inc');
