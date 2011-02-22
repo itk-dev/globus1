@@ -28,6 +28,7 @@ features[] = search
 features[] = favicon
 
 ;Stylesheets
+stylesheets[all][]    = styles/calendar.less
 stylesheets[all][]    = styles/rep-reset-min.less
 stylesheets[screen][] = styles/rep-grid.less
 stylesheets[all][]    = styles/rep-typography.less
