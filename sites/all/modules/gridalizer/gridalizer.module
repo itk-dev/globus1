@@ -104,7 +104,7 @@ function gridalizer_preprocess(&$vars, $hook) {
     // Check if block is in no-side regions.
     if (in_array($current_block->region, $no_side_regions)) {
       // Get blocks.
-      $blocks = gridalizer_merge_region_blocks();
+      $blocks = gridalizer_get_region_blocks();
 
       // Get number of blocks in region.
       $num_of_blocks = gridalizer_count_blocks($blocks[$current_block->region], $providers);
@@ -116,7 +116,7 @@ function gridalizer_preprocess(&$vars, $hook) {
     // Verify that block is in a selected region.
     if (in_array($current_block->region, $active_regions)) {
       // Get blocks
-      $blocks = gridalizer_merge_region_blocks();
+      $blocks = gridalizer_get_region_blocks();
 
       // Get number of blocks in region.
       $num_of_blocks = gridalizer_count_blocks($blocks[$current_block->region], $providers);
@@ -146,6 +146,14 @@ function gridalizer_preprocess(&$vars, $hook) {
   }
 }
 
+/**
+ * Findes the right class base on the numbers of blocks and a key into the
+ * user supplied configuration.
+ *
+ * @param int $num_of_blocks
+ * @param string $key
+ * @return string $class
+ */
 function gridalizer_get_classes($num_of_blocks, $key) {
   $combinations = variable_get('gridalizer_combinations', NULL);
   if (empty($combinations[$key][$num_of_blocks]) || $num_of_blocks > variable_get('gridalizer_max_blocks', 4)) {
@@ -159,7 +167,15 @@ function gridalizer_get_classes($num_of_blocks, $key) {
   return $class;
 }
 
-function gridalizer_merge_region_blocks($reset = FALSE) {
+/**
+ * Finds blocks inserted into regions, both via context and normal drupal block
+ * page.
+ *
+ * @staticvar array $blocks
+ * @param boolean $reset
+ * @return array $blocks
+ */
+function gridalizer_get_region_blocks($reset = FALSE) {
   static $blocks;
   if (!isset($blocks) || $reset) {
     // Get all types of inserted blocks
