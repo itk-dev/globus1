@@ -54,6 +54,7 @@ function replicator_news_feature_default_page_manager_handlers() {
     'disable_right' => 0,
     'disable_bottom_region' => 0,
     'disable_footer' => 0,
+    'recalculate_ns' => 1,
   );
   $display = new panels_display;
   $display->layout = 'twocol_3_6';
@@ -256,6 +257,7 @@ function replicator_news_feature_default_page_manager_pages() {
     'disable_right' => 0,
     'disable_bottom_region' => 0,
     'disable_footer' => 0,
+    'recalculate_ns' => 1,
   );
   $display = new panels_display;
   $display->layout = 'twocol_3_6';
@@ -268,7 +270,7 @@ function replicator_news_feature_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = 'Nyheder';
+  $display->title = '';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -359,7 +361,7 @@ function replicator_news_feature_default_page_manager_pages() {
     $pane->position = 0;
     $display->content['new-3'] = $pane;
     $display->panels['right'][0] = 'new-3';
-  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->hide_title = PANELS_TITLE_PANE;
   $display->title_pane = 'new-3';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;

@@ -173,7 +173,7 @@ function replicator_news_feature_views_default_views() {
       'style_options' => array(),
       'wildcard' => 'all',
       'wildcard_substitution' => 'All',
-      'title' => 'Nyheder, %1',
+      'title' => 'Nyheder %1',
       'breadcrumb' => '',
       'default_argument_type' => 'fixed',
       'default_argument' => '',
@@ -195,11 +195,11 @@ function replicator_news_feature_views_default_views() {
       'default_argument_user' => 0,
       'default_argument_php' => '',
       'validate_argument_node_type' => array(
+        'news' => 0,
         'spotbox' => 0,
         'panel' => 0,
         'carouselitem' => 0,
         'event' => 0,
-        'news' => 0,
         'page' => 0,
         'webform' => 0,
       ),
@@ -212,6 +212,9 @@ function replicator_news_feature_views_default_views() {
       'validate_argument_transform' => 0,
       'validate_user_restrict_roles' => 0,
       'validate_argument_php' => '',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
   ));
   $handler->override_option('filters', array(
