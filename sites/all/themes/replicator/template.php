@@ -89,13 +89,24 @@ function replicator_breadcrumb($breadcrumb) {
   }
 }
 
-// 960 ns function
+// 960 ns function (modified)
 function ns() {
   $args = func_get_args();
   $default = array_shift($args);
+
   // Get the type of class, i.e., 'grid', 'pull', 'push', etc.
   // Also get the default unit for the type to be procesed and returned.
   list($type, $return_unit) = explode('-', $default);
+
+  // Check if panels are aktive. If this is a panels page, use rc value  
+  if ($args[count($args)-2] == 'rc') {
+    $val = array_pop($args);
+    $key = array_pop($args);
+    $pm_page = page_manager_get_current_page();
+    if ($pm_page && $pm_page['handler']->conf['recalculate_ns']) {
+      return $type . '-' . $val;
+    }
+  }
 
   // Process the conditions.
   $flip_states = array('var' => 'int', 'int' => 'var');

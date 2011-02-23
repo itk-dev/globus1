@@ -1,0 +1,7 @@
+; $Id$
+name = Replicator admin
+description = Different helper functions for the replicator platform
+core = 6.x
+package = "Replicator"
+dependencies[] = ctools
+dependencies[] = panels

@@ -1,0 +1,32 @@
+<?php
+// $Id$
+
+function replicator_admin_form_alter(&$form, $form_state, $form_id) {
+  switch ($form_id) {
+    case 'panels_panel_context_edit_settings':
+
+      // Add fieldset.
+      $form['conf']['recalculate_ns'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Re-calculate NS'),
+        '#collapsible' => FALSE,
+        '#collapsed' => FALSE,
+      );
+
+      // Add checkbox.
+      $form['conf']['recalculate_ns']['recalculate_ns'] = array(
+        '#type' => 'checkbox',
+        '#default_value' => $form_state['handler']->conf['recalculate_ns'],
+        '#title' => t('Re-calculate NS'),
+        '#description' => t('Check this to re-calculate regions sizes in NS'),
+      );
+      
+      // Add extra submit handler.
+      $form['#submit'][] = '_replicator_admin_panels_conf_submit_handler';
+      break;
+  }
+}
+
+function _replicator_admin_panels_conf_submit_handler(&$form, &$form_state) {
+  $form_state['handler']->conf['recalculate_ns'] = $form_state['values']['recalculate_ns'];
+}
