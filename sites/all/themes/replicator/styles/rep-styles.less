@@ -581,7 +581,7 @@ input[type=radio] {
 
 
 .carousel .views_slideshow_controls .views_slideshow_previous {
-  background: url("/sites/all/themes/replicator/images/carousel-sprites.png") no-repeat scroll -28px -89px transparent;
+  background: url("../images/carousel-sprites.png") no-repeat scroll -28px -89px transparent;
   display: block;
   height: 36px;
   outline: 0 none;
@@ -595,7 +595,7 @@ input[type=radio] {
 }
 
 .carousel .views_slideshow_controls .views_slideshow_next {
-  background: url("/sites/all/themes/replicator/images/carousel-sprites.png") no-repeat scroll -28px -18px transparent;
+  background: url("../images/carousel-sprites.png") no-repeat scroll -28px -18px transparent;
   display: block;
   height: 36px;
   outline: 0 none;
@@ -618,26 +618,26 @@ input[type=radio] {
 }
 
 .carousel .views_slideshow_singleframe_pager .pager-item a {
-  -moz-border-radius: 10px 10px 10px 10px;
   background-color: #1c1c1c;
   display: block;
   float: left;
   height: 12px;
-  margin: 10px 10px 10px 0;
+  margin: 10px 5px;
   text-indent: -9999px;
   width: 12px;
   outline: 0 none;
+  .border-radius(10px);
 }
 
 .carousel .views_slideshow_singleframe_pager .pager-item.activeSlide a {
-  -moz-border-radius: 10px 10px 10px 10px;
   background-color: #9e9e9e;
   display: block;
   float: left;
   height: 12px;
-  margin: 10px 10px 10px 0;
+  margin: 10px 5px;
   text-indent: -9999px;
   width: 12px;
+  .border-radius(10px);
 }
 
 .carousel .views-slideshow-controls-bottom {
@@ -648,9 +648,10 @@ input[type=radio] {
 
 .carousel .views_slideshow_pagerNumbered {
   display: inline-block;
-  margin: -18px auto 0;
+  margin: -10px auto 0;
   z-index: 50;
   position: relative;
+  line-height: 14px;
 }
 
 .carousel .content a {
@@ -658,6 +659,9 @@ input[type=radio] {
   font-weight: normal;
 }
 
+.carousel .views_slideshow_singleframe_pager div {
+  padding: 0px;
+}
 
 /* !----- / Messages ----- */
 
