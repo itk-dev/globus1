@@ -49,7 +49,7 @@
         </div>
       <?php endif ?>
 
-      <div id="main" class="alpha omega <?php print 'grid-9';/* ns('grid-12', $left && !$right, 4, $left && $right, 3, $right && !$left, 4, $right && $left, 3);*/ ?>">
+      <div id="main" class="alpha omega <?php print ns('grid-12', $left && !$right, 4, $left && $right, 3, $right && !$left, 4, $right && $left, 3); ?>">
         
         <?php print $messages; ?>
         <?php print $help; ?>
@@ -71,7 +71,7 @@
       </div>
  
       <?php if ($right): ?>
-        <div id="right" class="<?php print 'grid-3'; /* ns('grid-4', $left, 1);*/ ?> region">
+        <div id="right" class="<?php print ns('grid-4', $left, 1); ?> region">
           <?php print $right; ?>
         </div>
       <?php endif ?>
