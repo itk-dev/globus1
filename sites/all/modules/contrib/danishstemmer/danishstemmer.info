@@ -1,0 +1,13 @@
+; $Id: danishstemmer.info,v 1.1 2010/08/24 16:30:35 wulff Exp $
+name = Danish Stemmer
+description = Improve search on Danish sites by reducing words to their stem.
+package = Search
+dependencies[] = search
+core = 6.x
+
+; Information added by drupal.org packaging script on 2010-08-24
+version = "6.x-1.0"
+core = "6.x"
+project = "danishstemmer"
+datestamp = "1282669008"
+
