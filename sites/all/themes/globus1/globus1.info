@@ -1,0 +1,34 @@
+name = Globus1
+description = A standard theme created by the peeps at ITK. Twitter: @woeldiche, @magnifydk and @cableman0408
+screenshot = screenshot.png
+core = 6.x
+base theme = replicator
+
+engine = phptemplate
+
+;Regions
+regions[aaktopbar] = AAK topbar
+regions[header] = Header
+regions[top_region] = Top
+regions[content_top] = Content, Above
+regions[content_bottom] = Content, Below
+regions[left] = Left
+regions[right] = Right
+regions[bottom_region] = Bottom
+regions[footer] = Footer
+
+
+;Features
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = search
+features[] = favicon
+
+;Stylesheets
+stylesheets[screen][] = styles/globus1-styles.less
+
+;Panels layouts
+plugins[panels][layouts] = templates/layouts

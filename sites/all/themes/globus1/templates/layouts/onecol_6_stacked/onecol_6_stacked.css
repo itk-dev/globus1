@@ -1,0 +1,13 @@
+#panels-dnd-main {
+  width: 100%;
+  float: left;
+}
+
+#panels-dnd-main .panel-col-top,
+#panels-dnd-main .panel-col-middle,
+#panels-dnd-main .panel-col-bottom {
+  clear: both;
+  margin-bottom: 6px;
+  padding: 3px;
+}
+
