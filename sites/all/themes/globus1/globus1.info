@@ -9,6 +9,8 @@ engine = phptemplate
 ;Regions
 regions[aaktopbar] = AAK topbar
 regions[header] = Header
+regions[header_wrapper] = Header Wrapper
+regions[carousel] = Carousel
 regions[top_region] = Top
 regions[content_top] = Content, Above
 regions[content_bottom] = Content, Below

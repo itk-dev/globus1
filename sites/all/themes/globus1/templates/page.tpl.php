@@ -15,18 +15,28 @@
   <div class="header">
     <div class="header-inner container-12">
 
-      <?php if ($site_logo): ?>
-        <div id="logo" class="logo"><?php print $site_logo ?></div>
-      <?php endif; ?>
-
       <?php if ($site_slogan): ?>
         <div id="site-slogan" class="site-slogan"><?php print $site_slogan ?></div>
       <?php endif; ?>
+        <?php if ($header_wrapper): ?>
+          <?php print $header_wrapper; ?>
+        <?php endif; ?>
+    </div>
 
+      <?php if ($carousel): ?>
+      <div class="carousel-region container-12">
+        <?php print $carousel; ?>
+
+        <?php if ($site_logo): ?>
+          <div id="logo" class="logo"><?php print $site_logo ?></div>
+        <?php endif; ?>
+
+      </div>
+      <?php endif; ?>
+    
       <?php if ($header): ?>
         <?php print $header; ?>
       <?php endif; ?>
-    </div>
   </div>
 
   <?php if ($breadcrumb): ?>
@@ -37,8 +47,8 @@
 
 
 <!-- Page container edited from replicator -->
-  <div id="page" class="container-12">
-    <div class="page-inner">
+  <div id="page" class="container-16">
+    <div class="page-inner container-12">
       <?php if ($top_region): ?>
         <div id="top-region" class="region">
           <?php print $top_region; ?>
