@@ -4,6 +4,7 @@
 
 body {
   background: #c0c0c0;
+  color: #435800;
 }
 
 .header,
@@ -30,6 +31,45 @@ body {
 .logo {
     position: absolute;
     z-index: 10;
+    top: 10px;
+    left: 0px;
+}
+
+/*
+  Fonts basics
+*/
+
+
+
+/*
+  Main menu
+*/
+
+
+#main-menu,
+#main-menu ul li a {
+  background-color: transparent;
+  font-size: 110%;
+  color: #435800;
+  line-height: 44px;
+}
+
+#main-menu ul li{
+  border-right: 1px solid #e8e8e8;
+}
+
+#main-menu ul li.last{
+  border-right: none;
+}
+
+#main-menu ul li a.active{
+  background-image: url("../images/active-menu.png");
+  background-position: bottom;
+}
+
+#main-menu ul li a:hover{
+  background-image: url("../images/active-menu.png");
+  background-position: bottom;
 }
 
 /*

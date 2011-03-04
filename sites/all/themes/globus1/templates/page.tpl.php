@@ -39,13 +39,6 @@
       <?php endif; ?>
   </div>
 
-  <?php if ($breadcrumb): ?>
-    <div id="breadcrumb" class="container-12">
-      <?php print $breadcrumb; ?>
-    </div>
-   <?php endif; ?>
-
-
 <!-- Page container edited from replicator -->
   <div id="page" class="container-16">
     <div class="page-inner container-12">
