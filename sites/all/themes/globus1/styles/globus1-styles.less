@@ -7,6 +7,14 @@ body {
   color: #435800;
 }
 
+.header {
+  height: 349px;
+}
+
+.header-inner{
+  min-height: 124px;
+}
+
 .header,
 #page {
   background: #fff;
@@ -38,13 +46,22 @@ body {
 /*
   Fonts basics
 */
-
+a:link,
+a:visited,
+.node .content a:link,
+.node .content a:visited {
+  color: #6d8c02;
+  border-bottom: none;
+}
 
 
 /*
   Main menu
 */
 
+#main-menu {
+  top: 80px;
+}
 
 #main-menu,
 #main-menu ul li a {
@@ -86,5 +103,59 @@ body {
 }
 
 .carousel .views_slideshow_singleframe_teaser_section {
-  height: 199px;
+  height: 225px;
+}
+
+.carousel .views_slideshow_controls .views_slideshow_previous {
+  background: url("../images/carousel-sprites.png") no-repeat scroll -41px -103px transparent;
+  height: 25px;
+  width: 25px;
+  z-index: 10;
+}
+
+.carousel .views_slideshow_controls .views_slideshow_next {
+  background: url("../images/carousel-sprites.png") no-repeat scroll -43px -23px transparent;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  left: 178px;
+  z-index: 10;
+}
+
+.carousel .views_slideshow_singleframe_pager .pager-item a {
+  background: url("../images/carousel-sprites.png") no-repeat scroll -38px -188px transparent;
+  height: 25px;
+  width: 25px;
+  margin: 0px;
+}
+
+.carousel .views_slideshow_singleframe_pager .pager-item.activeSlide a {
+  background: url("../images/carousel-sprites.png") no-repeat scroll -117px -187px transparent;
+  height: 25px;
+  width: 25px;
+  margin: 0px;
+}
+
+.views_slideshow_slide {
+   height: 225px;
+   width: 960px;
+}
+
+.carousel .views-slideshow-controls-bottom {
+  position: absolute;
+  top: 180px;
+  left: 32px;
+  width: 154px;
+}
+
+.carousel .views_slideshow_main {
+    margin-top: 0px;
+}
+
+.views-slideshow-controls-top {
+  position: absolute;
+}
+
+.carousel .views_slideshow_pagerNumbered {
+  margin: 0;
 }
