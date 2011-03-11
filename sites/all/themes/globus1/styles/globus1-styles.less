@@ -1,3 +1,27 @@
+/* !----- / Variables & mixins ----- */
+@gutterwidth: 10px;
+@fieldset-border-color: #e7e7e7;
+@fieldset-shadow-color: #f1f1f1;
+
+.drop-shadow(@param) {
+  -webkit-box-shadow: @param;
+  -moz-box-shadow: @param;
+  box-shadow: @param;
+}
+
+.border-radius(@param) {
+  -webkit-border-radius: @param;
+  -moz-border-radius: @param;
+  box-border-radius: @param;
+}
+
+.rotation(@deg: 5deg) {
+  -webkit-transform: rotate(@deg);
+  -moz-transform: rotate(@deg);
+  transform: rotate(@deg);
+}
+
+
 /*
   The basics
 */
@@ -5,6 +29,7 @@
 body {
   background: #c0c0c0;
   color: #435800;
+  font-size: 11px;
 }
 
 .header {
@@ -56,6 +81,7 @@ a:visited,
 
 h3 {
   font-size: 12px;
+  font-weight: bold;
 }
 
 /*
@@ -70,7 +96,7 @@ h3 {
 #main-menu,
 #main-menu ul li a {
   background-color: transparent;
-  font-size: 110%;
+  font-size: 120%;
   color: #435800;
   line-height: 44px;
 }
@@ -183,6 +209,10 @@ h3 {
   Blocks
 */
 
+#page .block {
+  font-size: 11px;
+}
+
 #page .block h2 {
   background: url("../images/item-header.png");
   padding: 13px;
@@ -195,6 +225,18 @@ h3 {
   background: url("../images/box-shadow.png") top center repeat-x;
 }
 
+#page .block .content h3 {
+  margin: 0px;
+}
+
+#page .block .content .date {
+  font-style: italic;
+  margin: 0px;
+}
+
+#page .block li {
+  margin-bottom: 12px;
+}
 
 /*
   News
@@ -202,5 +244,60 @@ h3 {
 
 #page .block .content .news-block-archive .news-listimage {
   float: left;
-  padding: 3px;
+  padding: 5px;
+}
+
+#page #block-views-news-block_1 .content {
+  background: url("../images/newsbox-shadow.png") top center repeat-x;
+}
+
+/*Quotes*/
+
+#page .nodespotbox .view-id-spotboxes.view-display-id-block_1 .quote-content {
+  padding: 8px;
+  font-weight:bold;
+  color: #88b109
+}
+
+#page .nodespotbox .view-id-spotboxes.view-display-id-block_1 .quote-content .author {
+  float: right;
+  padding: 8px;
+}
+
+#page .nodespotbox .view-id-spotboxes.view-display-id-block_1 {
+   .drop-shadow(1px 1px 1px 1px rgba(0, 0, 0, 0.2));
+   border: 2px solid #88b109;
+   .border-radius(10px);
+   margin: 20px;
+}
+
+.quotetab-border {
+  border-color: #88b109 transparent transparent transparent;
+  border-style: solid;
+  border-width: 10px;
+  height:0;
+  width:0;
+  position:absolute;
+  bottom: 0;
+  left:50px;
+}
+
+.quotetab {
+  border-color: #fff transparent transparent transparent;
+  border-style: solid;
+  border-width: 10px;
+  height:0;
+  width:0;
+  position:absolute;
+  bottom: 3px;
+  left:50px;
+}
+
+.grid-4 .view-id-spotboxes.view-display-id-block_1 {
+
+}
+
+.nodespotbox.grid-8 .view-id-spotboxes.view-display-id-block_1 .quote-content {
+  font-size: 150%;
+  padding: 15px;
 }
