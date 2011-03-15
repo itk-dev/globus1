@@ -49,7 +49,7 @@
         </div>
       <?php endif ?>
 
-      <div id="main" class="alpha omega <?php print ns('grid-12', $left && !$right, 4, $left && $right, 3, $right && !$left, 4, $right && $left, 3, 'rc', 9); ?>">
+      <div id="main" class="alpha omega <?php print ns('grid-12', $left && !$right, 3, $left && $right, 6, $right && !$left, 3, $right && $left, 6, 'rc', 9); ?>">
         
         <?php print $messages; ?>
         <?php print $help; ?>
