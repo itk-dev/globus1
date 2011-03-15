@@ -234,10 +234,6 @@ h3 {
   margin: 0px;
 }
 
-#page .block li {
-  margin-bottom: 12px;
-}
-
 /*
   News
 */
@@ -249,6 +245,11 @@ h3 {
 
 #page #block-views-news-block_1 .content {
   background: url("../images/newsbox-shadow.png") top center repeat-x;
+}
+
+#page #block-views-news-block_1 .content li {
+  margin-bottom: 12px;
+  min-height: 75px;
 }
 
 /*Quotes*/
@@ -293,11 +294,142 @@ h3 {
   left:50px;
 }
 
-.grid-4 .view-id-spotboxes.view-display-id-block_1 {
-
+#page .nodespotbox.grid-9 .view-id-spotboxes.view-display-id-block_1 .quote-content {
+  font-size: 150%;
+  padding: 25px;
 }
 
-.nodespotbox.grid-8 .view-id-spotboxes.view-display-id-block_1 .quote-content {
-  font-size: 150%;
-  padding: 15px;
+#page .nodespotbox.grid-9 .view-id-spotboxes.view-display-id-block_1 {
+  margin-left: 90px;
+  margin-right: 90px;
+}
+
+#page .nodespotbox.grid-9 .quotetab-border {
+  left:150px;
+}
+
+#page .nodespotbox.grid-9 .quotetab {
+  left:150px;
+}
+
+
+/*
+  Submenu
+*/
+
+#page #left .block-menu_block .content {
+  background: none;
+}
+
+#left .menu {
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+}
+
+#left .menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+#left .menu li {
+  line-height: 26px;
+  margin: 0;
+  padding: 0;
+}
+
+#left .menu a {
+  background: url('../images/arrow.png') no-repeat 13px 12px;
+  color: #6a8c02;
+  display: block;
+  padding: 2px 0 3px 28px;
+  text-decoration: none;
+}
+
+
+#left .menu a.active {
+  color: #3c5000;
+}
+
+#left .menu a,
+#left .menu a:link,
+#left .menu a:visited {
+  text-decoration: none;
+}
+
+#left .menu a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/*
+  Submenu
+*/
+
+#left .menu li {
+  list-style: none;
+  list-style-image: none;
+  border-bottom: 1px solid #f2f2f2;
+  background: transparent;
+}
+
+#left .menu li a:hover {
+   background-color: #fcfcfc;
+}
+
+#left .menu li.active {
+ background: #f3f3f3 url('../images/menu-shadow.png') repeat-x 0 0;
+}
+
+#left .menu li.expanded li {
+  border-left: 0;
+}
+
+#left .menu li.expanded.active-trail {
+  border-bottom: 0;
+}
+
+#left .menu li .menu {
+  border-top: 1px solid #e3e3e3;
+}
+
+/*
+  Submenu level 1
+*/
+
+#left .menu li.active li {
+  margin: 0;
+}
+
+#left .menu li li.active {
+  background: #f3f3f3 url('../images/menu-shadow.png') repeat-x 0 0;
+  margin: 0;
+}
+
+#left .menu li li a {
+  background-position: 28px;
+  margin: 0;
+  padding: 3px 0 3px 43px;
+}
+
+/*
+  Submenu level 2
+*/
+
+
+#left .menu li li li a {
+  background-position: 48px;
+  margin: 0;
+  padding: 3px 0 3px 63px;
+}
+
+/*
+  Submenu level 3
+*/
+
+#left .menu li li li li a {
+  background-position: 68px;
+  margin: 0;
+  padding: 3px 0 3px 83px;
 }

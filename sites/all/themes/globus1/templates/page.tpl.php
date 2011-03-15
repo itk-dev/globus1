@@ -49,12 +49,12 @@
       <?php endif ?>
 
       <?php if ($left ): ?>
-        <div id="left" class="<?php print ns('grid-4', $right, 1, 'rc', 3); ?> region">
+        <div id="left" class="grid-3 region">
           <?php print $left; ?>
         </div>
       <?php endif ?>
 
-      <div id="main" class="alpha omega <?php print ns('grid-12', $left && !$right, 4, $left && $right, 3, $right && !$left, 4, $right && $left, 3, 'rc', 9); ?>">
+      <div id="main" class="alpha omega <?php print ns('grid-12', $left && !$right, 3, $left && $right, 3, $right && !$left, 3, $right && $left, 3, 'rc', 9); ?>">
         
         <?php print $messages; ?>
         <?php print $help; ?>
@@ -76,7 +76,7 @@
       </div>
  
       <?php if ($right): ?>
-        <div id="right" class="<?php print ns('grid-4', $left, 1, 'rc', 3); ?> region">
+        <div id="right" class="grid-3 region">
           <?php print $right; ?>
         </div>
       <?php endif ?>
