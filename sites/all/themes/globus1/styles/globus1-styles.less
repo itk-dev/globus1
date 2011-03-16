@@ -28,12 +28,6 @@
 
 body {
   background: #c0c0c0;
-  color: #435800;
-  font-size: 11px;
-}
-
-.aak-topbar {
-  font-size: 105%;
 }
 
 .header {
@@ -70,22 +64,6 @@ body {
     z-index: 10;
     top: 10px;
     left: 10px;
-}
-
-/*
-  Fonts basics
-*/
-a:link,
-a:visited,
-.node .content a:link,
-.node .content a:visited {
-  color: #6d8c02;
-  border-bottom: none;
-}
-
-h3 {
-  font-size: 12px;
-  font-weight: bold;
 }
 
 /*
@@ -217,7 +195,7 @@ h3 {
   font-size: 11px;
 }
 
-#page .block.views h2 {
+#page .block h2 {
   background: url("../images/item-header.png");
   padding: 13px;
   color: #fff;
@@ -228,11 +206,6 @@ h3 {
 #page .block .content {
   background: url("../images/box-shadow-short.png") top center repeat-x;
 }
-
-#page .block.nodespotbox .content {
-  background: url("../images/box-shadow-short.png") top center repeat-x;
-}
-
 
 #page .block .content h3 {
   margin: 0px;
@@ -376,31 +349,42 @@ h3 {
   Submenu
 */
 
+#left .menu li.first {
+  border-top: 0;
+}
+
+#left .menu li.first a {
+  border-top: 0;
+}
+
 #left .menu li {
+  background: transparent;
+  border-top: 1px solid #ebebeb;
   list-style: none;
   list-style-image: none;
-  border-bottom: 1px solid #f2f2f2;
-  background: transparent;
+}
+
+#left .menu li.first.active-trail.active,
+#left .menu li li.first {
+  border-top: 1px solid #ebebeb;
+}
+
+#left .menu li.first.active-trail.active a,
+#left .menu li li.first a,
+#left .menu li a {
+  border-top: 1px solid #fafafa;
 }
 
 #left .menu li a:hover {
-   background-color: #fcfcfc;
+  background-color: #f8f8f8;
+}
+
+#left .menu li.active-trail a {
+  color: #3c5000;
 }
 
 #left .menu li.active {
- background: #f3f3f3 url('../images/menu-shadow.png') repeat-x 0 0;
-}
-
-#left .menu li.expanded li {
-  border-left: 0;
-}
-
-#left .menu li.expanded.active-trail {
-  border-bottom: 0;
-}
-
-#left .menu li .menu {
-  border-top: 1px solid #e3e3e3;
+  background: #f3f3f3 url('../images/menu-shadow.png') repeat-x 0 0;
 }
 
 /*
@@ -416,8 +400,13 @@ h3 {
   margin: 0;
 }
 
+#left .menu li li a.active {
+  background-color: transparent;
+}
+
 #left .menu li li a {
-  background-position: 28px;
+  background-color: #fff;
+  background-position: 28px 13px;
   margin: 0;
   padding: 3px 0 3px 43px;
 }
@@ -426,9 +415,8 @@ h3 {
   Submenu level 2
 */
 
-
 #left .menu li li li a {
-  background-position: 48px;
+  background-position: 48px 13px;
   margin: 0;
   padding: 3px 0 3px 63px;
 }
@@ -438,7 +426,7 @@ h3 {
 */
 
 #left .menu li li li li a {
-  background-position: 68px;
+  background-position: 68px 13px;
   margin: 0;
   padding: 3px 0 3px 83px;
 }
@@ -446,51 +434,23 @@ h3 {
 /*
   Spotboxes
 */
-
-.nodespotbox .content-wrapper .link {
-  padding: 8px;
-}
-
-.nodespotbox .content-wrapper .link a,
-.nodespotbox .content-wrapper .link a:visited,
-.nodespotbox .content-wrapper .link a:hover {
-  font-weight: normal;
-  background: url("../images/arrow.png") no-repeat scroll 14px 7px transparent;
-  color: #6d8c02;
-}
-
-.nodespotbox h3{
+.nodespotbox.grid-3 h3{
   background: #a8d100 url("../images/item-header.png") no-repeat;
   color: #fff;
   font-weight: normal;
 }
 
-.nodespotbox h3 a,
-.nodespotbox h3 a:link,
-.nodespotbox h3 a:visited,
-.nodespotbox h3 a:hover{
+.nodespotbox.grid-3 h3 a {
   color: #fff;
   font-weight: normal;
 }
 
-.nodespotbox .spotbox-content,
 .nodespotbox .content-wrapper {
-  background: #fff url("../images/box-shadow-long.png") top center repeat-x;
-  padding: 8px 0 0 0;
-}
-
-.nodespotbox .image {
-  margin: 8px;
-  overflow: hidden;
+  background: #fff url("../images/box-shadow-short.png") top center repeat-x;
 }
 
 .nodespotbox .image img {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.nodespotbox .content {
-  padding: 8px;
+  margin: 5px;
 }
 
 /*
