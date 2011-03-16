@@ -28,12 +28,6 @@
 
 body {
   background: #c0c0c0;
-  color: #435800;
-  font-size: 11px;
-}
-
-.aak-topbar {
-  font-size: 105%;
 }
 
 .header {
@@ -70,22 +64,6 @@ body {
     z-index: 10;
     top: 10px;
     left: 10px;
-}
-
-/*
-  Fonts basics
-*/
-a:link,
-a:visited,
-.node .content a:link,
-.node .content a:visited {
-  color: #6d8c02;
-  border-bottom: none;
-}
-
-h3 {
-  font-size: 12px;
-  font-weight: bold;
 }
 
 /*
@@ -376,31 +354,42 @@ h3 {
   Submenu
 */
 
+#left .menu li.first {
+  border-top: 0;
+}
+
+#left .menu li.first a {
+  border-top: 0;
+}
+
 #left .menu li {
+  background: transparent;
+  border-top: 1px solid #ebebeb;
   list-style: none;
   list-style-image: none;
-  border-bottom: 1px solid #f2f2f2;
-  background: transparent;
+}
+
+#left .menu li.first.active-trail.active,
+#left .menu li li.first {
+  border-top: 1px solid #ebebeb;
+}
+
+#left .menu li.first.active-trail.active a,
+#left .menu li li.first a,
+#left .menu li a {
+  border-top: 1px solid #fafafa;
 }
 
 #left .menu li a:hover {
-   background-color: #fcfcfc;
+  background-color: #f8f8f8;
+}
+
+#left .menu li.active-trail a {
+  color: #3c5000;
 }
 
 #left .menu li.active {
- background: #f3f3f3 url('../images/menu-shadow.png') repeat-x 0 0;
-}
-
-#left .menu li.expanded li {
-  border-left: 0;
-}
-
-#left .menu li.expanded.active-trail {
-  border-bottom: 0;
-}
-
-#left .menu li .menu {
-  border-top: 1px solid #e3e3e3;
+  background: #f3f3f3 url('../images/menu-shadow.png') repeat-x 0 0;
 }
 
 /*
@@ -411,37 +400,6 @@ h3 {
   margin: 0;
 }
 
-#left .menu li li.active {
-  background: #f3f3f3 url('../images/menu-shadow.png') repeat-x 0 0;
-  margin: 0;
-}
-
-#left .menu li li a {
-  background-position: 28px;
-  margin: 0;
-  padding: 3px 0 3px 43px;
-}
-
-/*
-  Submenu level 2
-*/
-
-
-#left .menu li li li a {
-  background-position: 48px;
-  margin: 0;
-  padding: 3px 0 3px 63px;
-}
-
-/*
-  Submenu level 3
-*/
-
-#left .menu li li li li a {
-  background-position: 68px;
-  margin: 0;
-  padding: 3px 0 3px 83px;
-}
 
 /*
   Spotboxes
