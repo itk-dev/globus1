@@ -351,10 +351,6 @@ body {
   color: inherit;
 }
 
-/*
-  Submenu
-*/
-
 #left .menu li.first {
   border-top: 0;
 }
@@ -401,6 +397,42 @@ body {
   margin: 0;
 }
 
+#left .menu li li.active {
+  background: #f3f3f3 url('../images/menu-shadow.png') repeat-x 0 0;
+  margin: 0;
+}
+
+#left .menu li li a.active {
+  background-color: transparent;
+}
+
+#left .menu li li a {
+  background-color: #fff;
+  background-position: 28px 13px;
+  margin: 0;
+  padding: 3px 0 3px 43px;
+}
+
+/*
+  Submenu level 2
+*/
+
+
+#left .menu li li li a {
+  background-position: 48px 13px;
+  margin: 0;
+  padding: 3px 0 3px 63px;
+}
+
+/*
+  Submenu level 3
+*/
+
+#left .menu li li li li a {
+  background-position: 68px 13px;
+  margin: 0;
+  padding: 3px 0 3px 83px;
+}
 
 /*
   Spotboxes
