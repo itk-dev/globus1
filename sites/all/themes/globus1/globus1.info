@@ -31,6 +31,7 @@ features[] = favicon
 
 ;Stylesheets
 stylesheets[screen][] = styles/globus1-styles.less
+stylesheets[screen][] = styles/globus1-typography.less
 
 ;Panels layouts
 plugins[panels][layouts] = templates/layouts
