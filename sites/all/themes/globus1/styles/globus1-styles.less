@@ -32,6 +32,10 @@ body {
   font-size: 11px;
 }
 
+.aak-topbar {
+  font-size: 105%;
+}
+
 .header {
   height: 349px;
 }
@@ -213,7 +217,7 @@ h3 {
   font-size: 11px;
 }
 
-#page .block h2 {
+#page .block.views h2 {
   background: url("../images/item-header.png");
   padding: 13px;
   color: #fff;
@@ -224,6 +228,11 @@ h3 {
 #page .block .content {
   background: url("../images/box-shadow-short.png") top center repeat-x;
 }
+
+#page .block.nodespotbox .content {
+  background: url("../images/box-shadow-short.png") top center repeat-x;
+}
+
 
 #page .block .content h3 {
   margin: 0px;
@@ -473,6 +482,11 @@ h3 {
 .nodespotbox .image {
   margin: 8px;
   overflow: hidden;
+}
+
+.nodespotbox .image img {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nodespotbox .content {
