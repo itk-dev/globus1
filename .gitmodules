@@ -1,0 +1,3 @@
+[submodule "sites/all/themes/replicator"]
+	path = sites/all/themes/replicator
+	url = git@github.com:aakb/replicator_theme.git
