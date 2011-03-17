@@ -1,0 +1,65 @@
+/* ----- / Colors ----- */
+@linkcolor: #6d8c02;
+@linkcolor-visited: #3c5000;
+@linkcolor-hover: #e3732a;
+@linkcolor-active: #e3732a;
+
+/* ----- / Basic typography ----- */
+@fontsize-default: 11px;
+@fontsize-secondary: 12px;
+
+@lineheight-default: 18px;
+@lineheight-secondary: 16px;
+
+body {
+  font: @fontsize-default "Helvetica Neue",Arial,sans-serif;
+  line-height: @lineheight-default;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ----- / Links ----- */
+a,
+a:link {
+  color: @linkcolor;
+}
+
+a:visited {
+  color: @linkcolor-visited;
+}
+
+a:hover,
+a:focus &
+
+a:active {
+  color: @linkcolor-active;
+}
+
+.node .content a {
+  border-bottom: 1px dotted @linkcolor;
+  margin-bottom: -1px;
+  text-decoration: none;
+
+  &:link {
+    border-bottom: 1px dotted @linkcolor;
+  }
+
+  &:visited {
+    border-bottom: 1px dotted @linkcolor-visited;
+  }
+
+  &:hover,
+  &:active {
+    border: none;
+    margin-bottom: 0;
+  }
+}
+
+/* ----- / Headings ----- */
+
+h3 {
+  font-size: @fontsize-default + 1;
+  margin: 1em 0 0.2em;
+  font-weight: bold;
+  color: #222;
+}
