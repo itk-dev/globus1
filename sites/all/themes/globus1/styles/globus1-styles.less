@@ -72,6 +72,11 @@ body {
     left: 10px;
 }
 
+#left,
+#right {
+  overflow: hidden;
+}
+
 /*
   Fonts basics
 */
@@ -225,15 +230,6 @@ h3 {
   margin: 0;
 }
 
-#page .block .content {
-  background: url("../images/box-shadow-short.png") top center repeat-x;
-}
-
-#page .block.nodespotbox .content {
-  background: url("../images/box-shadow-short.png") top center repeat-x;
-}
-
-
 #page .block .content h3 {
   margin: 0px;
 }
@@ -261,7 +257,9 @@ h3 {
   min-height: 75px;
 }
 
-/*Quotes*/
+/*
+  Quotes
+*/
 
 #page .nodespotbox .view-id-spotboxes.view-display-id-block_1 .quote-content {
   padding: 8px;
@@ -491,6 +489,23 @@ h3 {
 
 .nodespotbox .content {
   padding: 8px;
+}
+
+.nodespotbox .no-header .content-wrapper,
+.nodespotbox .no-header .content-wrapper .content,
+#page .nodespotbox .no-header .content-wrapper .content {
+  background: none transparent;
+}
+
+.nodespotbox .no-header .content-wrapper .content {
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.nodespotbox .no-header .image {
+  position: absolute;
+  margin: 0;
 }
 
 /*
