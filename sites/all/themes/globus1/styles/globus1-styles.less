@@ -557,11 +557,87 @@ body {
   Kalender
 */
 
-#page #block-views-calendar_calendar-block_1 h2 {
+#page #block-views-calendar-calendar_block_1 h2 {
   background: url('../images/box-header-black.png') no-repeat;
 }
 
-#page #block-views-calendar_calendar-block_1 .content {
+#page #block-views-calendar-calendar_block_1 .content {
   background: url('../images/calendar-background.png') repeat-x;
   padding: 10px;
+}
+
+#page #block-views-calendar-calendar_block_1 .content thead {
+  background-color: #bae02b;
+  height: 30px;
+  border: none;
+}
+
+#page #block-views-calendar-calendar_block_1 .content thead th{
+  border: none;
+  padding: 0 4px;
+}
+
+#page #block-views-calendar-calendar_block_1 .content tbody {
+  background: #fff;
+}
+
+#page #block-views-calendar-calendar_block_1 .content tbody tr:hover {
+  background-color: #bae02b;
+  font-weight: bold;
+}
+
+#page #block-views-calendar-calendar_block_1 .view-filters{
+  float: right;
+  width: 38%;
+  padding: 1%;
+  height: 31px;
+  background: url('../images/calendar-top-bg.png') repeat-x;
+}
+
+#page #block-views-calendar-calendar_block_1 .view-filters .views-exposed-form,
+#page #block-views-calendar-calendar_block_1 .view-filters .views-exposed-form .views-widget{
+  float:right;
+}
+
+#page #block-views-calendar-calendar_block_1 .view-filters .views-exposed-form label,
+#page #block-views-calendar-calendar_block_1 .view-filters .views-exposed-form .form-submit{
+  padding-right: 5px;
+  margin: 0;
+}
+
+#page #block-views-calendar-calendar_block_1 .view-filters .views-exposed-form .views-exposed-widgets,
+#page #block-views-calendar-calendar_block_1 .view-filters .views-exposed-form .views-exposed-widget{
+  margin: 0;
+  padding: 0 3px ;
+}
+
+#page #block-views-calendar-calendar_block_1 .view-content{
+  float: left;
+  width: 58%;
+  padding: 1%;
+  height: 31px;
+  background: url('../images/calendar-top-bg.png') repeat-x;
+}
+
+#page #block-views-calendar-calendar_block_1 .view-content .calendar-calendar {
+  background: none;
+}
+
+
+
+#page #block-views-calendar-calendar_block_1 .attachment {
+  clear:both;
+}
+
+
+.calendar-line li {
+  float:left;
+  width: 33%;
+  text-align: center;
+}
+
+.calendar-line li a{
+  display: block;
+  text-decoration: none;
+  outline: 0;
 }
