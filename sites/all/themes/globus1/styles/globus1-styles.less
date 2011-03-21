@@ -71,6 +71,11 @@ body {
   overflow: hidden;
 }
 
+.block {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 /*
   Main menu
 */
@@ -128,20 +133,22 @@ body {
   height: 225px;
 }
 
+.views_slideshow_singleframe_controls {
+  display: block;
+}
+
 .carousel .views_slideshow_controls .views_slideshow_previous {
   background: url("../images/carousel-sprites.png") no-repeat scroll -41px -103px transparent;
-  height: 25px;
-  width: 25px;
   z-index: 10;
+  margin: 0;
+  position: relative
 }
 
 .carousel .views_slideshow_controls .views_slideshow_next {
   background: url("../images/carousel-sprites.png") no-repeat scroll -43px -23px transparent;
-  height: 25px;
-  width: 25px;
-  position: absolute;
-  left: 188px;
   z-index: 10;
+  margin: 0;
+  position: relative;
 }
 
 .carousel .views_slideshow_singleframe_pager .pager-item a {
@@ -167,19 +174,30 @@ body {
   position: absolute;
   top: 180px;
   left: 47px;
-  width: 154px;
 }
 
 .carousel .views_slideshow_main {
     margin-top: 0px;
 }
 
-.views-slideshow-controls-top {
-  position: absolute;
+.carousel .views_slideshow_pagerNumbered,
+.carousel .views-slideshow-controls-bottom .before,
+.carousel .views-slideshow-controls-bottom .after{
+  float: left;
+  position: relative;
+  margin: 0;
 }
 
-.carousel .views_slideshow_pagerNumbered {
-  margin: 0;
+.carousel .views-slideshow-controls-bottom .before .views_slideshow_next {
+  display: none;
+}
+
+.carousel .views-slideshow-controls-bottom .after .views_slideshow_previous {
+  display: none;
+}
+
+.views_slideshow_controls {
+  position: relative;
 }
 
 .carousel .view-content .content {
@@ -297,7 +315,6 @@ body {
 #page .nodespotbox.grid-9 .quotetab {
   left:150px;
 }
-
 
 /*
   Submenu
@@ -441,6 +458,10 @@ body {
   Spotboxes
 */
 
+.nodespotbox {
+  overflow: hidden;
+}
+
 .nodespotbox .content-wrapper .link {
   padding: 8px;
 }
@@ -457,6 +478,7 @@ body {
   background: #a8d100 url("../images/item-header.png") no-repeat;
   color: #fff;
   font-weight: normal;
+  margin: 0;
 }
 
 .nodespotbox h3 a,
@@ -486,6 +508,11 @@ body {
 .nodespotbox .content {
   padding: 8px;
 }
+
+.nodespotbox .no-header .content-wrapper {
+  padding: 0;
+}
+
 
 .nodespotbox .no-header .content-wrapper,
 .nodespotbox .no-header .content-wrapper .content,
