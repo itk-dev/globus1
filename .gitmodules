@@ -1,3 +1,6 @@
 [submodule "sites/all/themes/replicator"]
 	path = sites/all/themes/replicator
 	url = git@github.com:aakb/replicator_theme.git
+[submodule "sites/all/modules/features/banner"]
+	path = sites/all/modules/features/banner
+	url = git@github.com:aakb/banner.git
