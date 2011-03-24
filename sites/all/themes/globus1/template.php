@@ -20,7 +20,7 @@ function globus1_preprocess_date_navigation(&$vars) {
       $format = 'd. F';
       break;
     case 'week':
-      $format = 'j F Y';
+      $format = 'W';
       break;
   }
   $vars['nav_title'] = theme('date_nav_title', $view->date_info->granularity, $view, $link, $format);

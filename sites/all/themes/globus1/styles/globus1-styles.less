@@ -585,15 +585,58 @@ body {
   background: #fff;
 }
 
-#content .view-Kalender tbody tr:hover,
-#page #block-views-Kalender-calendar_block_1 .content tbody tr:hover {
+#content .view-Kalender .day-view tbody tr td.calendar-agenda-items:hover,
+#page #block-views-Kalender-calendar_block_1 .content tbody tr td.calendar-agenda-items:hover {
   background-color: #bae02b;
+}
+
+#content .view-Kalender .week-view td.calendar-agenda-items {
+  width: 12%;
+  overflow: hidden;
+}
+
+#content .view-Kalender .month-view td:hover {
+  background-color: #bae02b;
+}
+
+#content .view-Kalender .month-view td.week {
+  background: url("/sites/all/themes/replicator/images/back-groove-content.png") repeat-x scroll left bottom transparent;
+}
+#content .view-Kalender .month-view td.week:hover {
+  background-color: transparent;
+}
+
+
+#content .view-Kalender .week-view td.calendar-agenda-items a{
+
+  display: block;
+}
+
+#content .view-Kalender .month-view .view-item-Kalender {
+  display: none;
+}
+
+#content .view-Kalender .week-view td .view-field,
+#content .view-Kalender .week-view  .week.day,
+#content .view-Kalender th.days,
+#content .view-Kalender .month-view .month.day {
+  text-align: center;
+}
+
+#content .view-Kalender .month-view .month.day a {
+  display: block;
+}
+
+#content .view-Kalender .week-view td.calendar-agenda-items:hover{
+    background-color: #bae02b;
 }
 
 #block-views-Kalender-calendar_block_1 .view-header {
   padding: 5px;
 }
 
+#content .view-Kalender .view-content a,
+#content .view-Kalender .attachment a,
 #block-views-Kalender-calendar_block_1 .view-header .format-change a {
   text-decoration: none;
 }
@@ -615,6 +658,7 @@ body {
 
 #block-views-Kalender-calendar_block_1 .view-content .calendar-link a {
   display: block;
+  outline: 0;
 }
 
 #content .view-Kalender .view-filters,
@@ -684,7 +728,42 @@ body {
 .date-nav a{
   text-decoration: none;
 }
-
+#content .view-Kalender .view-content .date-heading h3,
 #block-views-Kalender-calendar_block_1 .date-heading h3 {
   font-size: 150%;
+}
+
+#content .view-Kalender ul.links {
+  display: none;
+}
+
+/*Calendar for the small blocks*/
+
+#page .grid-4 #block-views-Kalender-calendar_block_1 .view-filters,
+#page .grid-3 #block-views-Kalender-calendar_block_1 .view-filters{
+  width: 76%;
+}
+
+#page .grid-4 #block-views-Kalender-calendar_block_1 .view-content,
+#page .grid-3 #block-views-Kalender-calendar_block_1 .view-content{
+  width: 20%;
+}
+
+#page .grid-4 #block-views-Kalender-calendar_block_1 .view-content .calendar-link,
+#page .grid-3 #block-views-Kalender-calendar_block_1 .view-content .calendar-link,
+#page .grid-4 #block-views-Kalender-calendar_block_1 .view-content .date-prev,
+#page .grid-3 #block-views-Kalender-calendar_block_1 .view-content .date-prev,
+#page .grid-4 #block-views-Kalender-calendar_block_1 .view-content .date-next,
+#page .grid-3 #block-views-Kalender-calendar_block_1 .view-content .date-next {
+  display: none;
+}
+
+#page .grid-4 #block-views-Kalender-calendar_block_1 .view-content h3,
+#page .grid-3 #block-views-Kalender-calendar_block_1 .view-content h3{
+  font-size: 110%;
+}
+
+#page .grid-4 #block-views-Kalender-calendar_block_1 .view-content .date-heading,
+#page .grid-3 #block-views-Kalender-calendar_block_1 .view-content .date-heading{
+  width: 100%;
 }

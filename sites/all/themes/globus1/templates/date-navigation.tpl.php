@@ -32,6 +32,17 @@
  * 
  */
 ?>
+
+<?php
+  global $base_root;
+  $year = date(Y);
+  $month = date(m);
+  $week = date(W);
+  $day = date(d);
+
+?>
+
+
 <div class="date-nav clear-block">
   <div class="date-prev">
     <?php if (!empty($prev_url)) : ?>
@@ -51,5 +62,5 @@
   </div>
 </div>
 <?php if($block){
-  print '<div class="calendar-link"><a href="node/1">her</a></div>';
+  print '<div class="calendar-link"><a href=" '.$base_root.'/kalender/'.$year.'-'.$month.'-'.$day.' ">her</a></div>';
 } ?>

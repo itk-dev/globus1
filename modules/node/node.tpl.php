@@ -55,7 +55,6 @@
 <?php if (!$page): ?>
   <h2><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h2>
 <?php endif; ?>
-
   <div class="meta">
   <?php if ($submitted): ?>
     <span class="submitted"><?php print $submitted ?></span>
