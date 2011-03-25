@@ -48,10 +48,6 @@
         </div>
       <?php endif ?>
 
-        <div id="left" class="grid-3 region">
-          <?php print $left; ?>
-        </div>
-
       <div id="main" class="alpha omega <?php print ns('grid-12', $left && !$right, 6, $left && $right, 6, $right && !$left, 6, $right && $left, 6); ?>">
         
         <?php print $messages; ?>
