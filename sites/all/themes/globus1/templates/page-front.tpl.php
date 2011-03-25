@@ -48,7 +48,7 @@
         </div>
       <?php endif ?>
       
-      <div id="main" class="grid-6">
+      <div id="main" class="alpha omega <?php print ns('grid-12', $left && !$right, 3, $left && $right, 6, $right && !$left, 6, $right && $left, 6); ?>">
         
         <?php print $messages; ?>
         <?php print $help; ?>
