@@ -266,10 +266,24 @@ body {
   Quotes
 */
 
+
 #page .nodespotbox .view-id-spotboxes.view-display-id-block_1 .quote-content {
   padding: 8px;
   font-weight:bold;
-  color: #88b109
+  color: #88b109;
+  display: block;
+  float: left;
+  .drop-shadow(1px 1px 1px 1px rgba(0, 0, 0, 0.2));
+  border: 2px solid #88b109;
+  .border-radius(10px);
+   margin: 20px;
+}
+
+#page .nodespotbox .view-id-spotboxes.view-display-id-block_1 .quote-bubble {
+  display: block;
+  position: relative;
+  float: left;
+  clear: both;
 }
 
 #page .nodespotbox .view-id-spotboxes.view-display-id-block_1 .quote-content .author {
@@ -278,10 +292,8 @@ body {
 }
 
 #page .nodespotbox .view-id-spotboxes.view-display-id-block_1 {
-   .drop-shadow(1px 1px 1px 1px rgba(0, 0, 0, 0.2));
-   border: 2px solid #88b109;
-   .border-radius(10px);
-   margin: 20px;
+
+  
 }
 
 .quotetab-border {
@@ -290,9 +302,9 @@ body {
   border-width: 10px;
   height:0;
   width:0;
-  position:absolute;
-  bottom: 0;
+  position:relative;
   left:50px;
+  margin-top: -20px;
 }
 
 .quotetab {
@@ -301,26 +313,31 @@ body {
   border-width: 10px;
   height:0;
   width:0;
-  position:absolute;
+  position:relative;
   bottom: 3px;
   left:50px;
+  margin-top: -20px;
 }
 
-#page .nodespotbox.grid-9 .view-id-spotboxes.view-display-id-block_1 .quote-content {
+#page .grid-9 .nodespotbox .view-id-spotboxes.view-display-id-block_1 .quote-content,
+#page .grid-12 .nodespotbox .view-id-spotboxes.view-display-id-block_1 .quote-content {
   font-size: 150%;
   padding: 25px;
 }
 
-#page .nodespotbox.grid-9 .view-id-spotboxes.view-display-id-block_1 {
+#page .grid-9 .nodespotbox .view-id-spotboxes.view-display-id-block_1,
+#page .grid-12 .nodespotbox .view-id-spotboxes.view-display-id-block_1 {
   margin-left: 90px;
   margin-right: 90px;
 }
 
-#page .nodespotbox.grid-9 .quotetab-border {
+#page .grid-9 .nodespotbox .quotetab-border,
+#page .grid-12 .nodespotbox .quotetab-border {
   left:150px;
 }
 
-#page .nodespotbox.grid-9 .quotetab {
+#page .grid-9 .nodespotbox .quotetab,
+#page .grid-12 .nodespotbox .quotetab {
   left:150px;
 }
 
