@@ -78,6 +78,7 @@ body {
 .block {
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 100%;
 }
 
 /*
@@ -485,6 +486,25 @@ body.front #page .nodespotbox {
 }
 
 /*
+  Sitemap
+*/
+
+#site-map .content a {
+  padding-left: 30px;
+  font-weight: normal;
+  background: url("../images/arrow.png") no-repeat scroll 14px 4px transparent;
+  color: #6d8c02;
+}
+
+#site-map .content a:hover {
+  text-decoration: underline;
+}
+
+#site-map .content a:visited {
+color: #3C5000;
+}
+
+/*
   Spotboxes
 */
 
@@ -492,17 +512,37 @@ body.front #page .nodespotbox {
   overflow: hidden;
 }
 
+.view-Kalender .link,
 .nodespotbox .content-wrapper .link {
   padding: 8px;
+  text-align: right;
 }
 
+.view-Kalender .link a,
 .nodespotbox .content-wrapper .link a,
 .nodespotbox .content-wrapper .link a:visited,
 .nodespotbox .content-wrapper .link a:hover {
   font-weight: normal;
   background: url("../images/arrow.png") no-repeat scroll 14px 7px transparent;
   color: #6d8c02;
+  padding-left: 30px;
+  text-decoration: none;
 }
+
+.view-Kalender .link a {
+  background: url("../images/arrow.png") no-repeat scroll 14px 4px transparent;
+}
+
+.nodespotbox .content-wrapper .link a:visited,
+.view-Kalender .link a:visited {
+  color: #3C5000;
+}
+
+.nodespotbox .content-wrapper .link a:hover,
+.view-Kalender .link a:hover {
+  text-decoration: underline;
+}
+
 
 .nodespotbox h3{
   background: #a8d100 url("../images/item-header.png") no-repeat;
@@ -535,7 +575,8 @@ body.front #page .nodespotbox {
   margin-right: auto;
 }
 
-.nodespotbox .content {
+.nodespotbox .content,
+.block-views .content {
   padding: 8px;
 }
 

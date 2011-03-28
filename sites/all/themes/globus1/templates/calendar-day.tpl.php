@@ -82,3 +82,4 @@
   </tbody>
 </table>
 </div></div>
+<div class = "link"><a href="kalender">Gå til kalender</a></div>
