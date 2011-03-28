@@ -71,10 +71,10 @@
         $week = date(W);
         $day = date(d);
         ?>
-
+        
        <div class="format-change">
          <span>
-           <?php print 'Vis <a href=" ' .$year.'-'.$month.' ">Måned</a> | <a href=" ' .$year.'-W'.$week.' ">Uge</a> | <a href=" ' .$year.'-'.$month.'-'.$day.' ">Dag</a>' ?>
+           <?php print 'Vis <a href=" '.$base_root.'/kalender/' .$year.'-'.$month.' ">Måned</a> | <a href=" '.$base_root.'/kalender/' .$year.'-W'.$week.' ">Uge</a> | <a href=" '.$base_root.'/kalender/' .$year.'-'.$month.'-'.$day.' ">Dag</a>' ?>
          </span>
        </div>        
 
