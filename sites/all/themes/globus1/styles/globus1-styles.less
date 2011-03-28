@@ -105,7 +105,8 @@ body {
   border-right: none;
 }
 
-#main-menu ul li a.active{
+#main-menu ul li a.active,
+#main-menu ul li a.active-trail{
   background-image: url("../images/active-menu.png");
   background-position: bottom;
 }
@@ -538,6 +539,8 @@ body.front #page .nodespotbox {
   padding: 8px;
 }
 
+/*No header spotbox*/
+
 .nodespotbox .no-header .content-wrapper {
   padding: 0;
 }
@@ -558,6 +561,30 @@ body.front #page .nodespotbox {
 .nodespotbox .no-header .image {
   position: absolute;
   margin: 0;
+}
+
+.nodespotbox.grid-12 .no-header .image {
+  width: 940px;
+}
+
+.nodespotbox.grid-9 .no-header .image {
+  width: 700px;
+}
+
+.nodespotbox.grid-6 .no-header .image {
+  width: 460px;
+}
+
+.nodespotbox.grid-4 .no-header .image {
+  width: 300px;
+}
+
+.nodespotbox.grid-3 .no-header .image {
+  width: 220px;
+}
+
+.nodespotbox.grid-2 .no-header .image {
+  width: 140px;
 }
 
 /*
