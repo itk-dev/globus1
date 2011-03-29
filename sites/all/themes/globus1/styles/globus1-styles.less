@@ -261,24 +261,6 @@ body.front #page .nodespotbox {
 }
 
 /*
-  News
-*/
-
-#page .block .content .news-block-archive .news-listimage {
-  float: left;
-  padding: 5px;
-}
-
-#page #block-views-news-block_1 .content {
-  background: url("../images/box-shadow-long.png") top center repeat-x;
-}
-
-#page #block-views-news-block_1 .content li {
-  margin-bottom: 12px;
-  min-height: 75px;
-}
-
-/*
   Quotes
 */
 
@@ -936,13 +918,41 @@ body.node-type-video-spotbox #page .grid-9 .content iframe{
   height: 415px;
 }
 
+/*
+  News
+*/
+
+.page-nyheder #content .news-block-archive .news-listimage {
+  float: left;
+  padding: 5px;
+}
+
+.page-nyheder #content .news-block-archive {
+  background: url("../images/box-shadow-long.png") top center repeat-x;
+}
+
+.page-nyheder #content .news-block-archive .view-content li
+#page #block-views-news-block_1 .content li {
+  margin-bottom: 12px;
+  min-height: 75px;
+}
+
 /*News pages*/
 
 
 .page-nyheder .panel-col-first {
-  width: 25%
+  width: 32%
 }
 
 .page-nyheder .panel-col-last {
-  width: 75%
+  width: 68%
+}
+
+.page-nyheder #content .news-block-archive .date {
+    font-style: italic;
+    margin: 0;
+}
+
+.page-nyheder #content .news-block-archive .content h3 {
+  margin: 0;
 }
