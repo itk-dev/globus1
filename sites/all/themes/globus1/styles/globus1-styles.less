@@ -523,14 +523,14 @@ color: #3C5000;
   overflow: hidden;
 }
 
+#block-views-news-block_1 .link,
 .view-Kalender .link,
 .nodespotbox .content-wrapper .link {
   padding: 8px;
   text-align: right;
 }
 
-.view-Kalender .link a,
-.nodespotbox .content-wrapper .link a,
+.nodespotbox .content-wrapper .link a:link,
 .nodespotbox .content-wrapper .link a:visited,
 .nodespotbox .content-wrapper .link a:hover {
   font-weight: normal;
@@ -540,8 +540,12 @@ color: #3C5000;
   text-decoration: none;
 }
 
-.view-Kalender .link a {
+
+.view-Kalender .link a,
+#block-views-news-block_1 .link a,
+.view-Kalender .link a:link {
   background: url("../images/arrow.png") no-repeat scroll 14px 4px transparent;
+  padding-left: 30px;
 }
 
 .nodespotbox .content-wrapper .link a:visited,
@@ -930,4 +934,15 @@ body.node-type-video-spotbox #page .grid-6 .content iframe{
 body.node-type-video-spotbox #page .grid-9 .content iframe{
   width: 684px;
   height: 415px;
+}
+
+/*News pages*/
+
+
+.page-nyheder .panel-col-first {
+  width: 25%
+}
+
+.page-nyheder .panel-col-last {
+  width: 75%
 }
