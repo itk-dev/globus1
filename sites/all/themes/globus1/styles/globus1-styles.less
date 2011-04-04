@@ -742,7 +742,8 @@ color: #3C5000;
   width: 80%;
 }
 
-#block-views-Kalender-calendar_block_1 .view-content .calendar-link {
+#block-views-Kalender-calendar_block_1 .view-content .calendar-link,
+.view-aktiviteter .calendar-link{
   background: url('../images/calendar-icon.jpg') no-repeat;
   height: 17px;
   text-indent: -9999px;
@@ -751,7 +752,8 @@ color: #3C5000;
   margin-left: 8px;
 }
 
-#block-views-Kalender-calendar_block_1 .view-content .calendar-link a {
+#block-views-Kalender-calendar_block_1 .view-content .calendar-link a,
+.view-aktiviteter .calendar-link a{
   display: block;
   outline: 0;
 }
@@ -1005,4 +1007,46 @@ body.node-type-video-spotbox #page .grid-9 .content iframe{
   float: right;
   padding: 15px 30px;
   margin: 0;
+}
+
+/*
+  Aktiviteter
+*/
+
+.view-aktiviteter h3 a:link {
+  font-weight: bold;
+  color: #6d8c02;
+  text-decoration: none;
+}
+
+.view-aktiviteter h3 a:hover{
+  text-decoration: underline;
+}
+
+.view-aktiviteter h3 a:visited{
+  color: #3C5000;
+}
+
+.view-aktiviteter .event-header {
+  float:left;
+  padding-right: 20px;
+}
+
+.view-aktiviteter .views-field-field-date-value {
+  clear:both;
+  float:left;
+}
+
+.view-aktiviteter .view-content .views-field-body {
+  padding: 6px 0;
+  clear: both;
+}
+
+.view-aktiviteter .view-content .views-field-field-date-value {
+  padding: 0 0 6px 0;
+  clear: both;
+}
+
+.views-field-field-date-value span {
+  font-style: italic;
 }
