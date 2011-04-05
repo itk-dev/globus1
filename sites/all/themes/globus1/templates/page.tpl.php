@@ -14,7 +14,9 @@
 
   <div class="header">
     <div class="header-inner container-12">
-
+      <?php if ($site_logo): ?>
+        <div id="logo" class="logo"><?php print $site_logo ?></div>
+      <?php endif; ?>
       <?php if ($site_slogan): ?>
         <div id="site-slogan" class="site-slogan"><?php print $site_slogan ?></div>
       <?php endif; ?>
@@ -26,10 +28,6 @@
       <?php if ($carousel): ?>
       <div class="carousel-region container-12">
         <?php print $carousel; ?>
-
-        <?php if ($site_logo): ?>
-          <div id="logo" class="logo"><?php print $site_logo ?></div>
-        <?php endif; ?>
 
       </div>
       <?php endif; ?>
