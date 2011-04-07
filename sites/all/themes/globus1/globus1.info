@@ -35,3 +35,6 @@ stylesheets[screen][] = styles/globus1-typography.less
 
 ;Panels layouts
 plugins[panels][layouts] = templates/layouts
+
+;scripts
+scripts[] = scripts/common.js
