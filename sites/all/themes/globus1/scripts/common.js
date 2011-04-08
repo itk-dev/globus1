@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-function moveCloseLink(){
+  function moveCloseLink() {
     // Set variables
     var sbClose = $('#sb-nav-close');
     var sbTitle = $('#sb-title');
@@ -17,7 +17,23 @@ function moveCloseLink(){
     }
   }
 
-  // Call the function when Shadowbox opens
-  Shadowbox.options.onOpen = moveCloseLink;
+  function hideFlashElements() {
+    $('#page iframe,#page embed').hide();
+  }
 
-  });
+  function showFlashElements() {
+    $('#page iframe,#page embed').show();
+  }
+
+  function shadowboxOpen() {
+    moveCloseLink();
+    hideFlashElements()
+  }
+
+  // Call the function when Shadowbox opens
+  Shadowbox.options.onOpen = shadowboxOpen;
+
+  // Call the function when Shadowbox closes
+  Shadowbox.options.onClose = showFlashElements;
+
+});
