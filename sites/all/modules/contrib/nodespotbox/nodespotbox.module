@@ -259,9 +259,27 @@ function nodespotbox_nodeapi(&$node, $op, $teaser, $page) {
       }
 
       // Save view selected display id.
-      if ($nodespotbox['views']['user'] && $node->nodespotbox['enable']) {
-        db_query('INSERT INTO {nodespotbox}
-                       VALUES (%d, "%s", "%s")', $node->nid, $node->type, $node->nodespotbox['display_id']);
+      if ($node->nodespotbox['enable']) {
+        $display_id = $nodespotbox['views']['display_id'];
+        if ($nodespotbox['views']['user']) {
+          $display_id = $node->nodespotbox['display_id'];
+        }
+
+        // Check if record exists, if it do... update the record else insert
+        // new record.
+        $result = db_fetch_array(db_query('SELECT nid FROM {nodespotbox} WHERE nid=%d', $node->nid));
+        if ($result) {
+          db_query('UPDATE {nodespotbox} SET view_display = "%s"
+                     WHERE nid = %d',$node->nid, $display_id);
+        }
+        else {
+          db_query('INSERT INTO {nodespotbox}
+                         VALUES (%d, "%s", "%s")', $node->nid, $node->type, $display_id);
+        }
+      }
+      else {
+        // Spotbox disabled, so remove it form the database.
+        db_query('DELETE FROM {nodespotbox} WHERE nid = %d', $node->nid);
       }
 
       nodespotbox_flush_cache();
