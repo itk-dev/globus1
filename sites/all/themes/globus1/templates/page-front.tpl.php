@@ -60,6 +60,11 @@
           <div id="content-top" class="region"><?php print $content_top ?></div>
         <?php endif; ?>
         <div id="content" class=""><?php print $content ?></div>
+
+        <?php if ($quote): ?>
+          <div id="quote" class="region"><?php print $quote ?></div>
+        <?php endif; ?>
+
         <?php if ($content_bottom): ?>
           <div id="content-bottom" class="region"><?php print $content_bottom ?></div>
         <?php endif; ?>

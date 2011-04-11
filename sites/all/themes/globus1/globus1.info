@@ -13,6 +13,7 @@ regions[header_wrapper] = Header Wrapper
 regions[carousel] = Carousel
 regions[top_region] = Top
 regions[content_top] = Content, Above
+regions[quote] = Quote
 regions[content_bottom] = Content, Below
 regions[left] = Left
 regions[right] = Right
