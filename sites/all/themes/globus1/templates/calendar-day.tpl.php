@@ -43,7 +43,7 @@
 
       <!--Changed /Martin Yde-->
 
-      <th class="calendar-agenda-items calendar-line"><?php print '<li>Forening</li><li>Lokale</li><li>Type</li>'; ?></th>
+      <th class="calendar-agenda-items calendar-line"><?php print '<ul><li>Forening</li><li>Lokale</li><li>Type</li></ul>'; ?></th>
       <?php endforeach; ?>
     </tr>
   </thead>
