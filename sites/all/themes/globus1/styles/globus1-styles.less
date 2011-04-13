@@ -702,8 +702,14 @@ color: #3C5000;
   background: #fff;
 }
 
-#content .view-Kalender .day-view tbody tr td.calendar-agenda-items:hover,
-#page #block-views-Kalender-calendar_block_1 .content tbody tr td.calendar-agenda-items:hover {
+#content .view-Kalender .day-view tbody tr td.calendar-agenda-items .view-item-Kalender .item-line,
+#page #block-views-Kalender-calendar_block_1 .content tbody tr td.calendar-agenda-items .view-item-Kalender .item-line {
+  width: 75%;
+  float: left;
+}
+
+#content .view-Kalender .day-view tbody tr td.calendar-agenda-items .view-item-Kalender .item-line:hover,
+#page #block-views-Kalender-calendar_block_1 .content tbody tr td.calendar-agenda-items .view-item-Kalender .item-line:hover {
   background-color: #bae02b;
 }
 
@@ -725,7 +731,6 @@ color: #3C5000;
 
 
 #content .view-Kalender .week-view td.calendar-agenda-items a{
-
   display: block;
 }
 
@@ -835,13 +840,29 @@ color: #3C5000;
   clear: both;
 }
 
-.calendar-line li {
+.calendar-line span {
   float:left;
-  width: 33%;
+  width: 25%;
   text-align: center;
 }
 
-.calendar-line li a {
+.calendar-line .item-line span {
+  width:33%;
+}
+
+.calendar-line span .date-display-single {
+  width: 100%;
+}
+
+.calendar-line .date-display-single span{
+  width: 45%;
+}
+
+.calendar-line .date-display-single span.date-display-separator {
+  width: 10%;
+}
+
+.calendar-line span a {
   display: block;
   text-decoration: none;
   outline: 0;
