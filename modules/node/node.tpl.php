@@ -1,5 +1,4 @@
 <?php
-// $Id: node.tpl.php,v 1.4.2.1 2009/08/10 10:48:33 goba Exp $
 
 /**
  * @file node.tpl.php
@@ -55,6 +54,7 @@
 <?php if (!$page): ?>
   <h2><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h2>
 <?php endif; ?>
+
   <div class="meta">
   <?php if ($submitted): ?>
     <span class="submitted"><?php print $submitted ?></span>
