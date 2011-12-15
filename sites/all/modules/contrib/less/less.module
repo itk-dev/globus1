@@ -1,5 +1,4 @@
 <?php
-// $Id: less.module,v 1.2.4.11 2011/02/01 23:49:10 coreym29 Exp $
 
 /**
  * @file
@@ -8,6 +7,8 @@
  * The theme system allows for nearly all output of the Drupal system to be
  * customized by user themes.
  */
+
+define('LESS_PERMISSION', 'administer less');
 
 /**
  * Implements hook_menu().
@@ -20,7 +21,7 @@ function less_menu() {
     'description' => 'Administer LESS settings',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('less_settings'),
-    'access arguments' => array('administer site configuration'),
+    'access arguments' => array(LESS_PERMISSION),
     'file' => 'less.admin.inc',
     'type' => MENU_NORMAL_ITEM,
   );
@@ -29,9 +30,29 @@ function less_menu() {
 }
 
 /**
+ * Implements hook_permission().
+ */
+function less_perm() {
+  return array(LESS_PERMISSION);
+}
+
+/**
  * Builds the less cache
  */
 function _less_build(&$vars, $hook) {
+  $lessphp_include = '';
+
+  if (module_exists('libraries')) {
+    if ($lessphp_path = libraries_get_path('lessphp')) {
+      if (file_exists($lessphp_path .'/lessc.inc.php')) {
+        $lessphp_include = $lessphp_path .'/lessc.inc.php';
+      }
+    }
+  }
+
+  if (empty($lessphp_include)) {
+    $lessphp_include = 'lessphp/lessc.inc.php';
+  }
 
   $css = $vars['css'];
 
@@ -40,7 +61,7 @@ function _less_build(&$vars, $hook) {
   // Flush compiled LESS files if developer mode is enabled
   if (variable_get('less_devel', FALSE)) {
     _less_recursive_delete($less_path);
-    if (user_access('administer site configuration') && flood_is_allowed('less_devel_warning', 1)) {
+    if (user_access(LESS_PERMISSION) && flood_is_allowed('less_devel_warning', 1)) {
       flood_register_event('less_devel_warning');
       drupal_set_message(t('LESS files are being regenerated on every request. Remember to <a href="!url">turn off</a> this feature on production websites.', array("!url" => url('admin/settings/less'))), 'status');
     }
@@ -56,17 +77,24 @@ function _less_build(&$vars, $hook) {
 
           $css_path = $less_path .'/'. dirname($input_file);
 
-          if (!is_dir($css_path)) {
-            @mkdir($css_path, 0777, TRUE);
+          if (!is_dir($css_path) && !@mkdir($css_path, 0775, TRUE)) {
+            // There is a problem with the directory.
+            $param = array('%dir' => $css_path);
+            if (user_access(LESS_PERMISSION)) {
+              drupal_set_message(t('LESS could not create a directory in %dir', $param), 'error');
+            }
+            watchdog('LESS', t('LESS could not create a directory in %dir', $param), array(), WATCHDOG_ERROR);
+            return;
           }
 
           $output_file = $css_path .'/'. basename($input_file, '.less');
+          // correct file names of files not following the .css.less naming convention
           if (drupal_substr($output_file, -4) != '.css') {
             $output_file .= '.css';
           }
 
           if (!file_exists($output_file)) {
-            require_once('lessphp/lessc.inc.php');
+            require_once($lessphp_include);
 
             $less = new lessc();
 
@@ -84,7 +112,7 @@ function _less_build(&$vars, $hook) {
             catch (Exception $e) {
               $message = 'LESS ERROR: '. $e->getMessage() .', '. $input_file;
               watchdog('LESS', $message, array(), WATCHDOG_ERROR);
-              if (user_access('access administration pages')) {
+              if (user_access(LESS_PERMISSION)) {
                 drupal_set_message($message, 'error');
               }
             }
@@ -105,8 +133,10 @@ function _less_build(&$vars, $hook) {
 
     }
   }
-
-  $vars['messages'] .= theme('status_messages');
+  
+  if ($vars['show_messages']) {
+    $vars['messages'] .= theme('status_messages');
+  }
 
   $vars['css'] = $css;
   $vars['styles'] = drupal_get_css($vars['css']);
