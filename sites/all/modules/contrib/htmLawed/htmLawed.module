@@ -601,6 +601,9 @@ function _htmLawed_store_setting($form_id = NULL, &$form) { // Many Drupal 6 dif
     unset($form['values']['htmLawed_htmLawedDef_'. $for. '_config'], $form['values']['htmLawed_htmLawedDef_'. $for. '_spec'], $form['values']['htmLawed_htmLawedDef_'. $for. '_help'], $form['values']['htmLawed_htmLawedDef_'. $for. '_show']);
   }
   $setting['htmLawedDef'] = $def;
+  
+  // Unset unnecessary values
+  unset($form['values']['cache'], $form['values']['config'], $form['values']['help'], $form['values']['spec']);
 
   variable_set('htmLawed_format_'. $form['values']['format'], $setting);
 }
