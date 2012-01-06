@@ -13,13 +13,20 @@ function context_filter_perm() {
   $perm['administer context filter names'] = array(
     'title' => t('Administer Context filter names.'),
   );
+  $perm['context filter toggle regions'] = array(
+    'title' => t('Allow users to toggle empty regions in the toolbar.'),
+  );
+  $perm['context filter create context'] = array(
+    'title' => t('Allow users to create contexts base on current path.'),
+  );
+
   return array_keys($perm);
 }
 
 /**
  * Implementation of hook_menu, which sets the path admin/build/context/filter
  * for administrate the selections.
- * 
+ *
  * @return array $items
  */
 function context_filter_menu() {
@@ -58,6 +65,22 @@ function context_filter_menu() {
     'access arguments' => array('administer context filter regions'),
   );
 
+    // Menu callback to toggle empty regions.
+  $items['context_filter/regions'] = array(
+    'title' => 'Toggle regions',
+    'page callback' => 'context_filter_toggle_empty_regions',
+    'access arguments' => array('context filter toggle regions'),
+    'type' => MENU_CALLBACK,
+  );
+
+  // Menu callback to create context for the current path.
+  $items['context_filter/create'] = array(
+    'title' => 'Create context',
+    'page callback' => 'context_filter_create_context',
+    'access arguments' => array('context filter create context'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -88,8 +111,8 @@ function context_filter_admin_form(&$form_state) {
 }
 
 /**
- * Administration form to select the regions editable in context 
- * 
+ * Administration form to select the regions editable in context
+ *
  * @param array $form_state
  * @return array $form
  */
@@ -187,8 +210,10 @@ function context_filter_preprocess_context_block_browser(&$vars) {
   if (!empty($selected)) {
     // Update names.
     $names = variable_get('context_filter_names', NULL);
-    foreach ($names as $key => $value) {
-      $selected[$key] = $value;
+    if ($names) {
+      foreach ($names as $key => $value) {
+        $selected[$key] = $value;
+      }
     }
     // Only display selected modules
     $vars['categories']['#options'] = array_merge(array(0 => '<'. t('Choose a category') .'>'), $selected);
@@ -199,6 +224,37 @@ function context_filter_preprocess_context_block_browser(&$vars) {
   }
 }
 
+function context_filter_form_context_ui_editor_alter(&$form, &$form_state) {
+  $settings = array();
+
+  // Add create context to shortcut bar.
+  if (user_access('context filter create context')) {
+    // Add current path to settings.
+    $settings['currentPath'] = drupal_get_path_alias(isset($_GET['q']) ? $_GET['q'] : '<front>');
+    
+    // Only show create context link if context is not yet defined for the
+    // current page.
+    $context_name = array_pop(explode('/', $settings['currentPath']));
+    $contexts = context_active_contexts();
+    if (!isset($contexts[$context_name])) {
+      drupal_add_js(drupal_get_path('module', 'context_filter') . '/js/context_filter_create_context.js', 'module');
+    }
+  }
+
+  // Add show/hide empty regions to shortcut bar.
+  if (user_access('context filter toggle regions')) {
+    // Add current region state.
+    $settings['isShown'] = variable_get('context_reaction_block_all_regions', FALSE);
+
+    // Add script to add button to the toolbar.
+    drupal_add_js(drupal_get_path('module', 'context_filter') . '/js/context_filter_show_regions.js', 'module');
+  }
+
+  if (!empty($settings)) {
+    drupal_add_js(array('context_filter' => $settings), 'setting');
+//    drupal_add_css(drupal_get_path('module', 'context_filter') . '/css/context_filter.css', array('preprocess' => FALSE));
+  }
+}
 
 /**
  * Filter editable regions for the current theme by using preprocess functions.
@@ -223,4 +279,54 @@ function context_filter_preprocess_context_block_editable_region(&$vars) {
       }
     }
   }
+}
+
+/**
+ * Menu callback that toggles contexts show/hide empty regions.
+ */
+function context_filter_toggle_empty_regions() {
+  $current = variable_get('context_reaction_block_all_regions', FALSE);
+  if ($current) {
+    $current = FALSE;
+  }
+  else {
+    $current = TRUE;
+  }
+  variable_set('context_reaction_block_all_regions', $current);
+}
+
+/**
+ * Menu callback thats creates a new context based on current page.
+ */
+function context_filter_create_context() {
+  // Validate the path.
+  $path = check_plain($_GET['path']);
+  $name = array_pop(explode('/', $path));
+
+  if ($system_path = drupal_lookup_path('source', $path)) {
+    $path = $system_path;
+  }
+
+  // Create the new context based on path.
+  $context = ctools_export_new_object('context', TRUE);
+  $context->name = $name;
+  $context->description = t('Current page');
+  $context->tag = 'Current page';
+  $context->condition_mode = NULL;
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        $path,
+      )
+    )
+  );
+  $context->reactions = array();
+  $context->type = 'Local';
+  ctools_export_crud_save('context', $context);
+
+  // Clear context cache, so the new context shows up on page reload.
+  context_invalidate_cache();
+
+  // Set message that will be show after reload.
+  drupal_set_message(t('A new context for the current page have been created.'));
 }
