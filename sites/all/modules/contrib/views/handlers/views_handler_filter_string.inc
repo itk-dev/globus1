@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 /**
  * Basic textfield filter to handle string filtering commands
@@ -8,10 +7,12 @@
 class views_handler_filter_string extends views_handler_filter {
   // exposed filter options
   var $no_single = TRUE;
+  var $no_optional = TRUE;
 
   function option_definition() {
     $options = parent::option_definition();
 
+    $options['expose']['contains']['optional'] = array('default' => FALSE);
     $options['case'] = array('default' => TRUE);
 
     return $options;
