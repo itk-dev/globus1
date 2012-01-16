@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * @file
  * Contains the comment RSS row style plugin.

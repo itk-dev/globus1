@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Field handler to present a link to revert a node to a revision
  */

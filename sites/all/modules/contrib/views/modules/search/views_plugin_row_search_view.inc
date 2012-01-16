@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * @file
  * Contains the search row style plugin.

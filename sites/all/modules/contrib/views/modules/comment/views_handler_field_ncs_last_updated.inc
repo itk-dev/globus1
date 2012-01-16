@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Field handler to display the newer of last comment / node updated
  */

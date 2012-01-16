@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Allow taxonomy term ID(s) as argument
  */

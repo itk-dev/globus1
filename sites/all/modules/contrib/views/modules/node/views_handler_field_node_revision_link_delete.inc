@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Field handler to present delete a node revision.
  */

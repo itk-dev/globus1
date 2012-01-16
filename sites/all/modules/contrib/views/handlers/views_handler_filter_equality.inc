@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Simple filter to handle equal to / not equal to filters
  */

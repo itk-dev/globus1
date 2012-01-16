@@ -1,4 +1,5 @@
 <?php
+// $Id$
 
 class views_handler_field_counter extends views_handler_field {
   function option_definition() {

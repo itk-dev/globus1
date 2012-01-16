@@ -1,4 +1,5 @@
 <?php
+// $Id$
 
 /**
  * Field handler to translate a group into its readable form.

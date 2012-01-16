@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Sort handler for ordering by thread
  */

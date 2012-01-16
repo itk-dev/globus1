@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Field handler to translate a node type into its readable form.
  */

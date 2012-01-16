@@ -1,4 +1,5 @@
 <?php
+// $Id$
 
 /**
  * Filter handler to accept a user id to check for nodes that user posted or

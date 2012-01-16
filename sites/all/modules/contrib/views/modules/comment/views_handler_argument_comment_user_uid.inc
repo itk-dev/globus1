@@ -1,4 +1,5 @@
 <?php
+// $Id$
 
 /**
  * Argument handler to accept a user id to check for nodes that

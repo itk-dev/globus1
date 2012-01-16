@@ -1,4 +1,5 @@
 <?php
+// $Id$
 
 /**
  * Handle a random sort.

@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.

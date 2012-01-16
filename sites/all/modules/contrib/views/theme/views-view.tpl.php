@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * @file views-view.tpl.php
  * Main view template

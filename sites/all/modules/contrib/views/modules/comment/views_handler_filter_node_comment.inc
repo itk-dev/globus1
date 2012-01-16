@@ -1,4 +1,5 @@
 <?php
+// $Id$
 
 /**
  * Filter based on comment node status

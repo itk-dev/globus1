@@ -1,4 +1,5 @@
 <?php
+// $Id$
 
 /**
  * The base plugin to handle access control.

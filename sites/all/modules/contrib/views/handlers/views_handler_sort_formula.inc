@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Base sort handler that has no options and performs a simple sort
  *

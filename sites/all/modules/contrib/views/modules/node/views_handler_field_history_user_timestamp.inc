@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Field handler to display the marker for new content.
  */

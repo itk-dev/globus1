@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * @file
  * Contains the base row style plugin.

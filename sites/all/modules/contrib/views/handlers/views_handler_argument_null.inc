@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Argument handler that ignores the argument.
  */

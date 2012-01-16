@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Sort handler for the newer of last comment / node updated
  */

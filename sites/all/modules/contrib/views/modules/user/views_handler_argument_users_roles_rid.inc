@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * Allow role ID(s) as argument
  */

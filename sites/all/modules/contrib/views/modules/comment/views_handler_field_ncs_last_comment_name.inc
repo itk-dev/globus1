@@ -1,4 +1,5 @@
 <?php
+// $Id$
 
 /**
  * Field handler to present the name of the last comment poster

@@ -1,4 +1,5 @@
 <?php
+// $Id$
 
 /**
  * Argument handler to accept an aggregator category id.

@@ -1,4 +1,5 @@
 <?php
+// $Id$
 /**
  * @file views-more.tpl.php
  * Theme the more link
