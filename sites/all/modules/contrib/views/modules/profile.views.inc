@@ -1,5 +1,4 @@
 <?php
-//$Id$
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -33,8 +32,8 @@ function profile_views_data() {
   );
 
   $fields = profile_views_get_fields();
-  foreach($fields as $field) {
-    $table_name = 'profile_values_' . $field->name;
+  foreach ($fields as $field) {
+    $table_name = 'profile_values_' . str_replace('-', '_', $field->name);
     $data[$table_name] = array(
       'table' => array(
         'group' => t('Profile'),
@@ -149,6 +148,7 @@ function profile_views_fetch_field($field) {
         ),
         'filter' => array(
           'handler' => 'views_handler_filter_boolean_operator',
+          'accept null' => TRUE,
         ),
         // @todo there ought to be a boolean argument handler
       );
