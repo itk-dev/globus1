@@ -52,4 +52,3 @@ Module development sponsored by:
    TravelForum (www.travelforum.dk)
 
 
-$Id: README.txt,v 1.1 2010/08/24 16:30:35 wulff Exp $

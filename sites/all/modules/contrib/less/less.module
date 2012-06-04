@@ -40,32 +40,23 @@ function less_perm() {
  * Builds the less cache
  */
 function _less_build(&$vars, $hook) {
-  $lessphp_include = '';
-
-  if (module_exists('libraries')) {
-    if ($lessphp_path = libraries_get_path('lessphp')) {
-      if (file_exists($lessphp_path .'/lessc.inc.php')) {
-        $lessphp_include = $lessphp_path .'/lessc.inc.php';
-      }
-    }
-  }
-
-  if (empty($lessphp_include)) {
-    $lessphp_include = 'lessphp/lessc.inc.php';
-  }
+  $lessphp_include = _less_inc_path();
 
   $css = $vars['css'];
 
-  $less_path = file_directory_path() .'/less';
-
+  $less_devel = variable_get('less_devel', FALSE);
+  $less_dir = variable_get('less_dir', '');
+  
   // Flush compiled LESS files if developer mode is enabled
-  if (variable_get('less_devel', FALSE)) {
-    _less_recursive_delete($less_path);
-    if (user_access(LESS_PERMISSION) && flood_is_allowed('less_devel_warning', 1)) {
+  if (!$less_dir || $less_devel) {
+    $less_dir = _less_new_dir();
+    if ($less_devel && user_access(LESS_PERMISSION) && flood_is_allowed('less_devel_warning', 1)) {
       flood_register_event('less_devel_warning');
       drupal_set_message(t('LESS files are being regenerated on every request. Remember to <a href="!url">turn off</a> this feature on production websites.', array("!url" => url('admin/settings/less'))), 'status');
     }
   }
+
+  $less_path = file_directory_path() .'/less/' . $less_dir;
 
   foreach ($css as $media => $types) {
     foreach ($types as $type => $files) {
@@ -157,13 +148,6 @@ function less_preprocess_maintenance_page(&$vars, $hook) {
 }
 
 /**
- * Implements HOOK_enable().
- */
-function less_enable() {
-  drupal_rebuild_theme_registry();
-}
-
-/**
  * Recursively delete a path.
  *
  * Lifted from imagecache, with thanks to dopry/drewish.
@@ -194,26 +178,48 @@ function _less_recursive_delete($path) {
 function less_flush_caches() {
   $semaphore = variable_get('cron_semaphore', FALSE);
   if (!$semaphore) {
-    // Delete all generated files.
-    _less_recursive_delete(file_directory_path() . '/less');
+    _less_new_dir();
   }
   return array();
 }
 
 /**
- * Implementation of hook_requirements().
- *
- * @param $phase The phase in which hook_requirements is run: install or runtime.
+ * Helper function to create a new less dir.
  */
-function less_requirements($phase) {
-  if ($phase == 'runtime' && variable_get('less_devel', FALSE)) {
-    return array(
-      'LESS' => array(
-        'title' => 'LESS',
-        'value' => 'Developer mode enabled',
-        'description' => t('LESS files are being regenerated on every request. Remember to <a href="!url">turn off</a> this feature on production websites.', array("!url" => url('admin/settings/less'))),
-        'severity' => REQUIREMENT_WARNING,
-      ),
-    );
+function _less_new_dir() {
+  $less_dir = uniqid('', TRUE);
+  $less_path = file_directory_path() .'/less/' . $less_dir;
+  @mkdir($less_path, 0775, TRUE);
+  variable_set('less_dir', $less_dir);
+  return $less_dir;
+}
+
+/**
+ * Implements hook_cron().
+ */
+function less_cron() {
+  $less_dir = variable_get('less_dir', '');
+  $found_files = file_scan_directory(file_directory_path() . '/less', '^.+$', array('.', '..', 'CVS', $less_dir), 0, FALSE);
+  
+  foreach ($found_files as $found_file) {
+    _less_recursive_delete($found_file->filename);
   }
+}
+
+function _less_inc_path() {
+  $lessphp_include = '';
+
+  if (module_exists('libraries')) {
+    if ($lessphp_path = libraries_get_path('lessphp')) {
+      if (file_exists($lessphp_path .'/lessc.inc.php')) {
+        $lessphp_include = $lessphp_path .'/lessc.inc.php';
+      }
+    }
+  }
+
+  if (empty($lessphp_include)) {
+    $lessphp_include = 'lessphp/lessc.inc.php';
+  }
+  
+  return $lessphp_include;
 }

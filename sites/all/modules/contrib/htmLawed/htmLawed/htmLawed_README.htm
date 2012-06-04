@@ -110,10 +110,10 @@ span.totop a, span.totop a:visited {color: #6699cc;}
 
 <div id="body">
 <br />
-<div class="comment">htmLawed_README.txt, 21 August 2011<br />
-htmLawed 1.1.9.5, 6 July 2011<br />
+<div class="comment">htmLawed_README.txt, 5 April 2012<br />
+htmLawed 1.1.10, 5 April 2012<br />
 Copyright Santosh Patnaik<br />
-LGPL v3 license<br />
+Dual licensed with LGPL 3 and GPL 2 or later<br />
 A PHP Labware internal utility &#45; <a href="http://www.bioinformatics.org/phplabware/internal_utilities/htmLawed">http://www.bioinformatics.org/phplabware/internal_utilities/htmLawed</a>&#160;</div>
 <br />
 
@@ -222,7 +222,7 @@ A PHP Labware internal utility &#45; <a href="http://www.bioinformatics.org/phpl
 <a name="s1.4" id="s1.4"></a><span class="item-no">1.4</span>&#160; License &amp; copyright
 </h3><span class="totop"><a href="#peak">(to top)</a></span><br style="clear: both;" />
 <br />
-&#160; htmLawed is free and open-source software licensed under LGPL license version <a href="http://www.gnu.org/licenses/lgpl-3.0.txt">3</a>, and copyrighted by Santosh Patnaik, MD, PhD.<br />
+&#160; htmLawed is free and open-source software dual licensed under LGPL license version <a href="http://www.gnu.org/licenses/lgpl-3.0.txt">3</a>&#160;and GPL license version <a href="http://www.gnu.org/licenses/gpl-2.0.txt">2</a>&#160;or later, and copyrighted by Santosh Patnaik, MD, PhD.<br />
 
 </div>
 <div class="sub-section"><h3>
@@ -254,7 +254,7 @@ A PHP Labware internal utility &#45; <a href="http://www.bioinformatics.org/phpl
 <a name="s2" id="s2"></a><span class="item-no">2</span>&#160; Usage
 </h2><span class="totop"><a href="#peak">(to top)</a></span><br style="clear: both;" />
 <br />
-&#160; htmLawed should work with PHP 4.3 and higher. Either <span class="term">include()</span>&#160;the <span class="term">htmLawed.php</span>&#160;file or copy-paste the entire code.<br />
+&#160; htmLawed should work with PHP 4.4 and higher. Either <span class="term">include()</span>&#160;the <span class="term">htmLawed.php</span>&#160;file or copy-paste the entire code.<br />
 <br />
 &#160; To easily <strong>test</strong>&#160;htmLawed using a form-based interface, use the provided <a href="htmLawedTest.php">demo</a>&#160;(<span class="term">htmLawed.php</span>&#160;and <span class="term">htmLawedTest.php</span>&#160;should be in the same directory on the web-server).<br />
 <br />
@@ -372,6 +372,12 @@ A PHP Labware internal utility &#45; <a href="http://www.bioinformatics.org/phpl
 &#160; <span class="term">0</span>&#160;- none &#160;*<br />
 &#160; <span class="term">string</span>&#160;- dictated by values in <span class="term">string</span><br />
 &#160; <span class="term">on&#42;</span>&#160;(like <span class="term">onfocus</span>) attributes not allowed - "<br />
+<br />
+&#160; <strong>direct_nest_list</strong><br />
+&#160; Allow direct nesting of a list within another without requiring it to be a list item; see <a href="#s3.3.4">section 3.3.4</a><br />
+<br />
+&#160; <span class="term">0</span>&#160;- no &#160;*<br />
+&#160; <span class="term">1</span>&#160;- yes<br />
 <br />
 &#160; <strong>elements</strong><br />
 &#160; Allowed HTML elements; see <a href="#s3.3">section 3.3</a><br />
@@ -1172,6 +1178,8 @@ A PHP Labware internal utility &#45; <a href="http://www.bioinformatics.org/phpl
 &#160; In some cases, the specs stipulate the number and/or the ordering of the child elements. A <span class="term">table</span>&#160;can have 0 or 1 <span class="term">caption</span>, <span class="term">tbody</span>, <span class="term">tfoot</span>, and <span class="term">thead</span>, but they must be in this order: <span class="term">caption</span>, <span class="term">thead</span>, <span class="term">tfoot</span>, <span class="term">tbody</span>.<br />
 <br />
 &#160; htmLawed currently does not check for conformance to these rules. Note that any non-compliance in this regard will not introduce security vulnerabilities, crash browser applications, or affect the rendering of web-pages.<br />
+<br />
+&#160; With <span class="term">$config["direct_list_nest"]</span>&#160;set to <span class="term">1</span>, htmLawed will allow direct nesting of an <span class="term">ol</span>&#160;or <span class="term">ul</span>&#160;list within another <span class="term">ol</span>&#160;or <span class="term">ul</span>&#160;without requiring the child list to be within an <span class="term">li</span>&#160;of the parent list. While this is not standard-compliant, directly nested lists are rendered properly by almost all browsers. The parameter <span class="term">$config["direct_list_nest"]</span>&#160;has no effect if tag-balancing (<a href="#s3.3.3">section 3.3.3</a>) is turned off.<br />
 
 </div>
 <div class="sub-section"><h3>
@@ -1707,7 +1715,9 @@ A PHP Labware internal utility &#45; <a href="http://www.bioinformatics.org/phpl
 <br />
 &#160; <em>Version number - Release date. Notes</em><br />
 <br />
-&#160; 1.1.9.5 - 6 July 2011. Minor correction of a rule for nesting of <span class="term">li</span>&#160;within <span class="term">dir</span>.<br />
+&#160; 1.1.10 - 22 October 2011. Fix for a bug in the <span class="term">tidy</span>&#160;functionality that caused the entire input to be replaced with a single space; new parameter, <span class="term">$config["direct_list_nest"]</span>&#160;to allow direct descendance of a list in a list. (5 April 2012. Dual licensing from LGPLv3 to LGPLv3 and GPLv2+.)<br />
+<br />
+&#160; 1.1.9.5 - 6 July 2011. Minor correction of a rule for nesting of <span class="term">li</span>&#160;within <span class="term">dir</span><br />
 <br />
 &#160; 1.1.9.4 - 3 July 2010. Parameter <span class="term">schemes</span>&#160;now accepts <span class="term">!</span>&#160;so any URL, even a local one, can be <em>denied</em>. An issue in which a second URL value in <span class="term">style</span>&#160;properties was not checked was fixed.<br />
 <br />
@@ -1818,7 +1828,7 @@ A PHP Labware internal utility &#45; <a href="http://www.bioinformatics.org/phpl
 <a name="s4.10" id="s4.10"></a><span class="item-no">4.10</span>&#160; Acknowledgements
 </h3><span class="totop"><a href="#peak">(to top)</a></span><br style="clear: both;" />
 <br />
-&#160; Bryan Blakey, Pádraic Brady, Ulf Harnhammer, Gareth Heyes, Lukasz Pilorz, Shelley Powers, Edward Yang, and many anonymous users.<br />
+&#160; Nicholas Alipaz, Bryan Blakey, Pádraic Brady, Ulf Harnhammer, Gareth Heyes, Lukasz Pilorz, Shelley Powers, Edward Yang, and many anonymous users.<br />
 <br />
 &#160; Thank you!<br />
 
@@ -2087,7 +2097,7 @@ A PHP Labware internal utility &#45; <a href="http://www.bioinformatics.org/phpl
 </div>
 </div>
 <br />
-<hr /><br /><br /><span class="subtle"><small>HTM version of <em><a href="htmLawed_README.txt">htmLawed_README.txt</a></em> generated on 21 Aug, 2011 using <a href="http://www.bioinformatics.org/phplabware/internal_utilities">rTxt2htm</a> from PHP Labware</small></span>
+<hr /><br /><br /><span class="subtle"><small>HTM version of <em><a href="htmLawed_README.txt">htmLawed_README.txt</a></em> generated on 05 Apr, 2012 using <a href="http://www.bioinformatics.org/phplabware/internal_utilities">rTxt2htm</a> from PHP Labware</small></span>
 </div><!-- ended div body -->
 </div><!-- ended div top -->
 </body>
