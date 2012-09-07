@@ -263,7 +263,8 @@ body.front #page #main #content-bottom .block {
 
 .node-type-news .panel-col-left .pane-views h2,
 .page-nyheder .panel-col-first .pane-views h2,
-#page .block-views h2 {
+#page .block-views h2,
+#block-block-2 h2 {
   background: url("../images/item-header.png");
   padding: 12px 10px;
   color: #fff;
@@ -608,7 +609,8 @@ color: #3C5000;
 .panel-pane .view-content,
 .panel-display .view-content,
 .nodespotbox .content,
-#page .block-views .content {
+#page.block-views .content,
+.block-block .content {
   padding: 8px;
 }
 
@@ -1055,7 +1057,8 @@ body.node-type-video-spotbox #page .grid-9 .content iframe{
 #block-views-aktiviteter-block_2,
 #block-views-news-block_1,
 .node-type-news #content .news-block-archive,
-.page-nyheder #content .panel-col-first .view-news {
+.page-nyheder #content .panel-col-first .view-news,
+#block-block-2 {
   background: url("../images/box-shadow-long.png") top center repeat-x;
 }
 
@@ -1353,4 +1356,28 @@ body.node-type-video-spotbox #page .grid-9 .content iframe{
 
 #footer .content {
   text-align: center;
+}
+
+/* MailChimp */
+#mc-embedded-subscribe{
+  width: 100%;
+  padding: 5px;
+  font-size: 20px;
+}
+.mc-field-group{
+  margin-bottom:10px;
+}
+.mc-field-group label{
+  font-size:1.2em;
+  font-weight:bold;
+  padding-bottom:5px;
+  display:block;
+}
+#mce-EMAIL{
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+  width:100%;
+  padding:4px;
+  font-size: 15px;
 }
